@@ -1,0 +1,253 @@
+@media only screen and (max-width: 600px) {
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 75px;
+  }
+  .display-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .pageLinks {
+    margin: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .pageLinks .link-selected a {
+    color: #444444;
+  }
+  .pageLinks li {
+    list-style-type: none;
+  }
+  .pageLinks li a {
+    text-decoration: none;
+    color: #8d8d8d;
+    font-size: large;
+  }
+  .navigationPageLinks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .btn-inApp {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: #6171ff;
+    border-radius: 4px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .btn-inApp li {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .btn-inApp li a {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none;
+    color: white;
+    font-size: large;
+  }
+  .inApp {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 50px;
+  }
+}
+
+/* Medium devices (landscape tablets, 700px and up) */
+@media only screen and (min-width: 750px) {
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 55px;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  .pageLinks {
+    margin: 15px;
+  }
+  .pageLinks .link-selected a {
+    color: #444444;
+  }
+  .pageLinks li {
+    list-style-type: none;
+  }
+  .pageLinks li a {
+    text-decoration: none;
+    color: #8d8d8d;
+    font-size: x-small;
+  }
+  .navigationPageLinks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .btn-inApp {
+    margin: 20px;
+    border-radius: 4px;
+    background: #6171ff;
+    -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+    padding: 15px;
+  }
+  .btn-inApp li {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .btn-inApp li a {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none;
+    color: whitesmoke;
+    font-size: x-small;
+  }
+  .inApp {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1000px) {
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 55px;
+    margin-right: 15%;
+    margin-left: 15%;
+  }
+  .pageLinks {
+    margin: 20px;
+  }
+  .pageLinks .link-selected a {
+    color: #444444;
+  }
+  .pageLinks li {
+    list-style-type: none;
+  }
+  .pageLinks li a {
+    text-decoration: none;
+    color: #8d8d8d;
+    font-size: small;
+  }
+  .navigationPageLinks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .btn-inApp {
+    margin: 20px;
+    border-radius: 4px;
+    background: #6171ff;
+    -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+    padding: 15px;
+  }
+  .btn-inApp li {
+    list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .btn-inApp li a {
+    -webkit-text-decoration-line: none;
+            text-decoration-line: none;
+    color: whitesmoke;
+    font-size: small;
+  }
+  .inApp {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/*# sourceMappingURL=navegacion.component.css.map */
