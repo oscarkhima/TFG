@@ -1,37 +1,45 @@
 package com.example.back.user;
 
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 
+@Document(collection = "users")
+public class User {
 
-public class User implements Serializable {
-
+    @Id
     private Long id;
+
     private String name;
+
     private String email;
+
     private LocalDate birth;
+
+    @Transient
     private Integer age;
 
     public User() {
     }
 
-    public User(Long id, String name, String email, LocalDate birth, Integer age) {
+    public User(Long id, String name, String email, LocalDate birth) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birth = birth;
-        this.age = age;
+
     }
 
-    public User(String name, String email, LocalDate birth, Integer age) {
+    public User(String name, String email, LocalDate birth) {
         this.name = name;
         this.email = email;
         this.birth = birth;
-        this.age = age;
     }
 
     @Override
@@ -78,7 +86,7 @@ public class User implements Serializable {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(birth,LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
