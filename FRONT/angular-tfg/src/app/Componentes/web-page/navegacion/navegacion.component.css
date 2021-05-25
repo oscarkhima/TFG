@@ -1,5 +1,9 @@
-@media only screen and (max-width: 600px) {
-  nav {
+@media only screen and (max-width: 700px) {
+  .img-display-menu {
+    width: 40px;
+    height: 40px;
+  }
+  nav .revealed {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13,7 +17,8 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-top: 75px;
+    margin-top: 50px;
+    margin-bottom: 75px;
   }
   .display-menu {
     display: -webkit-box;
@@ -23,6 +28,11 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    padding-top: 35px;
+    padding-right: 35px;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
   .pageLinks {
     margin: 15px;
@@ -60,7 +70,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
-    background: #6171ff;
+    background: #5f5f5f;
     border-radius: 4px;
     padding-right: 50px;
     padding-left: 50px;
@@ -98,8 +108,11 @@
 }
 
 /* Medium devices (landscape tablets, 700px and up) */
-@media only screen and (min-width: 750px) {
-  nav {
+@media only screen and (min-width: 700px) {
+  .display-menu {
+    display: none;
+  }
+  nav .revealed {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -121,7 +134,8 @@
     margin: 15px;
   }
   .pageLinks .link-selected a {
-    color: #444444;
+    font-family: PoppinsSemiBold;
+    color: #242424;
   }
   .pageLinks li {
     list-style-type: none;
@@ -139,10 +153,10 @@
   .btn-inApp {
     margin: 20px;
     border-radius: 4px;
-    background: #6171ff;
-    -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
-    padding: 15px;
+    background: #5f5f5f;
+    -webkit-box-shadow: rgba(75, 75, 75, 0.2) 0px 7px 20px 0px;
+            box-shadow: rgba(75, 75, 75, 0.2) 0px 7px 20px 0px;
+    padding: 12px;
   }
   .btn-inApp li {
     list-style-type: none;
@@ -159,7 +173,7 @@
   .btn-inApp li a {
     -webkit-text-decoration-line: none;
             text-decoration-line: none;
-    color: whitesmoke;
+    color: white;
     font-size: x-small;
   }
   .inApp {
@@ -175,7 +189,7 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 1000px) {
-  nav {
+  nav .revealed {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -215,10 +229,10 @@
   .btn-inApp {
     margin: 20px;
     border-radius: 4px;
-    background: #6171ff;
+    background: #5f5f5f;
     -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
-    padding: 15px;
+    padding: 18px;
   }
   .btn-inApp li {
     list-style-type: none;
