@@ -6,7 +6,7 @@ import { WebPageComponent } from './Componentes/web-page/web-page.component';
 import { NavegacionComponent } from './Componentes/web-page/navegacion/navegacion.component';
 import { ClientIndexComponent } from './Componentes/client-index/client-index.component';
 import { LandingPageComponent } from './Componentes/web-page/landing-page/landing-page.component';
-import { SeccionUnoComponent } from './web-page/seccion-uno/seccion-uno.component';
+import { SeccionUnoComponent } from './Componentes/web-page/seccion-uno/seccion-uno.component';
 @NgModule({
   declarations: [
     AppComponent,
