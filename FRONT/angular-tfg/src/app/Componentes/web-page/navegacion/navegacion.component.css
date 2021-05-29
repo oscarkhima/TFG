@@ -112,6 +112,12 @@
   .display-menu {
     display: none;
   }
+  .pageLinks:hover {
+    border-radius: 4px;
+  }
+  .pageLinks:hover a:hover {
+    color: #bdbdbd;
+  }
   nav .revealed {
     display: -webkit-box;
     display: -ms-flexbox;

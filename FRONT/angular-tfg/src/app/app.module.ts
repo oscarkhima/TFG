@@ -9,9 +9,7 @@ import { LandingPageComponent } from './Componentes/web-page/landing-page/landin
 import { SeccionUnoComponent } from './Componentes/web-page/seccion-uno/seccion-uno.component';
 
 
-//---------Animaciones -----------
 
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,8 +19,7 @@ import { SeccionUnoComponent } from './Componentes/web-page/seccion-uno/seccion-
     ClientIndexComponent,
     LandingPageComponent,
     SeccionUnoComponent,
-    //BrowserAnimationsModule
-    
+       
   ],
   imports: [
     BrowserModule
