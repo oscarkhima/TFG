@@ -26,6 +26,11 @@
     src: url(assets/FONTS/Poppins-Thin.ttf) format('truetype');
 }
 
+@font-face{
+    font-family: 'PoppinsBold';
+    src: url(assets/FONTS/Poppins-Bold.ttf) format('truetype');
+}
+
 .pop-light{
     font-family: PoppinsLight ;
 }
@@ -40,6 +45,10 @@
 }
 .pop-thin{
     font-family: PoppinsThin ;
+}
+
+.pop-bold{
+    font-family: PoppinsBold ;
 }
 
 *{
