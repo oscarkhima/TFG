@@ -1,0 +1,31 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="30"> 
+        <h1 class="pop-semibold">¡Solo un paso más!</h1>
+        <h4 class="pop-semibold">Rellena los datos y comienza a optimizar tu negocio</h4>
+        <form fxLayoutAlign="stretch" fxLayout="column" >
+            <mat-form-field >
+              <input  matInput placeholder="Nombre de usuario">
+            </mat-form-field>
+          
+            <mat-form-field >
+              <input matInput placeholder="Email">
+            </mat-form-field>
+            
+            <mat-form-field >
+                <input matInput placeholder="Contraseña">
+            </mat-form-field>
+
+            <mat-form-field >
+                <input matInput placeholder="Nombre">
+            </mat-form-field>
+
+            <mat-form-field >
+                <mat-label>Cumpleaños</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button mat-button type="submit" class="pop-semibold">Register</button>
+          </form>
+    </mat-card>
+</div>
