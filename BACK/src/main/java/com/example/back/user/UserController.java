@@ -15,14 +15,14 @@ public class UserController {
     public UserRepository userRepository;
 
     @GetMapping("/all")
-    public List<User> getAllUsers(){
+    public List<UserModel> getAllUsers(){
         return userRepository.findAll();
     }
 
     @PostMapping("/create")
-    public String createUser(@RequestBody User user){
+    public String createUser(@RequestBody UserModel userModel){
 
-        User usuarioInsertado = userRepository.insert(user);
+        UserModel usuarioInsertado = userRepository.insert(userModel);
 
         return "User created " + usuarioInsertado.getName();
     }
@@ -42,20 +42,28 @@ public class UserController {
     @PutMapping(path = "{userId}")
     public String updateUser(
             @PathVariable("userId") Long userId,
+            @RequestParam(required = false) String username,
+            @RequestParam(required = false) String password,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String email){
 
-        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException(
+        UserModel userModel = userRepository.findById(userId).orElseThrow(() -> new IllegalStateException(
                 "User with id " + userId + " didn't exists"
         ));
 
-        if (name != null && name.length() > 0 && !Objects.equals(user.getName(), name)){
-            user.setName(name);
+        if (username != null && username.length() > 0 && !Objects.equals(userModel.getUsername(), username)){
+            userModel.setUsername(username);
         }
-        if (email != null && email.length() > 0 && !Objects.equals(user.getEmail(), email)){
-            user.setEmail(email);
+        if (password != null && password.length() > 0 && !Objects.equals(userModel.getPassword(), password)){
+            userModel.setPassword(password);
         }
-        userRepository.save(user);
+        if (name != null && name.length() > 0 && !Objects.equals(userModel.getName(), name)){
+            userModel.setName(name);
+        }
+        if (email != null && email.length() > 0 && !Objects.equals(userModel.getEmail(), email)){
+            userModel.setEmail(email);
+        }
+        userRepository.save(userModel);
         return "User updated";
     }
 
