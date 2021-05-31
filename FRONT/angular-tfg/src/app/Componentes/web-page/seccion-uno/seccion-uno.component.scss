@@ -4,16 +4,7 @@
 
 @media only screen and (max-width: 700px) {
 
-    .divImagenPequeña{
-
-    z-index: -1;
-    opacity: 0.2;
-
-       img{
-        position: absolute;
-        width: 50%;
-       } 
-    }
+    
 
     h1{
         font-size: x-large;
@@ -39,18 +30,32 @@
         }
         
         .divImagenSeccionUno{
-            
-            z-index: -1;
-            display: flex;
-            margin-top: -35%;
-            display: flex;
-
-            img{
-                justify-content: right;
-                align-items: flex-end;
-                width: 100%;
-                height: 100%;
+      
+            position: absolute;
+             right: 0;
+            z-index: 0;
+           margin-top: 5%;
+           // display: flex;
+            top: 15%;
+           
+            img {
+            width: 85%;
+            height: 80%;
             }
+        }
+    
+        .divImagenPequeña{
+    
+            position: absolute;
+            opacity: 0.3;
+            top: 25%;
+            left: 10%;
+            z-index: -1;
+    
+            img {
+                width: 50%;
+            }
+    
         }
         
     }
@@ -120,23 +125,27 @@
 
     h1{
         font-size: xx-large;
+        color: rgb(35, 35, 35);
     }
     
     h2{
         font-size: large;
+        color: rgb(55, 55, 55);
     }
     
     .contenedorSeccionUno{
         display: flex;
-        margin-top: 30px;
+    
         margin-right: 5%;
-        margin-left: 10%;
-        height: 300px;
+        margin-left: 15%;
+        height: 10%;
         flex-direction: row;
-        margin-top: 100px;
+        margin-top: 10%;
+        padding-bottom: 10%;
     }
     .tituloSeccionUno{
         
+        margin-top: -5%;
         padding-inline: 10%;
         display: flex;
         flex-direction: column;
@@ -147,24 +156,28 @@
     
     .divImagenSeccionUno{
       
+       
         position: absolute;
-        right: 0;
+         right: 0;
         z-index: 0;
+       margin-top: 5%;
        // display: flex;
-        top: 15%;
+        top: 12%;
        
         img {
-            width: 75%;
-        height: 80%;
+        width: 80%;
+        height: 70%;
         }
     }
 
     .divImagenPequeña{
 
         position: absolute;
-        top: 20%;
+        opacity: 0.3;
+        top: 25%;
         left: 10%;
         z-index: -1;
+
         img {
             width: 50%;
         }
