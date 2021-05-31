@@ -2,6 +2,25 @@
 
 @media only screen and (max-width: 700px) {
 
+
+
+    
+
+    .showed-in-mobile{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title-mobile{
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        align-items: center;
+        margin-left: 10%;
+    }
+
     .img-display-menu{
 
         width: 40px;
@@ -9,16 +28,7 @@
     }
 
    
-    nav .revealed{
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        justify-content: center;
-        margin-top: 50px;
-        margin-bottom: 75px;
-        
-
-    }
+   
      
     .display-menu{
         display: flex;
@@ -26,21 +36,60 @@
         padding-top: 35px;
         padding-right: 35px;
         justify-content: flex-end;
+        align-items: center;
+
+        img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        
+    }
+
+    .hide-menu{
+        
+    
+       visibility: visible;
+        display: flex;
+        
+        align-items: center;
+        justify-content: center;
+        padding-top: 35px;
+        justify-content: center;
+        background-color: rgb(31, 31, 31);
+        transform: translateY();
+        transition: transform 2s ease-in;
+        
+
+        display: flex;
+        flex-direction: column;
+        align-items:revert;
+        justify-content: center;
+        margin-top: 30px;
+        padding-bottom: 60px;
+        padding-top:30px;
+        padding-right: 20%;
         
     }
     
+    
     .pageLinks{
     
-        margin: 15px;
+        
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+        margin-top: 15px;
+        margin-bottom: 15px;
 
         
 
         .link-selected{
             a {
-                color: rgb(68, 68, 68);
+                color: rgb(255, 255, 255);
+                font-size: x-large;
+                
             }
         }
     
@@ -67,28 +116,21 @@
    
     .btn-inApp{
     
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 4px;
-
-        background:rgb(95, 95, 95);
-        border-radius: 4px;
-        padding-right: 50px;
-        padding-left: 50px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+      
         //box-shadow: rgba(100, 100, 111, 0.2) 0px 15px 20px 0px;
    
        
         li{
             list-style-type: none;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
                 align-items: center;
+                margin-top: 15px;
+                margin-bottom: 15px;
     
             a{
                 text-decoration-line: none;
-                color: rgb(255, 255, 255);
+                color: rgb(147, 147, 147);
                 font-size: large;
                 
             }
@@ -99,7 +141,7 @@
     .inApp{
         display: flex;
         flex-direction: column;
-        margin-top: 50px;
+       
         
         
         
@@ -111,8 +153,18 @@
 
     .display-menu{
         display: none;
+
     }
 
+    .hide-menu{
+        
+        display: none;
+
+    }
+
+    .title-mobile{
+        display: none;
+    }
     .pageLinks:hover {
         
         border-radius: 4px;
@@ -201,6 +253,8 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 1000px) {
+
+  
     
     
     nav .revealed{

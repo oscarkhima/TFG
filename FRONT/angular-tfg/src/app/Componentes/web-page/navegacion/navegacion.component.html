@@ -1,10 +1,19 @@
 <nav >
 
-    <div class="display-menu"> 
-        <img class="img-display-menu" src="./assets/ICONS/cancel.svg" alt="image not found">
+
+    <div class="showed-in-mobile">
+
+        <div class="title-mobile  pop-medium "> 
+            <h3>NOMBRE</h3>
+        </div>
+        <div class="display-menu" > 
+            <img class="img-display-menu" src="{{imgSrc}}" alt="image not found"(click)="showOrHideMenu()" >
+        </div>
+
     </div>
+ 
     
-    <div class="revealed">
+    <div *ngIf="showMe"  class="revealed hide-menu" data-aos="fade-in">
     <div class="navigationPageLinks pop-medium"> 
 
        
@@ -28,6 +37,8 @@
     <div></div>
 
     <div class="pop-semibold inApp">
+
+      
         <div class="btn-inApp"> 
             <li><a href="">Inicia Sesión</a></li>
         </div>

@@ -2,19 +2,26 @@
 
     <div class="contenedorSeccionUno">
 
-        <div class="tituloSeccionUno col-6">
+        <div  class="divImagenPequeña" data-aos="fade-up"
+        data-aos-duration="1000">
+            <img src="/assets/ILUSTRATIONS/qrSmall.png" alt="Imagen no encontrada">
+        </div>
+       
+
+        <div class="tituloSeccionUno">
             
 
             <h1 class="pop-semibold">Reinventamos la manera de pedir en los restaurantes</h1>
 
-            <h2 class="pop-light">Gracias a nuestras cartas interactivas, aumenta las ventas y reduce los tiempos de espera</h2>
+            <h2  class="pop-light">Gracias a nuestras cartas interactivas, aumenta las ventas y reduce los tiempos de espera</h2>
 
         </div>
        
-        <div class="divImagenSeccionUno col-6">
-            <img src="/assets/ILUSTRATIONS/undraw_Hang.svg" alt="">
+        <div *ngIf="pantallaPequena" class="divImagenSeccionUno" data-aos="fade-up">
+            <img src="/assets/ILUSTRATIONS/qrBig.png" alt="Imagen no encontrada">
         </div>
         
+       
 
     </div>
 

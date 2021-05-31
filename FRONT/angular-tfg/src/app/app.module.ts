@@ -8,6 +8,11 @@ import { ClientIndexComponent } from './Componentes/client-index/client-index.co
 import { LandingPageComponent } from './Componentes/web-page/landing-page/landing-page.component';
 import { SeccionUnoComponent } from './Componentes/web-page/seccion-uno/seccion-uno.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SeccionDosComponent } from './Componentes/web-page/seccion-dos/seccion-dos.component';
+import { SeccionTresComponent } from './Componentes/web-page/seccion-tres/seccion-tres.component';
+import { FooterComponent } from './Componentes/web-page/footer/footer.component';
+
 
 
 
@@ -19,10 +24,15 @@ import { SeccionUnoComponent } from './Componentes/web-page/seccion-uno/seccion-
     ClientIndexComponent,
     LandingPageComponent,
     SeccionUnoComponent,
+    SeccionDosComponent,
+    SeccionTresComponent,
+    FooterComponent,
+    
        
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
