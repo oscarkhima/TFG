@@ -1,6 +1,7 @@
 package com.example.back.user;
 
 
+import jdk.jfr.StackTrace;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,6 +17,7 @@ import java.time.Period;
 public class UserModel {
 
     @Id
+    @Transient
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
@@ -27,21 +29,16 @@ public class UserModel {
 
     private String email;
 
-    private LocalDate birth;
-
-    @Transient
-    private Integer age;
 
     public UserModel() {
     }
 
-    public UserModel(Long id, String username, String password, String name, String email, LocalDate birth) {
+    public UserModel(Long id, String username, String password, String name, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
-        this.birth = birth;
     }
 
 
@@ -67,22 +64,6 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public LocalDate getBirth() {
-        return birth;
-    }
-
-    public void setBirth(LocalDate birth) {
-        this.birth = birth;
-    }
-
-    public Integer getAge() {
-        return Period.between(birth,LocalDate.now()).getYears();
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getUsername() {

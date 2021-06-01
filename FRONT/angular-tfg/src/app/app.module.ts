@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from "@angular/common/http"
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,10 @@ import { FooterComponent } from './Componentes/web-page/footer/footer.component'
 import { RegistroComponent } from './Componentes/web-page/registro/registro.component';
 import { IniciarSesionComponent } from './Componentes/web-page/iniciar-sesion/iniciar-sesion.component';
 import {MatCardModule} from '@angular/material/card';
+
+//SERVICES
+import{DataApiService} from "./services/data-api.service"
+import{AuthService} from "./services/auth.service"
 
 
 
@@ -42,6 +47,7 @@ import {MatCardModule} from '@angular/material/card';
     IniciarSesionComponent,
   ],
   imports: [
+    HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
@@ -55,6 +61,7 @@ import {MatCardModule} from '@angular/material/card';
   ],
   providers: [
     MatNativeDateModule,
+    DataApiService,
   ],
   bootstrap: [AppComponent]
 })

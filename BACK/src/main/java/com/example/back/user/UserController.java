@@ -14,12 +14,12 @@ public class UserController {
     @Autowired
     public UserRepository userRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/user/all")
     public List<UserModel> getAllUsers(){
         return userRepository.findAll();
     }
 
-    @PostMapping("/create")
+    @PostMapping("/user/create")
     public String createUser(@RequestBody UserModel userModel){
 
         UserModel usuarioInsertado = userRepository.insert(userModel);
@@ -27,7 +27,7 @@ public class UserController {
         return "User created " + usuarioInsertado.getName();
     }
 
-    @DeleteMapping(path = "{userId}")
+    @DeleteMapping(path = "/user/{userId}")
     public String deleteUser(@PathVariable("userId") Long userId){
         boolean existe = userRepository.existsById(userId);
         if (existe){
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @Transactional
-    @PutMapping(path = "{userId}")
+    @PutMapping(path = "/user/{userId}")
     public String updateUser(
             @PathVariable("userId") Long userId,
             @RequestParam(required = false) String username,
