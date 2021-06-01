@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {map} from "rxjs/Operators";
-import { isNullOrUndefined } from 'util';
+
 
 
 @Injectable({
@@ -16,7 +16,7 @@ export class AuthService {
   })
 
   registerUser(username: string,name: string, email: string, password: string){
-    const url_api = "http://localhost:8080/user/singIn";
+    const url_api = "http://localhost:8585/user/singIn";
     return this.http.post(url_api,{
       username, 
       password, 
@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string): Observable<any> {
-    const url_api = "http://localhost:8080/user/logIn";
+    const url_api = "http://localhost:8585/user/logIn";
     return this.http.post(url_api,{
       email, 
       password, 
