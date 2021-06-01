@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from "@angular/common/http"
+import {HttpClientModule} from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -27,7 +28,6 @@ import {MatCardModule} from '@angular/material/card';
 
 //SERVICES
 import{DataApiService} from "./services/data-api.service"
-import{AuthService} from "./services/auth.service"
 
 
 
@@ -47,6 +47,7 @@ import{AuthService} from "./services/auth.service"
     IniciarSesionComponent,
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {map} from "rxjs/Operators";
+import { UserInterface } from '../models/user-interface';
 
 
 @Injectable({
@@ -16,7 +17,9 @@ export class AuthService {
 
   registerUser(username: string,name: string, email: string, password: string){
     const url_api = "http://localhost:8585/user/singIn";
-    return this.http.post(url_api,{
+    return this.http.post<UserInterface>(
+      url_api,
+      {
       username, 
       password, 
       email,
@@ -29,7 +32,7 @@ export class AuthService {
 
   loginUser(email: string, password: string): Observable<any> {
     const url_api = "http://localhost:8585/user/logIn";
-    return this.http.post(url_api,{
+    return this.http.post<UserInterface>(url_api,{
       email, 
       password, 
     },
@@ -38,7 +41,7 @@ export class AuthService {
     .pipe(map(data => data));
   }
 
-  setUser(user: any){
+  setUser(user: UserInterface){
     let user_string = JSON.stringify(user);
     localStorage.setItem("currentUser", user_string);
   }
@@ -54,7 +57,7 @@ export class AuthService {
   getCurrentUser(){
     let user_string = localStorage.getItem("currentUser");
     if(!(user_string === null || user_string === undefined)){
-      let user = JSON.parse(user_string);
+      let user: UserInterface = JSON.parse(user_string);
       return user;
     } else{
       return null;

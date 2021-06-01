@@ -2,16 +2,16 @@
     <mat-card  fxFlex="30"> 
         <h1 class="pop-semibold">¡Bienvenido!</h1>
         <h4 class="pop-semibold">Rellena los datos y comienza a optimizar tu negocio</h4>
-        <form fxLayoutAlign="stretch" fxLayout="column" >
+        <form fxLayoutAlign="stretch" fxLayout="column" #formLogin="ngForm" (ngSubmit)="onLogin()">
             <mat-form-field >
-              <input type="email"  matInput placeholder="Email">
+              <input type="text"  matInput placeholder="Nombre de usuario"[(ngModel)]="user.username" name="email" required>
             </mat-form-field>
 
             <mat-form-field >
-                <input type="password" matInput placeholder="Contraseña">
+                <input type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" name="password" required>
             </mat-form-field>
 
-            <button mat-raised-button color="primary" type="submit" class="pop-semibold">Iniciar Sesion</button>
+            <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formLogin.valid">Iniciar Sesion</button>
           </form>
     </mat-card>
 </div>
