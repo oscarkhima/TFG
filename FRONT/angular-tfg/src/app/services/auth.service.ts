@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {map} from "rxjs/Operators";
-import { isNullOrUndefined } from 'util';
 
 
 @Injectable({
@@ -57,7 +56,14 @@ export class AuthService {
     if(!(user_string === null || user_string === undefined)){
       let user = JSON.parse(user_string);
       return user;
+    } else{
+      return null;
     }
+  }
+
+  logOutUser(){
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("currentUser");
   }
 
 }
