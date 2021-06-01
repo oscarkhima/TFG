@@ -26,13 +26,10 @@ import { trigger, style, transition, animate, state} from '@angular/animations'
 })
 export class NavegacionComponent implements OnInit {
 
-
+  
   imgSrc = ''
   imgOpen = './assets/ICONS/menu.png'
   imgClose = './assets/ICONS/close.png'
-
-  
-  
 
   showMe:boolean = false;
 
