@@ -1,7 +1,7 @@
 package com.example.back.user;
 
 
-import jdk.jfr.StackTrace;
+//import jdk.jfr.StackTrace;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
