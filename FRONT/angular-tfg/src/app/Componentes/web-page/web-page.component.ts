@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
   selector: 'app-web-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataApi: DataApiService) { }
 
   ngOnInit(): void {
+    this.getListUsers();
+  }
+
+  getListUsers(){
+    this.dataApi.getAllUsers().subscribe(users => console.log(users));
   }
 
 }

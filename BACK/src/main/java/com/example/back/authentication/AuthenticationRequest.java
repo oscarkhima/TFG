@@ -9,7 +9,6 @@ public class AuthenticationRequest {
     private String password;
     private String email;
     private String name;
-    private LocalDate birth;
 
     public AuthenticationRequest(){
 
@@ -37,14 +36,6 @@ public class AuthenticationRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LocalDate getBirth() {
-        return birth;
-    }
-
-    public void setBirth(LocalDate birth) {
-        this.birth = birth;
     }
 
     public String getUsername() {
