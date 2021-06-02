@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from "@angular/common/http"
+import {HttpClientModule} from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { FooterComponent } from './Componentes/web-page/footer/footer.component'
 import { RegistroComponent } from './Componentes/web-page/registro/registro.component';
 import { IniciarSesionComponent } from './Componentes/web-page/iniciar-sesion/iniciar-sesion.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { ProfileComponent } from './Componentes/web-page/profile/profile.component'
 
 //SERVICES
 import{DataApiService} from "./services/data-api.service"
@@ -31,10 +34,18 @@ import{AuthService} from "./services/auth.service";
 import { SeccionCuatroComponent } from './Componentes/web-page/seccion-cuatro/seccion-cuatro.component';
 import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/seccion-cinco.component'
 
+import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
+import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
+
+
 
 
 
 @NgModule({
+  entryComponents:[
+    DialogRegistroComponent,
+    DialogIniciarComponent,
+  ],
   declarations: [
     AppComponent,
     WebPageComponent,
@@ -49,8 +60,13 @@ import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/secc
     IniciarSesionComponent,
     SeccionCuatroComponent,
     SeccionCincoComponent,
+    ProfileComponent,
+    DialogRegistroComponent,
+    DialogIniciarComponent,
   ],
   imports: [
+    MatDialogModule,
+    FormsModule,
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,

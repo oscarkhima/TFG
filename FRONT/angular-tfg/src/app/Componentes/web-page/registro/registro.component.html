@@ -2,24 +2,24 @@
     <mat-card  fxFlex="30"> 
         <h1 class="pop-semibold">¡Solo un paso más!</h1>
         <h4 class="pop-semibold">Rellena los datos y comienza a optimizar tu negocio</h4>
-        <form fxLayoutAlign="stretch" fxLayout="column" >
+        <form fxLayoutAlign="stretch" fxLayout="column" #formRegister="ngForm" (ngSubmit)="onRegister()">
             <mat-form-field >
-              <input type="text"  matInput placeholder="Nombre de usuario">
+              <input type="text"  matInput placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" required>
             </mat-form-field>
           
             <mat-form-field >
-              <input type="email" matInput placeholder="Email">
+              <input type="email" matInput placeholder="Email" [(ngModel)]="user.email" name="email" required>
             </mat-form-field>
             
             <mat-form-field >
-                <input type="password" matInput placeholder="Contraseña">
+                <input type="password" matInput placeholder="Contraseña" [(ngModel)]="user.password" name="password" required>
             </mat-form-field>
 
             <mat-form-field >
-                <input type="text" matInput placeholder="Nombre">
+                <input type="text" matInput placeholder="Nombre del establecimiento" [(ngModel)]="user.name" name="name" required>
             </mat-form-field>
 
-            <button mat-raised-button color="primary" type="submit" class="pop-semibold">Registrarse</button>
+            <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formRegister.valid">Registrarse</button>
           </form>
     </mat-card>
 </div>
