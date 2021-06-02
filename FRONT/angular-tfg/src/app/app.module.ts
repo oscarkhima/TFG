@@ -63,12 +63,8 @@ import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.com
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,
-<<<<<<< HEAD
-=======
     SeccionCuatroComponent,
     SeccionCincoComponent,
-    ProfileComponent,
->>>>>>> a3a9297cfd3ca07c2536c2fe2933e8b2699673ad
     DialogRegistroComponent,
     DialogIniciarComponent,
     NavComponent,
