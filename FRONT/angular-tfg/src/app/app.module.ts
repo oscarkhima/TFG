@@ -25,14 +25,23 @@ import { FooterComponent } from './Componentes/web-page/footer/footer.component'
 import { RegistroComponent } from './Componentes/web-page/registro/registro.component';
 import { IniciarSesionComponent } from './Componentes/web-page/iniciar-sesion/iniciar-sesion.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { ProfileComponent } from './Componentes/web-page/profile/profile.component'
 
 //SERVICES
-import{DataApiService} from "./services/data-api.service"
+import{DataApiService} from "./services/data-api.service";
+import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
+import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
+
 
 
 
 
 @NgModule({
+  entryComponents:[
+    DialogRegistroComponent,
+    DialogIniciarComponent,
+  ],
   declarations: [
     AppComponent,
     WebPageComponent,
@@ -45,8 +54,12 @@ import{DataApiService} from "./services/data-api.service"
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,
+    ProfileComponent,
+    DialogRegistroComponent,
+    DialogIniciarComponent,
   ],
   imports: [
+    MatDialogModule,
     FormsModule,
     HttpClientModule,
     MatDatepickerModule,

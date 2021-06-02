@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { UserInterface } from 'src/app/models/user-interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import {MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DialogIniciarComponent} from 'src/app/Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component'
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -10,7 +13,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class IniciarSesionComponent implements OnInit {
   
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    private dialog: MatDialog,
+    ) { }
 
   public user: UserInterface = {
     username: "",
@@ -23,13 +30,23 @@ export class IniciarSesionComponent implements OnInit {
     AOS.init()
   }
 
+  openDialog(){
+    this.dialog.open(DialogIniciarComponent);
+  }
+
   onLogin(): void{
     this.authService.loginUser(
       this.user.username,
       this.user.password
-    ).subscribe( user => {
-      console.log(user)
+    ).subscribe( userResponse => {
+      if(userResponse){
+        this.router.navigate(['/profile'])
+      }else{
+        this.openDialog();
+      }
     })
   }
+
+
 
 }

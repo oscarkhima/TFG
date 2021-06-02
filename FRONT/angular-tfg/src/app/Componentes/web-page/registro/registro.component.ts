@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { UserInterface } from 'src/app/models/user-interface';
 import { AuthService } from 'src/app/services/auth.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogRegistroComponent } from 'src/app/Componentes/web-page/registro/dialog-registro/dialog-registro.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -11,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, public dialog: MatDialog, private router: Router) { }
   
   public user: UserInterface = {
     username: "",
@@ -24,14 +27,22 @@ export class RegistroComponent implements OnInit {
     AOS.init()
   }
 
+  openDialog(){
+    this.dialog.open(DialogRegistroComponent);
+  }
+
   onRegister(): void{
     this.authService.registerUser(
       this.user.username,
       this.user.name,
       this.user.email,
       this.user.password
-    ).subscribe( user => {
-      console.log(user)
+    ).subscribe( userResponse => {
+      if(userResponse){
+        this.router.navigate(['/profile'])
+      }else{
+        this.openDialog();
+      }
     })
   }
 

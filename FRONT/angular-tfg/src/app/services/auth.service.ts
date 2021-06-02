@@ -17,7 +17,7 @@ export class AuthService {
 
   registerUser(username: string,name: string, email: string, password: string){
     const url_api = "http://localhost:8585/user/singIn";
-    return this.http.post<UserInterface>(
+    return this.http.post<Boolean>(
       url_api,
       {
       username, 
