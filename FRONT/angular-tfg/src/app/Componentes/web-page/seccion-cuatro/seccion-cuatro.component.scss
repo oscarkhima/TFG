@@ -1,0 +1,45 @@
+section{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caracteristicas{
+
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+
+}
+
+.caracteristica{
+    margin: 4%;
+}
+
+.tituloCaracterísticas{
+
+    color: rgb(0, 0, 0);
+}
+
+.tituloCaracteristicasFuturas{
+
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+
+
+    .caracteristicas{
+
+        margin: 10%;
+    
+    }
+    
+    .caracteristica{
+        margin: 4%;
+    }
+    
+
+}

@@ -31,7 +31,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 //SERVICES
-import{DataApiService} from "./services/data-api.service";
+import{DataApiService} from "./services/data-api.service"
+import{AuthService} from "./services/auth.service";
+import { SeccionCuatroComponent } from './Componentes/web-page/seccion-cuatro/seccion-cuatro.component';
+import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/seccion-cinco.component'
+
 import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
 import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
 import { NavComponent } from './Componentes/client-index/nav/nav.component';
@@ -59,6 +63,12 @@ import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.com
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,
+<<<<<<< HEAD
+=======
+    SeccionCuatroComponent,
+    SeccionCincoComponent,
+    ProfileComponent,
+>>>>>>> a3a9297cfd3ca07c2536c2fe2933e8b2699673ad
     DialogRegistroComponent,
     DialogIniciarComponent,
     NavComponent,
