@@ -9,6 +9,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 
 import { AppComponent } from './app.component';
@@ -26,12 +27,16 @@ import { RegistroComponent } from './Componentes/web-page/registro/registro.comp
 import { IniciarSesionComponent } from './Componentes/web-page/iniciar-sesion/iniciar-sesion.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { ProfileComponent } from './Componentes/web-page/profile/profile.component'
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 //SERVICES
 import{DataApiService} from "./services/data-api.service";
 import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
 import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
+import { NavComponent } from './Componentes/client-index/nav/nav.component';
+import { BodyComponent } from './Componentes/client-index/body/body.component';
+import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.component';
 
 
 
@@ -54,11 +59,15 @@ import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/di
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,
-    ProfileComponent,
     DialogRegistroComponent,
     DialogIniciarComponent,
+    NavComponent,
+    BodyComponent,
+    SidenavComponent,
   ],
   imports: [
+    MatIconModule,
+    MatSidenavModule,
     MatDialogModule,
     FormsModule,
     HttpClientModule,

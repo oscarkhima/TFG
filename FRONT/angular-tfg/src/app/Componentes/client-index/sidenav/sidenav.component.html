@@ -1,0 +1,9 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [(opened)] = "opened" >Sidenav</mat-sidenav>
+    <mat-sidenav-content>
+
+        <button class="botonMenu" (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-sidenav-content>
+</mat-sidenav-container>
