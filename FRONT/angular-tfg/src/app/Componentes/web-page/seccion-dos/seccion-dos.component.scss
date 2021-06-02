@@ -56,7 +56,9 @@
         background-color: black;
         color: white;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding-top: 7%;
         padding-bottom: 7%;
         padding-right: 5%;
@@ -66,12 +68,12 @@
     
     .tarjeta{
     
-        width: 33%;
+        width: 50%;
     
         background-color: rgb(16, 16, 16);
         border-radius: 5px;
         color: white;
-        padding-top: 5%;
+        padding-top: 4%;
         padding-bottom:5%;
         padding-left: 4%;
         padding-right: 4%;
@@ -81,9 +83,12 @@
 
         margin-bottom: 10%;
 
+        h3{
+            font-size: x-large;
+        }
 
         P {
-            font-size: x-small;
+            font-size: small;
             margin-top: 15px;
             color: rgb(216, 216, 216);
         }
@@ -176,10 +181,15 @@
         margin-left: 30px;
 
         margin-bottom: 10%;
-
+        
+        h3{
+            text-align: center;
+            font-size: medium;
+            font-size: x-large;
+        }
 
         P {
-            font-size: medium;
+           
             margin-top: 15px;
             color: rgb(216, 216, 216);
         }

@@ -27,7 +27,9 @@ import {MatCardModule} from '@angular/material/card';
 
 //SERVICES
 import{DataApiService} from "./services/data-api.service"
-import{AuthService} from "./services/auth.service"
+import{AuthService} from "./services/auth.service";
+import { SeccionCuatroComponent } from './Componentes/web-page/seccion-cuatro/seccion-cuatro.component';
+import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/seccion-cinco.component'
 
 
 
@@ -45,6 +47,8 @@ import{AuthService} from "./services/auth.service"
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,
+    SeccionCuatroComponent,
+    SeccionCincoComponent,
   ],
   imports: [
     HttpClientModule,
