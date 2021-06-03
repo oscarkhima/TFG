@@ -10,6 +10,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 import { AppComponent } from './app.component';
@@ -72,6 +73,7 @@ import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.com
     SidenavComponent,
   ],
   imports: [
+    NgxQRCodeModule,
     MatIconModule,
     MatSidenavModule,
     MatDialogModule,
