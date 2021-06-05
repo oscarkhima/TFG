@@ -1,4 +1,4 @@
-import { Component, OnInit, VERSION } from '@angular/core';
+import { Component, Input, OnInit, VERSION } from '@angular/core';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 
 @Component({
@@ -8,14 +8,13 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
 })
 export class BodyComponent implements OnInit {
 
+  @Input()
+  variable: String = "";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  name = 'Angular ' + VERSION.major;
-  elementType = NgxQrcodeElementTypes.URL;
-  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'http://192.168.1.143:4200/';
 
 }

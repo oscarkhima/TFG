@@ -1,11 +1,34 @@
 <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" [(opened)] = "opened" >Sidenav</mat-sidenav>
+    <mat-sidenav #sidenav mode="side" [(opened)] = "opened" >
+        <mat-selection-list #options [multiple]="false">
+            <mat-list-option [value]="1" (click)="chooseOption(options)">
+                Mis cartas
+                <mat-icon matListIcon>menu_book</mat-icon>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+            <mat-list-option [value]="2" (click)="chooseOption(options)">
+                Mis platos
+                <mat-icon matListIcon>restaurant</mat-icon>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+            <mat-list-option [value]="3" (click)="chooseOption(options)">
+                Pedidos
+                <mat-icon matListIcon>receipt_long</mat-icon>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+            <mat-list-option [value]="4" (click)="chooseOption(options)">
+                Configuracion
+                <mat-icon matListIcon>settings</mat-icon>
+            </mat-list-option>
+          </mat-selection-list>
+    </mat-sidenav>
     <mat-sidenav-content>
 
         <button class="botonMenu" (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
             <mat-icon>menu</mat-icon>
         </button>
 
-        <app-body></app-body>
+        <app-body [variable]="this.option"></app-body>
+
     </mat-sidenav-content>
 </mat-sidenav-container>

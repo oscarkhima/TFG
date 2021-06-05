@@ -11,6 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 import { AppComponent } from './app.component';
@@ -42,6 +45,10 @@ import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/di
 import { NavComponent } from './Componentes/client-index/nav/nav.component';
 import { BodyComponent } from './Componentes/client-index/body/body.component';
 import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.component';
+import { MisCartasComponent } from './Componentes/client-index/body/mis-cartas/mis-cartas.component';
+import { MisPlatosComponent } from './Componentes/client-index/body/mis-platos/mis-platos.component';
+import { PedidosComponent } from './Componentes/client-index/body/pedidos/pedidos.component';
+import { ConfiguracionComponent } from './Componentes/client-index/body/configuracion/configuracion.component';
 
 import {MatStepperModule} from '@angular/material/stepper';
 import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccion-seis.component';
@@ -74,8 +81,15 @@ import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccio
     BodyComponent,
     SidenavComponent,
     SeccionSeisComponent,
+    MisCartasComponent,
+    MisPlatosComponent,
+    PedidosComponent,
+    ConfiguracionComponent,
   ],
   imports: [
+    MatToolbarModule,
+    MatListModule,
+    MatDividerModule,
     NgxQRCodeModule,
     MatIconModule,
     MatSidenavModule,

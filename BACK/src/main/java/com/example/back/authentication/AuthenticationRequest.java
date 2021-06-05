@@ -1,6 +1,10 @@
 package com.example.back.authentication;
 
+import com.example.back.card.CardModel;
+import com.example.back.dish.DishModel;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class AuthenticationRequest {
 
@@ -9,9 +13,27 @@ public class AuthenticationRequest {
     private String password;
     private String email;
     private String name;
+    private ArrayList<CardModel> cartas;
+    private ArrayList<DishModel> platos;
 
     public AuthenticationRequest(){
 
+    }
+
+    public ArrayList<CardModel> getCartas() {
+        return cartas;
+    }
+
+    public void setCartas(ArrayList<CardModel> cartas) {
+        this.cartas = cartas;
+    }
+
+    public ArrayList<DishModel> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(ArrayList<DishModel> platos) {
+        this.platos = platos;
     }
 
     public Long getId() {
