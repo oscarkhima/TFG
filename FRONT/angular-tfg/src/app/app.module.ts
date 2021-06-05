@@ -42,6 +42,7 @@ import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/secc
 
 import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
 import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
+<<<<<<< Updated upstream
 import { NavComponent } from './Componentes/client-index/nav/nav.component';
 import { BodyComponent } from './Componentes/client-index/body/body.component';
 import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.component';
@@ -50,6 +51,9 @@ import { MisPlatosComponent } from './Componentes/client-index/body/mis-platos/m
 import { PedidosComponent } from './Componentes/client-index/body/pedidos/pedidos.component';
 import { ConfiguracionComponent } from './Componentes/client-index/body/configuracion/configuracion.component';
 
+=======
+import {MatStepperModule} from '@angular/material/stepper';
+>>>>>>> Stashed changes
 
 
 
@@ -102,7 +106,8 @@ import { ConfiguracionComponent } from './Componentes/client-index/body/configur
     MatFormFieldModule,
     FlexLayoutModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatStepperModule
   ],
   providers: [
     MatNativeDateModule,

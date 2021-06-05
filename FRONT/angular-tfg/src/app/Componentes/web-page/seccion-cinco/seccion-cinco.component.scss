@@ -1,0 +1,50 @@
+section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.procesoDeCreacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+
+}
+
+mat-step{
+
+    padding: 20px;
+}
+
+.mat-vertical-stepper{
+    width: 80%;
+    padding: 20%;
+    background-color: rgb(236,236,236);
+}
+
+.imgSeccionCinco{
+
+    
+    img{
+        width: 100%;
+        image-rendering: pixelated;
+        z-index: 0;
+        background-color: rgba(0, 0, 0, 0.181);
+        filter: grayscale(50%);
+        opacity: 0.7;
+    }
+    width: 100%;
+}
+
+.tituloImg{
+    
+   
+    z-index: 1;
+    top: 40%;
+   
+    h1{
+        font-size: 70px;
+        color: rgb(0, 0, 0);
+    }
+}
