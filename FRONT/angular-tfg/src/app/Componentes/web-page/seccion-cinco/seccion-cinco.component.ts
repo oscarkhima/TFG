@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-seccion-cinco',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeccionCincoComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+
+  constructor() {}
+
+  ngOnInit() {
   }
 
 }
