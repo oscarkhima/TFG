@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
+  hide = true;
+
   constructor(private authService: AuthService, public dialog: MatDialog, private router: Router) { }
   
   public user: UserInterface = {
@@ -21,6 +23,8 @@ export class RegistroComponent implements OnInit {
     password: "",
     email: "",
     name: "",
+    cartas: [],
+    platos: []
   };
 
   ngOnInit(): void {
@@ -36,7 +40,9 @@ export class RegistroComponent implements OnInit {
       this.user.username,
       this.user.name,
       this.user.email,
-      this.user.password
+      this.user.password,
+      this.user.cartas,
+      this.user.platos
     ).subscribe( userResponse => {
       if(userResponse){
         this.router.navigate(['/profile'])

@@ -2,6 +2,8 @@ package com.example.back.user;
 
 
 //import jdk.jfr.StackTrace;
+import com.example.back.card.CardModel;
+import com.example.back.dish.DishModel;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 @Document(collection = "users")
 public class UserModel {
@@ -29,11 +32,15 @@ public class UserModel {
 
     private String email;
 
+    private ArrayList<CardModel> cartas;
+
+    private ArrayList<DishModel> platos;
+
 
     public UserModel() {
     }
 
-    public UserModel(Long id, String username, String password, String name, String email) {
+    public UserModel(Long id, String username, String password, String name, String email, ArrayList<CardModel> cartas, ArrayList<DishModel> platos) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -41,6 +48,21 @@ public class UserModel {
         this.email = email;
     }
 
+    public ArrayList<CardModel> getCartas() {
+        return cartas;
+    }
+
+    public void setCartas(ArrayList<CardModel> cartas) {
+        this.cartas = cartas;
+    }
+
+    public ArrayList<DishModel> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(ArrayList<DishModel> platos) {
+        this.platos = platos;
+    }
 
     public Long getId() {
         return id;

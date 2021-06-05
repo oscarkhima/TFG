@@ -13,6 +13,8 @@ import {DialogIniciarComponent} from 'src/app/Componentes/web-page/iniciar-sesio
 })
 export class IniciarSesionComponent implements OnInit {
   
+  hide = true;
+
   constructor(
     private authService: AuthService, 
     private router: Router, 
@@ -24,6 +26,8 @@ export class IniciarSesionComponent implements OnInit {
     password: "",
     email: "",
     name: "",
+    cartas: [],
+    platos:[]
   };
 
   ngOnInit(): void {

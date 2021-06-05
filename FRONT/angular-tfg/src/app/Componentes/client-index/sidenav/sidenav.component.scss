@@ -1,13 +1,15 @@
+
 mat-sidenav-container{
   height: 100%;
 }
 
-mat-sidenav, mat-sidenav-container{
+mat-sidenav-content{
   padding: 2%;
 }
 
 .boton-menu{
-  margin-left: 5%;
+  position:sticky;
+  padding-left: 5%;
 }
 
 mat-sidenav{

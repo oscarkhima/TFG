@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class SidenavComponent implements OnInit {
   
   opened = false;
+  option: String ="";
   
   ngOnInit(): void {
   }
 
+  chooseOption(option: any){
+    console.log(option.selectedOptions.selected[0]?.value)
+    this.option = option.selectedOptions.selected[0]?.value
+  }
 
+  
 }

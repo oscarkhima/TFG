@@ -1,5 +1,7 @@
 package com.example.back.authentication;
 
+import com.example.back.card.CardModel;
+import com.example.back.dish.DishModel;
 import com.example.back.repositories.UserRepository;
 import com.example.back.user.UserController;
 import com.example.back.user.UserModel;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -34,6 +37,8 @@ public class AuthController {
         String password = authenticationRequest.getPassword();
         String email = authenticationRequest.getEmail();
         String name = authenticationRequest.getName();
+        ArrayList<CardModel> cartas = authenticationRequest.getCartas();
+        ArrayList<DishModel> platos = authenticationRequest.getPlatos();
         //COMPROBAMOS QUE NO ESTE VACIO O COINCIDA CON UN USER CREADO
         List<UserModel> lista = userRepository.findAll();
         for (UserModel user:lista){
@@ -52,6 +57,8 @@ public class AuthController {
             userModel.setPassword(password);
             userModel.setName(name);
             userModel.setEmail(email);
+            userModel.setCartas(cartas);
+            userModel.setPlatos(platos);
         try {
             userRepository.save(userModel);
         }catch (Exception e) {

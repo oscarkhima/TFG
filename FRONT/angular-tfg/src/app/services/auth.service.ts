@@ -15,7 +15,7 @@ export class AuthService {
     "Content-Type":"application/json"
   })
 
-  registerUser(username: string,name: string, email: string, password: string){
+  registerUser(username: string,name: string, email: string, password: string, cartas: any, platos: any){
     const url_api = "http://localhost:8585/user/singIn";
     return this.http.post<Boolean>(
       url_api,
@@ -23,7 +23,9 @@ export class AuthService {
       username, 
       password, 
       email,
-      name
+      name,
+      cartas,
+      platos
     },
     { headers: this.headers }
     )

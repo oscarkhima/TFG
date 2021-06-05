@@ -4,4 +4,6 @@ export interface UserInterface{
     password: string;
     email: string;
     name: string;
+    cartas: any;
+    platos: any;
 }
