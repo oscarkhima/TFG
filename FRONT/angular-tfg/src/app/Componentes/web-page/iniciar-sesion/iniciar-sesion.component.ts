@@ -43,7 +43,10 @@ export class IniciarSesionComponent implements OnInit {
       this.user.username,
       this.user.password
     ).subscribe( userResponse => {
-      if(userResponse){
+      this.authService.setUser(userResponse.userName);
+      if(userResponse.succes){
+        let token = userResponse.email;
+        this.authService.setToken(userResponse.email);
         this.router.navigate(['/profile'])
       }else{
         this.openDialog();

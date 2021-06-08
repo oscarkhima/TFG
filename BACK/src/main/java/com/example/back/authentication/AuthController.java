@@ -31,8 +31,7 @@ public class AuthController {
 
     @PostMapping("/user/singIn")
     private ResponseEntity<?> singInUser(@RequestBody AuthenticationRequest authenticationRequest){
-        Boolean registro = true;
-        Long id = authenticationRequest.getId();
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse();
         String username = authenticationRequest.getUsername();
         String password = authenticationRequest.getPassword();
         String email = authenticationRequest.getEmail();
@@ -43,16 +42,16 @@ public class AuthController {
         List<UserModel> lista = userRepository.findAll();
         for (UserModel user:lista){
             if (user.getUsername().equals(username)){
-                registro = false;
-                return ResponseEntity.ok(registro);
+                authenticationResponse.setSucces(false);
+                return ResponseEntity.ok(authenticationResponse);
             }
             if (user.getEmail().equals(email)){
-                registro = false;
-                return ResponseEntity.ok(registro);
+                authenticationResponse.setSucces(false);
+                return ResponseEntity.ok(authenticationResponse);
             }
         }
             UserModel userModel = new UserModel();
-            userModel.setId(id);
+            userModel.setId();
             userModel.setUsername(username);
             userModel.setPassword(password);
             userModel.setName(name);
@@ -60,27 +59,32 @@ public class AuthController {
             userModel.setCartas(cartas);
             userModel.setPlatos(platos);
         try {
-            userRepository.save(userModel);
+            userRepository.insert(userModel);
         }catch (Exception e) {
-            registro = false;
-            return ResponseEntity.ok(registro);
+            authenticationResponse.setSucces(false);
+            return ResponseEntity.ok(authenticationResponse);
         }
-        return ResponseEntity.ok(registro);
+        authenticationResponse.setSucces(true);
+        return ResponseEntity.ok(authenticationResponse);
 
     }
 
     @PostMapping("/user/logIn")
     private ResponseEntity<?> logInUser(@RequestBody AuthenticationRequest authenticationRequest){
-        Boolean login = true;
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse();
         String email = authenticationRequest.getEmail();
         String password = authenticationRequest.getPassword();
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
         }catch (Exception e){
-            login = false;
-            return ResponseEntity.ok(login);
+            authenticationResponse.setSucces(false);
+            return ResponseEntity.ok(authenticationResponse);
         }
-        return ResponseEntity.ok(login);
+        UserModel user = userRepository.findByUsername(email);
+        authenticationResponse.setEmail(user.getEmail());
+        authenticationResponse.setUserName(user.getUsername());
+        authenticationResponse.setSucces(true);
+        return ResponseEntity.ok(authenticationResponse);
     }
 
 }

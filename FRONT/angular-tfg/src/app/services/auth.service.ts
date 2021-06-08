@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {map} from "rxjs/Operators";
 import { UserInterface } from '../models/user-interface';
+import { authResponse } from '../models/response/auth-response';
 
 
 @Injectable({
@@ -15,9 +16,9 @@ export class AuthService {
     "Content-Type":"application/json"
   })
 
-  registerUser(username: string,name: string, email: string, password: string, cartas: any, platos: any){
+  registerUser(username: string,password: string,email: string, name: string, cartas: any, platos: any): Observable<any>{
     const url_api = "http://localhost:8585/user/singIn";
-    return this.http.post<Boolean>(
+    return this.http.post<UserInterface>( 
       url_api,
       {
       username, 

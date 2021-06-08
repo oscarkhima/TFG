@@ -1,10 +1,12 @@
 package com.example.back.user;
 
+import com.example.back.dish.DishModel;
 import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,9 +22,28 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    @GetMapping("/dish/{userName}")
+    public ArrayList<DishModel> getAllDishes(@PathVariable("userName") String userName){
+        ArrayList<DishModel> platos = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        return platos = userModel.getPlatos();
+    }
+
+
+    @PostMapping(path ="/dish/create/{userName}")
+    public boolean createDish (@RequestBody DishModel dishModel,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<DishModel> platos = user.getPlatos();
+        platos.add(dishModel);
+        user.setPlatos(platos);
+        userRepository.save(user);
+        return true;
+    }
+
     @PostMapping("/user/create")
     public String createUser(@RequestBody UserModel userModel){
 
+        userModel.setId();
         UserModel usuarioInsertado = userRepository.insert(userModel);
 
         return "User created " + usuarioInsertado.getName();

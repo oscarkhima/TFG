@@ -15,14 +15,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Document(collection = "users")
 public class UserModel {
 
-    @Id
-    @Transient
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    private static AtomicInteger ID_GENERATOR = new AtomicInteger(0);
 
     private String username;
 
@@ -38,10 +37,11 @@ public class UserModel {
 
 
     public UserModel() {
+        this.id = ID_GENERATOR.getAndIncrement();
     }
 
     public UserModel(Long id, String username, String password, String name, String email, ArrayList<CardModel> cartas, ArrayList<DishModel> platos) {
-        this.id = id;
+        this.id = ID_GENERATOR.getAndIncrement();
         this.username = username;
         this.password = password;
         this.name = name;
@@ -64,12 +64,12 @@ public class UserModel {
         this.platos = platos;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId() {
+        this.id = ID_GENERATOR.getAndIncrement();
     }
 
     public String getName() {

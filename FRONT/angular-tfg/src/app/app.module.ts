@@ -8,7 +8,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import {MatDividerModule} from '@angular/material/divider';
@@ -42,7 +42,7 @@ import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/secc
 
 import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
 import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
-<<<<<<< Updated upstream
+import {MatStepperModule} from '@angular/material/stepper';
 import { NavComponent } from './Componentes/client-index/nav/nav.component';
 import { BodyComponent } from './Componentes/client-index/body/body.component';
 import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.component';
@@ -50,10 +50,6 @@ import { MisCartasComponent } from './Componentes/client-index/body/mis-cartas/m
 import { MisPlatosComponent } from './Componentes/client-index/body/mis-platos/mis-platos.component';
 import { PedidosComponent } from './Componentes/client-index/body/pedidos/pedidos.component';
 import { ConfiguracionComponent } from './Componentes/client-index/body/configuracion/configuracion.component';
-
-=======
-import {MatStepperModule} from '@angular/material/stepper';
->>>>>>> Stashed changes
 
 
 
@@ -85,9 +81,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MisCartasComponent,
     MisPlatosComponent,
     PedidosComponent,
-    ConfiguracionComponent,
+    ConfiguracionComponent
   ],
   imports: [
+    ReactiveFormsModule,
     MatToolbarModule,
     MatListModule,
     MatDividerModule,

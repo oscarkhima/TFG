@@ -3,12 +3,11 @@ package com.example.back.authentication;
 import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AuthenticationRequest {
 
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private String email;
@@ -36,11 +35,11 @@ public class AuthenticationRequest {
         this.platos = platos;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
