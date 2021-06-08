@@ -1,8 +1,11 @@
 package com.example.back.user;
 
+import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
 import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,24 +23,6 @@ public class UserController {
     @GetMapping("/user/all")
     public List<UserModel> getAllUsers(){
         return userRepository.findAll();
-    }
-
-    @GetMapping("/dish/{userName}")
-    public ArrayList<DishModel> getAllDishes(@PathVariable("userName") String userName){
-        ArrayList<DishModel> platos = new ArrayList<>();
-        UserModel userModel = userRepository.findByUsername(userName);
-        return platos = userModel.getPlatos();
-    }
-
-
-    @PostMapping(path ="/dish/create/{userName}")
-    public boolean createDish (@RequestBody DishModel dishModel,@PathVariable("userName") String userName){
-        UserModel user = userRepository.findByUsername(userName);
-        ArrayList<DishModel> platos = user.getPlatos();
-        platos.add(dishModel);
-        user.setPlatos(platos);
-        userRepository.save(user);
-        return true;
     }
 
     @PostMapping("/user/create")
@@ -89,7 +74,55 @@ public class UserController {
         return "User updated";
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////DISHES//////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @GetMapping("/dish/{userName}")
+    public ArrayList<DishModel> getAllDishes(@PathVariable("userName") String userName){
+        ArrayList<DishModel> platos = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        return platos = userModel.getPlatos();
+    }
 
 
+    @PostMapping(path ="/dish/create/{userName}")
+    public boolean createDish (@RequestBody DishModel dishModel,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<DishModel> platos = user.getPlatos();
+        platos.add(dishModel);
+        user.setPlatos(platos);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////CARDS///////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @GetMapping("/card/{userName}")
+    public ArrayList<CardModel> getAllCards(@PathVariable("userName") String userName){
+        ArrayList<CardModel> cartas = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        return cartas = userModel.getCartas();
+    }
+
+    @PostMapping(path ="/card/create/{userName}")
+    public boolean createCard (@RequestBody CardModel cardModel,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<CardModel> cartas = user.getCartas();
+        cartas.add(cardModel);
+        user.setCartas(cartas);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
 
 }
