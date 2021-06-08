@@ -13,7 +13,7 @@
             
             <mat-form-field>
               <mat-label>Introduce la contraseña</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'">
+              <input [(ngModel)]="user.password" name="password" matInput [type]="hide ? 'password' : 'text'" required>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
