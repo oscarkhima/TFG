@@ -1,0 +1,16 @@
+.conjuntoImagenes{
+    display: flex;
+    flex-direction: row;
+
+    .divImgProducto{
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        width: 100%;
+        img{
+           
+            width: 100%;
+            
+        }
+    }
+}

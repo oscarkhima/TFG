@@ -1,0 +1,21 @@
+.imgQrproducto{
+    width: 100%;
+}
+
+.divImgProducto{
+    width: 100%;
+}
+
+.introduccionProducto{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(237,219,205);
+}
+
+.textoProducto{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    margin-left: 10%;
+}

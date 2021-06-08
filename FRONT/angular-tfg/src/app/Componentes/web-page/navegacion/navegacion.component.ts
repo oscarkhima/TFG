@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener  } from '@angular/core';
 import { trigger, style, transition, animate, state} from '@angular/animations'
-
-
+import { Router } from '@angular/router';
+import * as AOS from 'aos';
 @Component({
   selector: 'app-navegacion',
   templateUrl: './navegacion.component.html',
@@ -26,7 +26,7 @@ import { trigger, style, transition, animate, state} from '@angular/animations'
 })
 export class NavegacionComponent implements OnInit {
 
-  
+
   imgSrc = ''
   imgOpen = './assets/ICONS/menu.png'
   imgClose = './assets/ICONS/close.png'
@@ -36,12 +36,12 @@ export class NavegacionComponent implements OnInit {
   public screenWidth: any;
   public screenHeight: any;
 
-  constructor() {
+  constructor(private router: Router) {
 
       }
 
   ngOnInit(): void {
-    
+    AOS.init()
     this.screenWidth = window.innerWidth
     this.screenHeight = window.innerHeight
     this.imgSrc = this.imgOpen

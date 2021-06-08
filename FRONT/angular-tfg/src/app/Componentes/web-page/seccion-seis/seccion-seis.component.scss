@@ -2,11 +2,14 @@
 
 .basic {
     padding: 6px;
-    padding-inline: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 4px;
     background-color: rgb(255, 255, 255);
     color: rgb(12, 12, 12);
-    margin-inline: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
 
 } 
 
@@ -27,6 +30,7 @@
 section{
     background-color: black;
     color: white ;
+    
 }
 
 @media only screen and (max-width: 700px) {
@@ -38,14 +42,17 @@ section{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-inline: 10% ;
+        padding-left: 10% ;
+        padding-right: 10% ;
         //padding-top: 15%;
-        padding-block: 15% ;
+        padding-bottom: 20% ;
+        padding-top: 15% ;
         
 
         
 .tituloConoceElProdcuto{
-    padding-block: 10% ;
+    padding-bottom: 10% ;
+    padding-top: 10% ;
 
     h4 {
         padding-top: 10px;

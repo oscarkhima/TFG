@@ -52,6 +52,9 @@ import { ConfiguracionComponent } from './Componentes/client-index/body/configur
 
 import {MatStepperModule} from '@angular/material/stepper';
 import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccion-seis.component';
+import { ProductoComponent } from './Componentes/web-page/producto/producto.component';
+import { ContactoComponent } from './Componentes/web-page/contacto/contacto.component';
+import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/seccion-siete.component';
 
 
 
@@ -85,6 +88,9 @@ import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccio
     MisPlatosComponent,
     PedidosComponent,
     ConfiguracionComponent,
+    ProductoComponent,
+    ContactoComponent,
+    SeccionSieteComponent,
   ],
   imports: [
     MatToolbarModule,
