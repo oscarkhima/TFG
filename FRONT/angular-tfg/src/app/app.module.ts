@@ -50,6 +50,7 @@ import { MisCartasComponent } from './Componentes/client-index/body/mis-cartas/m
 import { MisPlatosComponent } from './Componentes/client-index/body/mis-platos/mis-platos.component';
 import { PedidosComponent } from './Componentes/client-index/body/pedidos/pedidos.component';
 import { ConfiguracionComponent } from './Componentes/client-index/body/configuracion/configuracion.component';
+import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccion-seis.component';
 
 
 
@@ -78,6 +79,7 @@ import { ConfiguracionComponent } from './Componentes/client-index/body/configur
     NavComponent,
     BodyComponent,
     SidenavComponent,
+    SeccionSeisComponent,
     MisCartasComponent,
     MisPlatosComponent,
     PedidosComponent,

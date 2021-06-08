@@ -12,8 +12,11 @@
         
         section{
             background-color: rgba(0, 0, 0, 0);
+            display: flex;
+            flex-direction: column;
         }
         
+
         .textoSeccionTres{
         
             width: 100%;
@@ -23,7 +26,11 @@
             justify-content: center;
             width: 300px;
             padding: 10%;
-           
+            
+            h1{
+                text-align: left;
+                
+            }
         
             p {
                 justify-content: center;
@@ -34,22 +41,25 @@
         
         .configuracionSeccionTres{
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             justify-content: center;
+            align-items: center;
         }
         
         .imgSeccionTres{
             width: 100%;
-            display: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             img {
                 
-                width: 100%;
+                width: 80%;
             }
         }
 
 }
 
-
+@media only screen and (min-width: 700px) {
 .imagen-seccion-tres{
 background-color: rgba(0, 0, 0, 0);
     img {
@@ -61,6 +71,7 @@ background-color: rgba(0, 0, 0, 0);
 
 section{
     background-color: rgba(0, 0, 0, 0);
+   
 }
 
 .textoSeccionTres{
@@ -88,9 +99,11 @@ section{
 }
 
 .imgSeccionTres{
-    width: 50%;
-   
+    
+    
     img {
         width: 100%;
     }
+}
+
 }
