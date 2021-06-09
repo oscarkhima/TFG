@@ -44,9 +44,10 @@ export class RegistroComponent implements OnInit {
       this.user.cartas,
       this.user.platos
     ).subscribe( userResponse => {
+      this.authService.setUser(userResponse.userName);
       if(userResponse.succes){
         this.authService.setToken(userResponse.email)
-        this.authService.setUser(userResponse.username)
+        this.authService.setUser(userResponse.userName)
         this.router.navigate(['/profile'])
       }else{
         this.openDialog();
