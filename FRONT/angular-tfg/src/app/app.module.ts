@@ -30,8 +30,11 @@ import { FooterComponent } from './Componentes/web-page/footer/footer.component'
 import { RegistroComponent } from './Componentes/web-page/registro/registro.component';
 import { IniciarSesionComponent } from './Componentes/web-page/iniciar-sesion/iniciar-sesion.component';
 import {MatCardModule} from '@angular/material/card';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 //SERVICES
@@ -54,6 +57,7 @@ import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccio
 import { ProductoComponent } from './Componentes/web-page/producto/producto.component';
 import { ContactoComponent } from './Componentes/web-page/contacto/contacto.component';
 import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/seccion-siete.component';
+
 
 
 
@@ -92,6 +96,9 @@ import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/secc
     ConfiguracionComponent
   ],
   imports: [
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSelectModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatListModule,

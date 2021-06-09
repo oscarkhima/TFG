@@ -1,3 +1,44 @@
 <div>
-    <h1>Crea y configura aqui las cartas de tu establecimiento</h1>
+    <h1>Crea y configura aqui las cartas y menús</h1>
+    <mat-card>
+        <h3>Crea tu carta aqui</h3>
+        <form class="crearCarta" #formCard="ngForm">
+            <p>
+                <mat-form-field>
+                    <mat-label class="pop-semibold">Nombre</mat-label>
+                    <input type="text" name="nombre" [(ngModel)]="dish.nombre" matInput placeholder="Escribe el nombre"
+                        required>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field *ngFor="let control of formArray.controls; index as i">
+                    <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                    <mat-select [(ngModel)]="dish.ingredientes[i]" [formGroup]="getFormGroup(i)"
+                        [ngModelOptions]="{standalone: true}" required>
+                        <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+            <p class="botones">
+                <button (click)="onAdd()" type="add" mat-raised-button color="primary">Add</button>
+                <button (click)="onDelete()" type="delete" mat-raised-button color="warn">Delete</button>
+            </p>
+            <p>
+                <mat-radio-group>
+                    <mat-radio-button (click)="disabled = false" value="2"  class="pop-semibold"> MENÚ </mat-radio-button>
+                    <mat-radio-button (click)="disabled = true" value="15" class="pop-semibold"> CARTA </mat-radio-button>
+                </mat-radio-group>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
+                    <input [disabled]="disabled" matInput type="number" name="precio" [(ngModel)]="dish.precio" class="example-right-align"
+                        placeholder="0" required>
+                    <span matSuffix>€&nbsp;</span>
+                </mat-form-field>
+            </p>
+            <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formCard.valid"
+                (click)="addDish()">Crear Carta</button>
+        </form>
+    </mat-card>
 </div>
