@@ -30,7 +30,7 @@ export class AuthService {
     },
     { headers: this.headers }
     )
-    .pipe(map(data => data));
+    
   }
 
   loginUser(email: string, password: string): Observable<any> {
@@ -41,7 +41,7 @@ export class AuthService {
     },
     { headers: this.headers }
     )
-    .pipe(map(data => data));
+    
   }
 
   setUser(user: UserInterface){

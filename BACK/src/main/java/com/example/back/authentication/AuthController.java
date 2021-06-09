@@ -65,6 +65,8 @@ public class AuthController {
             return ResponseEntity.ok(authenticationResponse);
         }
         authenticationResponse.setSucces(true);
+        authenticationResponse.setEmail(email);
+        authenticationResponse.setUserName(username);
         return ResponseEntity.ok(authenticationResponse);
 
     }
