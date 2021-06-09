@@ -10,16 +10,27 @@ public class CardModel {
 
     private ArrayList<DishModel> platos;
 
+    private boolean menu;
+
     private Double precio;
 
     public CardModel(){
 
     }
 
-    public CardModel(String nombre, ArrayList<DishModel> platos, Double precio) {
+    public CardModel(String nombre, ArrayList<DishModel> platos, boolean menu, Double precio) {
         this.nombre = nombre;
         this.platos = platos;
+        this.menu = menu;
         this.precio = precio;
+    }
+
+    public boolean isMenu() {
+        return menu;
+    }
+
+    public void setMenu(boolean menu) {
+        this.menu = menu;
     }
 
     public String getNombre() {
