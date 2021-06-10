@@ -1,8 +1,11 @@
 import { Component, OnInit, Compiler, APP_ID } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { DishInterface } from 'src/app/models/dish-interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
+import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
+import { DialogMisPlatosComponent } from './dialog-mis-platos/dialog-mis-platos.component';
 
 @Component({
   selector: 'app-mis-platos',
@@ -11,7 +14,7 @@ import { DataApiService } from 'src/app/services/data-api.service';
 })
 export class MisPlatosComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private apiService: DataApiService, private authService: AuthService) { }
+  constructor(private dialog: MatDialog,private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService) { }
 
   public formArray: FormArray = new FormArray([new FormControl('')]);
 
@@ -37,6 +40,10 @@ export class MisPlatosComponent implements OnInit {
     this.formArray.removeAt(this.formArray.value)
   }
 
+  openDialog(){
+    this.dialog.open(DialogMisPlatosComponent);
+  }
+
   addDish(): void{
     this.apiService.createDish(
       this.username,
@@ -48,7 +55,7 @@ export class MisPlatosComponent implements OnInit {
       if(dishResponse){
         console.log("INSERTADO")
       }else{
-        console.log("MAL INSERTADO")
+        this.openDialog()
       }
     })
   }

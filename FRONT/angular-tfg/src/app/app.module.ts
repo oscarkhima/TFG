@@ -40,9 +40,10 @@ import {MatRadioModule} from '@angular/material/radio';
 //SERVICES
 import{DataApiService} from "./services/data-api.service"
 import{AuthService} from "./services/auth.service";
+import{DishAndCardsService} from "./services/dish-and-cards.service";
+
 import { SeccionCuatroComponent } from './Componentes/web-page/seccion-cuatro/seccion-cuatro.component';
 import { SeccionCincoComponent } from './Componentes/web-page/seccion-cinco/seccion-cinco.component'
-
 import { DialogRegistroComponent } from './Componentes/web-page/registro/dialog-registro/dialog-registro.component';
 import { DialogIniciarComponent } from './Componentes/web-page/iniciar-sesion/dialog-iniciar/dialog-iniciar.component';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -57,6 +58,7 @@ import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccio
 import { ProductoComponent } from './Componentes/web-page/producto/producto.component';
 import { ContactoComponent } from './Componentes/web-page/contacto/contacto.component';
 import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/seccion-siete.component';
+import { DialogMisPlatosComponent } from './Componentes/client-index/body/mis-platos/dialog-mis-platos/dialog-mis-platos.component';
 
 
 
@@ -93,7 +95,8 @@ import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/secc
     ProductoComponent,
     ContactoComponent,
     SeccionSieteComponent,
-    ConfiguracionComponent
+    ConfiguracionComponent,
+    DialogMisPlatosComponent
   ],
   imports: [
     MatRadioModule,
@@ -122,6 +125,7 @@ import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/secc
     MatStepperModule
   ],
   providers: [
+    DishAndCardsService,
     MatNativeDateModule,
     DataApiService,
   ],

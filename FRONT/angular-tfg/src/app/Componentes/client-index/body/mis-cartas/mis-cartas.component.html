@@ -6,14 +6,14 @@
             <p>
                 <mat-form-field>
                     <mat-label class="pop-semibold">Nombre</mat-label>
-                    <input type="text" name="nombre" [(ngModel)]="dish.nombre" matInput placeholder="Escribe el nombre"
+                    <input type="text" name="nombre" [(ngModel)]="card.nombre" matInput placeholder="Escribe el nombre"
                         required>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field *ngFor="let control of formArray.controls; index as i">
                     <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
-                    <mat-select [(ngModel)]="dish.ingredientes[i]" [formGroup]="getFormGroup(i)"
+                    <mat-select [(ngModel)]="card.platos[i]" [formGroup]="getFormGroup(i)"
                         [ngModelOptions]="{standalone: true}" required>
                         <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
                     </mat-select>
@@ -25,14 +25,14 @@
             </p>
             <p>
                 <mat-radio-group>
-                    <mat-radio-button (click)="disabled = false" value="2"  class="pop-semibold"> MENÚ </mat-radio-button>
-                    <mat-radio-button (click)="disabled = true" value="15" class="pop-semibold"> CARTA </mat-radio-button>
+                    <mat-radio-button (click)="this.disabled = false; onTurn()" [value]="false"  class="pop-semibold"> MENÚ </mat-radio-button>
+                    <mat-radio-button (click)="this.disabled = true; onTurn()"  [value]="true" class="pop-semibold"> CARTA </mat-radio-button>
                 </mat-radio-group>
             </p>
             <p>
                 <mat-form-field>
                     <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
-                    <input [disabled]="disabled" matInput type="number" name="precio" [(ngModel)]="dish.precio" class="example-right-align"
+                    <input [disabled]="this.disabled" matInput type="number" name="precio" [(ngModel)]="card.precio" class="example-right-align"
                         placeholder="0" required>
                     <span matSuffix>€&nbsp;</span>
                 </mat-form-field>

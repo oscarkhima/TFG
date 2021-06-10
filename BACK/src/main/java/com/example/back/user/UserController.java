@@ -1,6 +1,7 @@
 package com.example.back.user;
 
 import com.example.back.card.CardModel;
+import com.example.back.card.CardModelRequest;
 import com.example.back.dish.DishModel;
 import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,18 @@ public class UserController {
     //////////////////////////////////////////////DISHES//////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @GetMapping("/dishNames/{userName}")
+    public ArrayList<String> getAllDishesNames(@PathVariable("userName") String userName){
+        ArrayList<DishModel> platos;
+        ArrayList<String> listaNombres = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        platos = userModel.getPlatos();
+        for (DishModel plato :platos) {
+            listaNombres.add(plato.getNombre());
+        }
+        return listaNombres;
+    }
+
     @GetMapping("/dish/{userName}")
     public ArrayList<DishModel> getAllDishes(@PathVariable("userName") String userName){
         ArrayList<DishModel> platos = new ArrayList<>();
@@ -90,6 +103,11 @@ public class UserController {
     public boolean createDish (@RequestBody DishModel dishModel,@PathVariable("userName") String userName){
         UserModel user = userRepository.findByUsername(userName);
         ArrayList<DishModel> platos = user.getPlatos();
+        for (DishModel plato: platos){
+            if (plato.getNombre().equals(dishModel.getNombre())){
+                return false;
+            }
+        }
         platos.add(dishModel);
         user.setPlatos(platos);
         try {
@@ -112,10 +130,23 @@ public class UserController {
     }
 
     @PostMapping(path ="/card/create/{userName}")
-    public boolean createCard (@RequestBody CardModel cardModel,@PathVariable("userName") String userName){
+    public boolean createCard (@RequestBody CardModelRequest cardModelRequest, @PathVariable("userName") String userName){
         UserModel user = userRepository.findByUsername(userName);
+        CardModel cart = new CardModel();
         ArrayList<CardModel> cartas = user.getCartas();
-        cartas.add(cardModel);
+        ArrayList<DishModel> platos = new ArrayList<>();
+        cart.setMenu(cardModelRequest.isMenu());
+        cart.setNombre(cardModelRequest.getNombre());
+        cart.setPrecio(cardModelRequest.getPrecio());
+        for(String nombrePlatos: cardModelRequest.getPlatos()){
+            for (DishModel plato: user.getPlatos()){
+                if (plato.getNombre().equals(nombrePlatos)){
+                    platos.add(plato);
+                }
+            }
+        }
+        cart.setPlatos(platos);
+        cartas.add(cart);
         user.setCartas(cartas);
         try {
             userRepository.save(user);
