@@ -19,23 +19,5 @@ export class DataApiService {
     return this.http.get(url_api);
   }
 
-  getAllDishes(){
-    const url_api = 'http://localhost:8585/user/all';
-    return this.http.get(url_api);
-  }
 
-  createDish(username: string,nombre: string,descripcion: string,ingredientes: any, precio: number): Observable<any>{
-    const url_api = "http://localhost:8585/dish/create/"+username;
-    return this.http.post<DishInterface>( 
-      url_api,
-      {
-      nombre,
-      descripcion,
-      ingredientes,
-      precio
-    },
-    { headers: this.headers }
-    )
-    .pipe(map(data => data));
-  }
 }

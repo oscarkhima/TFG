@@ -11,11 +11,7 @@ export class WebPageComponent implements OnInit {
   constructor(private dataApi: DataApiService) { }
 
   ngOnInit(): void {
-    this.getListUsers();
-  }
 
-  getListUsers(){
-    this.dataApi.getAllUsers().subscribe(users => console.log(users));
   }
 
 }
