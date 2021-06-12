@@ -1,3 +1,40 @@
-<div>
-    <h1>NOMBRE CARTA</h1>
+<div class="container"  *ngIf="cardInterface != undefined">
+    <h1>{{cardInterface.nombre}}</h1>
+    <div>
+        <table mat-table [dataSource]="cardInterface.platos" class="tabla">
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let plato">{{plato.nombre}}</td>
+            </ng-container>
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                <td mat-cell *matCellDef="let plato">{{plato.descripcion}}</td>
+            </ng-container>
+            <ng-container matColumnDef="ingredientes">
+                <th mat-header-cell *matHeaderCellDef>Ingredientes</th>
+                <td mat-cell *matCellDef="let plato">{{plato.ingredientes}}</td>
+            </ng-container>
+            <ng-container matColumnDef="precio">
+                <th mat-header-cell *matHeaderCellDef>Precio</th>
+                <td mat-cell *matCellDef="let plato">{{plato.precio}}</td>
+            </ng-container>
+            <ng-container matColumnDef="añadir">
+                <th mat-header-cell *matHeaderCellDef>Añadir</th>
+                <td mat-cell *matCellDef="let plato">
+                    <div>
+                        <button mat-raised-button>Añadir</button>
+                        <p>contador</p>
+                        <button mat-raised-button>Eliminar</button>
+                    </div>
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <div>
+            <button mat-button>REALIZAR PEDIDO</button>
+        </div>
+    </div>
+
 </div>

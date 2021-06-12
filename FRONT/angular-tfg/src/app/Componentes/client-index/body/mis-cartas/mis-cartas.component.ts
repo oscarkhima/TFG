@@ -30,7 +30,7 @@ export class MisCartasComponent implements OnInit {
 
   public card: CardInterface = {
     nombre: "",
-    platos: [' ',' '],
+    platos: [],
     menu: false,
     precio: 0
   }

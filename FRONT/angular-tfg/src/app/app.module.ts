@@ -36,6 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 
 
 //SERVICES
@@ -109,6 +110,7 @@ import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-car
     WebCardNavComponent
   ],
   imports: [
+    MatTableModule,
     MatTabsModule,
     MatRadioModule,
     MatCheckboxModule,
