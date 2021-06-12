@@ -42,8 +42,8 @@ export class MisCartasComponent implements OnInit {
   }
 
   getDishNames(): string[]{
-    this.apiService.getAllCardNames(this.username).subscribe(cardNames => {
-      this.platos =  cardNames as string[]
+    this.apiService.getAllDishNames(this.username).subscribe(dishNames => {
+      this.platos =  dishNames as string[]
     })
     return  this.platos
   }
