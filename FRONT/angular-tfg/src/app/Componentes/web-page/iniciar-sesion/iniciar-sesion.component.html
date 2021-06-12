@@ -1,23 +1,38 @@
-<div data-aos="fade-right" fxLayoutAlign="center center" fxFlexFill>
-  <mat-card fxFlex="30">
-    <h1 class="pop-semibold">¡Bienvenido!</h1>
-    <h4 class="pop-semibold">Rellena los datos y comienza a optimizar tu negocio</h4>
-    <form fxLayoutAlign="stretch" fxLayout="column" #formLogin="ngForm" (ngSubmit)="onLogin()">
-      <mat-form-field>
-        <input type="text" matInput placeholder="Nombre de usuario" [(ngModel)]="user.username" name="email" required>
-      </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Introduce la contraseña</mat-label>
-        <input [(ngModel)]="user.password" name="password" matInput [type]="hide ? 'password' : 'text'" required>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formLogin.valid">Iniciar
-        Sesion</button>
-    </form>
-  </mat-card>
-</div>
+  <div data-aos="fade-right" fxLayoutAlign="center center" fxFlexFill class="registro">
+    <mat-card class="logCard">
+      <div > 
+        <div  class="matIn">
+          <h1 class="pop-bold">Bienvenido</h1>
+          <h4 class="pop-semibold">Rellena los datos y comienza a optimizar tu negocio</h4>
+          
+        </div>
+        <form fxLayoutAlign="stretch" fxLayout="column" #formLogin="ngForm" (ngSubmit)="onLogin()">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Nombre de usuario" [(ngModel)]="user.username" name="email" required>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label> contraseña</mat-label>
+            <input [(ngModel)]="user.password" name="password" matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+    
+          <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formLogin.valid">Iniciar
+            Sesion</button>
+        </form>
+      </div>
+     
+  
+      <div class="sinCuenta">
+        <h3 class="pop-semibold">¿No tienes una cuenta? <span  routerLink="/register"  style="color: blueviolet;">Registrate</span></h3>
+      </div>
+    </mat-card>
+  
+   
+  </div>
+

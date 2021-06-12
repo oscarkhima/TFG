@@ -83,6 +83,7 @@ import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-car
     SeccionUnoComponent,
     SeccionDosComponent,
     SeccionTresComponent,
+   
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,

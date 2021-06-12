@@ -12,6 +12,29 @@ mat-sidenav-content{
   padding-left: 5%;
 }
 
+
+mat-sidenav-container{
+  display: flex;
+
+}
 mat-sidenav{
-  width: 200px;
+  padding: 15px;
+  width: 250px;
+  justify-content: center;
+
+  .mat-divider {
+
+    border-top-style: none;
+  }
+
+  mat-list-option{
+    border-radius: 5px;
+    margin-top: 4px;
+  }
+
+
+  .mat-drawer-side {
+    border-right: none; 
+  }
+
 }

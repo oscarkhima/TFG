@@ -1,39 +1,61 @@
-<div>
-    <h1>Crea y configura aqui los platos de tu establecimiento</h1>
-    <mat-card>
-        <h3>Crea tu plato aqui</h3>
-        <form  class="crearPlato" #formDish="ngForm">
-            <p>
-                <mat-form-field>
-                    <mat-label class="pop-semibold">Nombre</mat-label>
-                    <input type="text" name="nombre" [(ngModel)]="dish.nombre" matInput placeholder="Escribe el nombre" required>
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label class="pop-semibold">Descripcion</mat-label>
-                    <textarea type="text" name="descripcion" [(ngModel)]="dish.descripcion" matInput placeholder="Escribe la descripcion" required></textarea>
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field *ngFor="let control of formArray.controls; index as i">
-                    <mat-label class="pop-semibold">Ingrediente</mat-label>
-                    <input matInput type="text"  [(ngModel)]="dish.ingredientes[i]" [formGroup]="getFormGroup(i)" [ngModelOptions]="{standalone: true}" placeholder="Ingrediente" required/>
-                </mat-form-field>
-            </p>
-            <p class="botones">
-                <button (click)="onAdd()" type="add" mat-raised-button color="primary">Add</button>
-                <button (click)="onDelete()" type="delete" mat-raised-button color="warn">Delete</button>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
-                    <input matInput type="number"  name="precio" [(ngModel)]="dish.precio" class="example-right-align" placeholder="0" required>
-                    <span matSuffix>€&nbsp;</span>
-                </mat-form-field>
-            </p>
-            <button mat-raised-button color="primary" type="submit" class="pop-semibold"
+<div class="misPlatosPrincipalDiv">
+    <!-- <h3>Crea y configura aqui los platos de tu establecimiento</h3> -->
+
+    
+
+
+    <div class="MisPlatos">
+        <mat-card class="">
+            <h3>Platos disponibles</h3>
+
+        </mat-card>
+    </div>
+
+
+    <div class="CreacionPlato">
+        <mat-card class="">
+            <h3>Crea tu plato aqui</h3>
+            <form  class="crearPlato" #formDish="ngForm">
+
+                <div> 
+                    <p>
+                        <mat-form-field>
+                            <mat-label class="pop-semibold">Nombre</mat-label>
+                            <input type="text" name="nombre" [(ngModel)]="dish.nombre" matInput placeholder="Escribe el nombre" required>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label class="pop-semibold">Descripcion</mat-label>
+                            <textarea type="text" name="descripcion" [(ngModel)]="dish.descripcion" matInput placeholder="Escribe la descripcion" required></textarea>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field *ngFor="let control of formArray.controls; index as i">
+                            <mat-label class="pop-semibold">Ingrediente</mat-label>
+                            <input matInput type="text"  [(ngModel)]="dish.ingredientes[i]" [formGroup]="getFormGroup(i)" [ngModelOptions]="{standalone: true}" placeholder="Ingrediente" required/>
+                        </mat-form-field>
+                    </p>
+                    <p class="botones">
+                        <button (click)="onAdd()" type="add" mat-raised-button color="primary">Añadir ingrediente</button>
+                        <button (click)="onDelete()" type="delete" mat-raised-button color="warn">Eliminar Ingrediente</button>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
+                            <input matInput type="number"  name="precio" [(ngModel)]="dish.precio" class="example-right-align" placeholder="0" required>
+                            <span matSuffix>€&nbsp;</span>
+                        </mat-form-field>
+                    </p>
+                </div>
+               <div>
+                <button  mat-raised-button color="primary" type="submit" class="pop-semibold botonCrearPlato"
                 [disabled]="!formDish.valid" (click)="addDish()">Crear Plato</button>
-        </form>
-    </mat-card>
+               </div>
+               
+            </form>
+        </mat-card>
+        
+    </div>
+    
 </div>

@@ -1,21 +1,71 @@
-h1{
-    text-align: center;
-}
+.misPlatosPrincipalDiv{
 
-.botones button{
-    margin: 1%;
-}
+    ::ng-deep .mat-form-field-underline {
+     display: none;
+        
+    }
 
-p{
-    margin-top: 1%;
-}
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 
-.crearPlato mat-form-field{
-    width: 80%;
-    height: 2%;
-    margin-left: 2%;
-}
-mat-card{
-    margin-bottom: 4%;
-    width: 40%;
+
+    .mat-card:not([class*=mat-elevation-z]) {
+        box-shadow:none;
+        background-color: rgb(243, 243, 243);
+    }
+
+    .MisPlatos{
+        width: 600px;
+        margin: 2%;
+       
+        border-radius: 5px;
+
+        mat-car{
+            padding: 10%;
+        }
+    }
+
+    .CreacionPlato{
+        margin: 2%;
+        width: 500px;
+
+
+        ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+            padding-bottom: 0.25em;
+        }
+
+        mat-form-field{
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding-right: 40%;
+            padding-left: 5%;
+            padding-bottom: 5px;
+        }
+
+        .botonCrearPlato{
+
+            margin: 10px;
+        }
+
+        .botones{
+            margin-top: 25px;
+            margin-bottom: 25px;
+            
+
+            button{
+                margin-right: 4%;
+                
+            }
+        }
+
+        mat-card{
+            padding: 10%;
+        }
+
+        form{
+            margin-top: 25px;
+        }
+    }
 }
