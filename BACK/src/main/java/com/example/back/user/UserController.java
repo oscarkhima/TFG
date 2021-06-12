@@ -98,8 +98,8 @@ public class UserController {
         return platos = userModel.getPlatos();
     }
 
-    @GetMapping("/dish/{userName}/{cardName}")
-    public CardModel getAllCardDishes(@PathVariable("userName") String userName,@PathVariable("cardName") String cardName){
+    @GetMapping("/card/{userName}/{cardName}")
+    public CardModel getCard(@PathVariable("userName") String userName,@PathVariable("cardName") String cardName){
         ArrayList<CardModel> cartas = new ArrayList<>();
         UserModel userModel = userRepository.findByUsername(userName);
         cartas = userModel.getCartas();
