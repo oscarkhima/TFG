@@ -1,7 +1,11 @@
-<div data-aos="fade-right" fxLayoutAlign="center center" fxFlexFill>
-    <mat-card  fxFlex="30"> 
+<div data-aos="fade-right" fxLayoutAlign="center center" fxFlexFill class="registro">
+    <mat-card > 
+
+      <div  class="matIn">
         <h1 class="pop-semibold">¡Solo un paso más!</h1>
         <h4 class="pop-semibold">Rellena los datos y comienza a optimizar tu negocio</h4>
+
+        </div>
         <form fxLayoutAlign="stretch" fxLayout="column" #formRegister="ngForm" (ngSubmit)="onRegister()">
             <mat-form-field >
               <input type="text"  matInput placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" required>
@@ -25,5 +29,9 @@
 
             <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formRegister.valid">Registrarse</button>
           </form>
+
+          <div class="sinCuenta">
+            <h3 class="pop-semibold">¿Ya tienes una cuenta? <span  routerLink="/login"  style="color: blueviolet;">Inicia Sesion</span></h3>
+          </div>
     </mat-card>
 </div>

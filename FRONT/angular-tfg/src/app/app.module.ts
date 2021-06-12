@@ -78,6 +78,7 @@ import { DialogMisPlatosComponent } from './Componentes/client-index/body/mis-pl
     SeccionUnoComponent,
     SeccionDosComponent,
     SeccionTresComponent,
+   
     FooterComponent,
     RegistroComponent,
     IniciarSesionComponent,

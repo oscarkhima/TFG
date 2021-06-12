@@ -1,0 +1,170 @@
+
+@media only screen and (max-width: 710px) {
+
+    
+    ::ng-deep .mat-form-field-underline {
+        display: none;
+    }
+
+    
+
+    .registro{
+
+
+        background: rgb(160,150,227);
+background: linear-gradient(54deg, rgba(160,150,227,1) 0%, rgba(153,110,172,1) 100%);
+    
+    }
+    
+    form{
+        margin-bottom: 10%;
+    }
+
+    .mat-card {
+        border-radius: 10px;
+        padding-top: 10%;
+        padding-right: 9%;
+        padding-left: 9%;
+        padding-bottom: 5%;
+        display: flex;
+        flex-direction: column;
+      
+   
+       margin: 5%;
+    
+        .sinCuenta{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .matIn{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 6%;
+          
+        }
+
+        h1{
+            font-size: x-large;
+            margin-bottom: 10px;
+        }
+
+        h4{
+            font-size: small;
+            
+        }
+    
+        h3{
+            text-align: center;
+            font-size: small;
+            padding: 8%;
+        }
+    }
+
+}
+    @media only screen and (min-width: 710px) {
+
+
+        ::ng-deep .mat-form-field-underline {
+            display: none;
+        }
+        
+    .registro{
+
+        
+        background: rgb(160,150,227);
+        background: linear-gradient(54deg, rgba(160,150,227,1) 0%, rgba(153,110,172,0.7458333675266982) 100%);
+    
+    
+    }
+
+
+    .matIn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 5%;
+        padding-top: 5%;
+      
+    }
+        .mat-card {
+            border-radius: 10px;
+            padding-top: 7%;
+            padding-right: 7%;
+            padding-left: 7%;
+            padding-bottom: 5%;
+            display: flex;
+            flex-direction: column;
+           justify-content: center;
+        
+            .sinCuenta{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        
+
+            h4{
+                padding-bottom: 3%;
+                 padding-top: 3%;
+                font-size: medium;
+            }
+
+            h3{
+                font-size: medium;
+                padding: 10%;
+            }
+        }
+
+    }
+        @media only screen and (min-width: 1200px) {
+
+            ::ng-deep .mat-form-field-underline {
+                display: none;
+            }
+            .registro{
+
+                
+                background: rgb(160,150,227);
+                background: linear-gradient(54deg, rgba(160,150,227,1) 0%, rgba(153,110,172,0.7458333675266982) 100%);
+            
+            
+            }
+
+            
+
+            .mat-card {
+                border-radius: 10px;
+                padding-top: 4%;
+                padding-right: 6%;
+                padding-left: 6%;
+                padding-bottom: 4%;
+                display: flex;
+                flex-direction: column;
+               justify-content: center;
+            
+                .sinCuenta{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+            
+                h4{
+                    padding-bottom: 3%;
+                     padding-top: 3%;
+                    font-size: medium;
+                }
+    
+                h3{
+                    font-size: medium;
+                    padding-top: 8%;
+                }
+            }
+        }
