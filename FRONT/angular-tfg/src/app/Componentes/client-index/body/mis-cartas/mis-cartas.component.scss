@@ -17,6 +17,29 @@
     width: 100%;
 }
 
+
+
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 20px;
+    margin-left: 30px;
+    margin-right: 50px;
+    border-bottom-width: 0px;
+    border-bottom-style: solid;
+}
+
+.tituloMenuCarta{
+    margin-bottom: 15px;
+}
+
+mat-table{
+    border-radius: 5px;
+}
+.espaciosTabla{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .resumenMenusCartas{
     width: 600px;
         margin: 2%;

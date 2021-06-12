@@ -9,14 +9,28 @@ import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 
 
 export interface interfazMenu {
+  visible: boolean;
   nombreMenu: string;
   precio: number;
   
 }
 
-const  ELEMENT_DATA: interfazMenu[] = [
-  { nombreMenu: 'Carta 1', precio: 4},
-  { nombreMenu: 'Carta 2', precio: 9}
+export interface interfazCarta {
+  visible: boolean;
+  nombreCarta: string;
+  numeroProductos: number;
+  
+}
+
+const  ELEMENT_DATA_MENU: interfazMenu[] = [
+  { visible: true , nombreMenu: 'Diario', precio: 4},
+  { visible: true , nombreMenu: 'Findes de semana', precio: 9}
+
+]
+
+const  ELEMENT_DATA_CARTA: interfazCarta[] = [
+  { visible: true , nombreCarta: 'Carta 3', numeroProductos: 20},
+  { visible: true , nombreCarta: 'Carta 4', numeroProductos: 16}
 
 ]
 
@@ -58,9 +72,13 @@ export class MisCartasComponent implements OnInit {
 
   
 
-  displayedColumns: string[] = ['nombreMenu', 'precio'];
-  dataSource = ELEMENT_DATA;
+  displayedColumnsCarta: string[] = ['visible','nombreCarta', 'numeroProductos' ];
+  displayedColumnsMenu: string[] = ['visible','nombreMenu', 'precio' ];
 
+
+  dataSourceMenu = ELEMENT_DATA_MENU;
+
+  dataSourceCarta = ELEMENT_DATA_CARTA;
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();

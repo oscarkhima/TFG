@@ -7,6 +7,24 @@ import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 import { DialogMisPlatosComponent } from './dialog-mis-platos/dialog-mis-platos.component';
 
+
+
+export interface interfazPlato {
+  
+  nombrePlato: string;
+  
+  numeroDeIngredientes:number;
+  precio: number;
+  
+}
+
+const  ELEMENT_DATA_PLATOS: interfazPlato[] = [
+  { numeroDeIngredientes: 1 , nombrePlato: 'Diario', precio: 4}
+ 
+
+]
+
+
 @Component({
   selector: 'app-mis-platos',
   templateUrl: './mis-platos.component.html',
@@ -27,6 +45,11 @@ export class MisPlatosComponent implements OnInit {
     precio: 0
   }
 
+  
+
+  displayedColumnsPlatos: string[] = ['nombrePlato','numeroDeIngredientes', 'precio' ];
+
+  dataSourcePlatos = ELEMENT_DATA_PLATOS;
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
