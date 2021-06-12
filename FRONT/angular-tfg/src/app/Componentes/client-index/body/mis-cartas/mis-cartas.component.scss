@@ -1,25 +1,71 @@
-h1{
-    text-align: center;
+.misCartasMenusPrincipalDiv{
+
+
+    ::ng-deep .mat-form-field-underline {
+        display: none;
+           
+       }
+    
+    .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow:none;
+    background-color: rgb(243, 243, 243);
+    }
+
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
-.botones button{
-    margin: 1%;
+.resumenMenusCartas{
+    width: 600px;
+        margin: 2%;
+       
+        border-radius: 5px;
+
+        mat-car{
+            padding: 10%;
+        }
 }
 
-p{
-    margin-top: 2%;
-}
-
-mat-radio-button{
+.creacionCarta{
     margin: 2%;
-}
+    width: 500px;
 
-.crearCarta mat-form-field{
-    width: 80%;
-    height: 2%;
-    margin-left: 2%;
-}
-mat-card{
-    margin-bottom: 4%;
-    width: 40%;
+
+    mat-card{
+        padding: 10%;
+    }
+
+    form{
+        margin-top: 25px;
+    }
+
+    mat-form-field{
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding-right: 30%;
+        padding-left: 5%;
+        padding-bottom: 5px;
+
+        
+    }
+      
+    
+
+    .crearCartaMenu{
+        margin: 10px;
+    }
+
+    .botones{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        
+
+        button{
+            margin-right: 4%;
+            
+        }
+    }
 }
