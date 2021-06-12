@@ -98,6 +98,19 @@ public class UserController {
         return platos = userModel.getPlatos();
     }
 
+    @GetMapping("/dish/{userName}/{cardName}")
+    public CardModel getAllCardDishes(@PathVariable("userName") String userName,@PathVariable("cardName") String cardName){
+        ArrayList<CardModel> cartas = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        cartas = userModel.getCartas();
+        for(CardModel carta : cartas){
+            if (carta.getNombre().equals(cardName)){
+                return carta;
+            }
+        }
+        return null;
+    }
+
 
     @PostMapping(path ="/dish/create/{userName}")
     public boolean createDish (@RequestBody DishModel dishModel,@PathVariable("userName") String userName){

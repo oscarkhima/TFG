@@ -35,6 +35,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 //SERVICES
@@ -59,6 +60,10 @@ import { ProductoComponent } from './Componentes/web-page/producto/producto.comp
 import { ContactoComponent } from './Componentes/web-page/contacto/contacto.component';
 import { SeccionSieteComponent } from './Componentes/web-page/seccion-siete/seccion-siete.component';
 import { DialogMisPlatosComponent } from './Componentes/client-index/body/mis-platos/dialog-mis-platos/dialog-mis-platos.component';
+import { WebCardComponent } from './Componentes/web-card/web-card.component';
+import { MenuComponent } from './Componentes/web-card/menu/menu.component';
+import { CardComponent } from './Componentes/web-card/card/card.component';
+import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-card-nav.component';
 
 
 
@@ -97,9 +102,14 @@ import { DialogMisPlatosComponent } from './Componentes/client-index/body/mis-pl
     ContactoComponent,
     SeccionSieteComponent,
     ConfiguracionComponent,
-    DialogMisPlatosComponent
+    DialogMisPlatosComponent,
+    WebCardComponent,
+    MenuComponent,
+    CardComponent,
+    WebCardNavComponent
   ],
   imports: [
+    MatTabsModule,
     MatRadioModule,
     MatCheckboxModule,
     MatSelectModule,

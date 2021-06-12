@@ -14,8 +14,14 @@ export class DishAndCardsService {
     "Content-Type":"application/json"
   })
 
-  getAllDishes(){
-    const url_api = 'http://localhost:8585/user/all';
+  
+  getAllDishNames(username: string){
+    const url_api = 'http://localhost:8585/dishNames/' + username;
+    return this.http.get(url_api);
+  }
+
+  getAllDishes(username: string){
+    const url_api = 'http://localhost:8585/dish/' + username;
     return this.http.get(url_api);
   }
 
@@ -37,11 +43,6 @@ export class DishAndCardsService {
   /////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////CARDS/////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
-
-  getAllCardNames(username: string){
-    const url_api = 'http://localhost:8585/dishNames/' + username;
-    return this.http.get(url_api);
-  }
 
   createCards(username: string,nombre: string,platos: string[],menu: boolean, precio: number): Observable<any>{
     const url_api = "http://localhost:8585/card/create/"+username;

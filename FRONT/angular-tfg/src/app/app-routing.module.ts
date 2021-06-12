@@ -6,6 +6,7 @@ import { IniciarSesionComponent } from './Componentes/web-page/iniciar-sesion/in
 import {ClientIndexComponent} from './Componentes/client-index/client-index.component'
 import {ProductoComponent} from './Componentes/web-page/producto/producto.component'
 import { ContactoComponent } from './Componentes/web-page/contacto/contacto.component';
+import { WebCardComponent } from './Componentes/web-card/web-card.component';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'login', component: IniciarSesionComponent },
   { path: 'profile', component: ClientIndexComponent},
   { path: 'products', component: ProductoComponent},
- { path: 'us', component: ContactoComponent},
+  { path: 'us', component: ContactoComponent},
+  { path: 'card', component: WebCardComponent},
   
 ];
 
