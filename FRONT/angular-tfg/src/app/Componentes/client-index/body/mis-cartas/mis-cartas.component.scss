@@ -26,6 +26,40 @@
         mat-car{
             padding: 10%;
         }
+
+        .nombresCampos{
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            padding: 10px;
+            h3{
+                margin: 5px;
+            }
+
+            .visibleStyle{
+                margin-left: 10px;
+            }
+        }
+
+
+
+        .cartaAñadida{
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            padding: 10px;
+            
+            h3{
+                margin: 5px;
+            }
+
+            mat-checkbox{
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
 }
 
 .creacionCarta{

@@ -7,11 +7,30 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 
+
+export interface interfazMenu {
+  nombreMenu: string;
+  precio: number;
+  
+}
+
+const  ELEMENT_DATA: interfazMenu[] = [
+  { nombreMenu: 'Carta 1', precio: 4},
+  { nombreMenu: 'Carta 2', precio: 9}
+
+]
+
+
+
 @Component({
   selector: 'app-mis-cartas',
   templateUrl: './mis-cartas.component.html',
   styleUrls: ['./mis-cartas.component.scss']
 })
+
+
+
+
 export class MisCartasComponent implements OnInit {
 
   constructor(private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService) { }
@@ -24,9 +43,10 @@ export class MisCartasComponent implements OnInit {
 
   public nombresPlatos: Observable<Object> | undefined;
 
-
-
+  
   public username: any;
+
+  public numeroDePlatos: number = this.platos.length
 
   public card: CardInterface = {
     nombre: "",
@@ -36,10 +56,18 @@ export class MisCartasComponent implements OnInit {
   }
 
 
+  
+
+  displayedColumns: string[] = ['nombreMenu', 'precio'];
+  dataSource = ELEMENT_DATA;
+
+
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
     this.platos = this.getDishNames();
   }
+
+  
 
   getDishNames(): string[]{
     this.apiService.getAllDishNames(this.username).subscribe(dishNames => {
