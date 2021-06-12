@@ -1,44 +1,73 @@
-<div>
-    <h1>Crea y configura aqui las cartas y menús</h1>
-    <mat-card>
-        <h3>Crea tu carta aqui</h3>
-        <form class="crearCarta" #formCard="ngForm">
-            <p>
-                <mat-form-field>
-                    <mat-label class="pop-semibold">Nombre</mat-label>
-                    <input type="text" name="nombre" [(ngModel)]="card.nombre" matInput placeholder="Escribe el nombre"
-                        required>
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field *ngFor="let control of formArray.controls; index as i">
-                    <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
-                    <mat-select [(ngModel)]="card.platos[i]" [formGroup]="getFormGroup(i)"
-                        [ngModelOptions]="{standalone: true}" required>
-                        <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </p>
-            <p class="botones">
-                <button (click)="onAdd()" type="add" mat-raised-button color="primary">Add</button>
-                <button (click)="onDelete()" type="delete" mat-raised-button color="warn">Delete</button>
-            </p>
-            <p>
-                <mat-radio-group>
-                    <mat-radio-button (click)="this.disabled = false; onTurn()" [value]="false"  class="pop-semibold"> MENÚ </mat-radio-button>
-                    <mat-radio-button (click)="this.disabled = true; onTurn()"  [value]="true" class="pop-semibold"> CARTA </mat-radio-button>
-                </mat-radio-group>
-            </p>
-            <p>
-                <mat-form-field>
-                    <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
-                    <input [disabled]="this.disabled" matInput type="number" name="precio" [(ngModel)]="card.precio" class="example-right-align"
-                        placeholder="0" required>
-                    <span matSuffix>€&nbsp;</span>
-                </mat-form-field>
-            </p>
-            <button mat-raised-button color="primary" type="submit" class="pop-semibold" [disabled]="!formCard.valid"
-                (click)="addDish()">Crear Carta</button>
-        </form>
-    </mat-card>
+<div class="misCartasMenusPrincipalDiv">
+    <!-- <h1>Crea y configura aqui las cartas y menús</h1> -->
+ 
+       
+
+
+        <div class="resumenMenusCartas">
+
+            <div class="MisCartas">
+                <mat-card class="">
+                    <h3>Cartas disponibles</h3>
+        
+                </mat-card>
+            </div>
+    
+            <div class="MisMenus">
+                <mat-card class="">
+                    <h3>Menús disponibles</h3>
+        
+                </mat-card>
+            </div>
+
+
+        </div>
+     
+    
+    
+
+        <div class="creacionCarta">
+            <mat-card>
+            <h3>Crea tu carta aqui</h3>
+            <form class="crearCarta" #formCard="ngForm">
+                <p>
+                    <mat-form-field>
+                        <mat-label class="pop-semibold">Nombre</mat-label>
+                        <input type="text" name="nombre" [(ngModel)]="card.nombre" matInput placeholder="Escribe el nombre"
+                            required>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field *ngFor="let control of formArray.controls; index as i">
+                        <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                        <mat-select [(ngModel)]="card.platos[i]" [formGroup]="getFormGroup(i)"
+                            [ngModelOptions]="{standalone: true}" required>
+                            <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+                <p class="botones">
+                    <button (click)="onAdd()" type="add" mat-raised-button color="primary">Add</button>
+                    <button (click)="onDelete()" type="delete" mat-raised-button color="warn">Delete</button>
+                </p>
+                <p>
+                    <mat-radio-group class="botones">
+                        <mat-radio-button (click)="this.disabled = false; onTurn()" [value]="false"  class="pop-semibold"> MENÚ </mat-radio-button>
+                        <mat-radio-button (click)="this.disabled = true; onTurn()"  [value]="true" class="pop-semibold"> CARTA </mat-radio-button>
+                    </mat-radio-group>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
+                        <input [disabled]="this.disabled" matInput type="number" name="precio" [(ngModel)]="card.precio" class="example-right-align"
+                            placeholder="0" required>
+                        <span matSuffix>€&nbsp;</span>
+                    </mat-form-field>
+                </p>
+                <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formCard.valid"
+                    (click)="addDish()">Crear Carta</button>
+            </form>
+            </mat-card>
+        </div>
+   
 </div>
