@@ -37,7 +37,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 //SERVICES
 import{DataApiService} from "./services/data-api.service"
@@ -65,6 +65,7 @@ import { WebCardComponent } from './Componentes/web-card/web-card.component';
 import { MenuComponent } from './Componentes/web-card/menu/menu.component';
 import { CardComponent } from './Componentes/web-card/card/card.component';
 import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-card-nav.component';
+
 
 
 
@@ -135,7 +136,9 @@ import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-car
     FlexLayoutModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSnackBarModule
+
   ],
   providers: [
     DishAndCardsService,

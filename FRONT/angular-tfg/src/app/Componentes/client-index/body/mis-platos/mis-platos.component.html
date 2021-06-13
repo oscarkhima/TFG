@@ -14,12 +14,12 @@
 
                 <ng-container matColumnDef="nombrePlato">
                     <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Visible</th>
-                    <td mat-cell *matCellDef="let element"><h3 class="pop-regular">{{element.nombrePlato}}</h3>  </td>
+                    <td mat-cell *matCellDef="let element"><h3 class="pop-regular">{{element.nombre}}</h3>  </td>
                   </ng-container>
 
                 <ng-container matColumnDef="numeroDeIngredientes">
                     <th  class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del Menu </th>
-                    <td mat-cell *matCellDef="let element"><h3 class="pop-regular"> {{element.numeroDeIngredientes}}</h3> </td>
+                    <td mat-cell *matCellDef="let element"><h3 class="pop-regular"> {{element.ingredientes}}</h3> </td>
                   </ng-container>
              
                   <ng-container matColumnDef="precio">
@@ -74,7 +74,7 @@
                 </div>
                <div>
                 <button  mat-raised-button color="primary" type="submit" class="pop-semibold botonCrearPlato"
-                [disabled]="!formDish.valid" (click)="addDish()">Crear Plato</button>
+                [disabled]="!formDish.valid"  (click)="addDish()">Crear Plato</button>
                </div>
                
             </form>

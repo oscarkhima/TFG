@@ -1,3 +1,13 @@
+
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 20px;
+    margin-left: 30px;
+    margin-right: 50px;
+    border-bottom-width: 0px;
+    border-bottom-style: solid;
+}
+
 .misPlatosPrincipalDiv{
 
     ::ng-deep .mat-form-field-underline {
