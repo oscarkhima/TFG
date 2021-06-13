@@ -12,17 +12,28 @@ public class CardModel {
 
     private boolean menu;
 
+    private boolean activated;
+
     private Double precio;
 
     public CardModel(){
 
     }
 
-    public CardModel(String nombre, ArrayList<DishModel> platos, boolean menu, Double precio) {
+    public CardModel(String nombre, ArrayList<DishModel> platos, boolean menu, boolean activated, Double precio) {
         this.nombre = nombre;
         this.platos = platos;
         this.menu = menu;
+        this.activated = false;
         this.precio = precio;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 
     public boolean isMenu() {

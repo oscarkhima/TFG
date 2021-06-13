@@ -149,6 +149,7 @@ public class UserController {
         ArrayList<CardModel> cartas = user.getCartas();
         ArrayList<DishModel> platos = new ArrayList<>();
         cart.setMenu(cardModelRequest.isMenu());
+        cart.setActivated(cardModelRequest.isActivated());
         cart.setNombre(cardModelRequest.getNombre());
         cart.setPrecio(cardModelRequest.getPrecio());
         for(String nombrePlatos: cardModelRequest.getPlatos()){
