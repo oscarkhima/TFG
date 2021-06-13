@@ -66,6 +66,7 @@ export class MisCartasComponent implements OnInit {
     nombre: "",
     platos: [],
     menu: false,
+    activated: false,
     precio: 0
   }
 

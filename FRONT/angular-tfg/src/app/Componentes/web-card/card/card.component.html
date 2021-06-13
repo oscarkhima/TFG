@@ -16,15 +16,19 @@
             </ng-container>
             <ng-container matColumnDef="precio">
                 <th mat-header-cell *matHeaderCellDef>Precio</th>
-                <td mat-cell *matCellDef="let plato">{{plato.precio}}</td>
+                <td mat-cell *matCellDef="let plato">{{plato.precio}}€</td>
             </ng-container>
             <ng-container matColumnDef="añadir">
                 <th mat-header-cell *matHeaderCellDef>Añadir</th>
-                <td mat-cell *matCellDef="let plato">
-                    <div>
-                        <button mat-raised-button>Añadir</button>
-                        <p>contador</p>
-                        <button mat-raised-button>Eliminar</button>
+                <td mat-cell *matCellDef="let plato; let i = index">
+                    <div class="contador">
+                        <button mat-icon-button color="primary" (click)="sumar(i)">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                        <p>{{this.total[i]}}</p>
+                        <button mat-icon-button color="warn" (click)="restar(i)">
+                            <mat-icon>remove_circle_outline</mat-icon>
+                        </button>
                     </div>
                 </td>
             </ng-container>
@@ -34,6 +38,7 @@
         </table>
         <div>
             <button mat-button>REALIZAR PEDIDO</button>
+            <p>TOTAL: {{suma}}</p>
         </div>
     </div>
 
