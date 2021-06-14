@@ -1,16 +1,48 @@
-<div>
-  <h1>Configuracion</h1>
- 
+<div class="componenteConfiguracion">
+  <div class="explicacionMiConfiguracion">
+      <div class="divIntro"><p>
+          Esta es tu configuracion, Aqui podrás cambiar tu nombre de usuario,Editar el nombre de tu negocio, cerrar sesion
+      </p></div>
+  </div>
 
-  
+
+  <mat-list role="list">
+
+    <h3 class="ajustesDeUsuarioTitulo"> Ajustes de Usuario </h3>
+    <mat-list-item class="CambiarNombreDeUsuarioOptions opConfiguracion" role="listitem">
+
+      <div class="AjustesDeUsuario">
+       
+        <p>Cambiar nombre de usuario</p>
+      </div>
+     
+
+    </mat-list-item>
+    <mat-list-item class="CambiarNombreDeRestaurante opConfiguracion" role="listitem">
+      
+      <p>Cambiar nombre del restaurante </p>
+    </mat-list-item>
+    <mat-list-item class="CerrarSesionConfiguracion opConfiguracion" role="listitem">
+      <div class="cerraresiondiv">
+        <p>Cerrar sesion y volver al inicio</p>
+        <div>
+          <button mat-flat-button color="primary" (click)="logOut()">LogOut</button>
+        </div>
+       
+
+      </div>
+     
+    </mat-list-item>
+  </mat-list>
 
 
-<button mat-raised-button color="warn" (click)="logOut()">LogOut</button>
 
-<ngx-qrcode
+
+
+<!-- <ngx-qrcode
 [elementType]="elementType"
 [errorCorrectionLevel]="correctionLevel"
 [value]="value"
 cssClass="boxshadow"></ngx-qrcode>
-<textarea [(ngModel)] = "value"></textarea>
+<textarea [(ngModel)] = "value"></textarea> -->
 </div>

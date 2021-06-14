@@ -65,7 +65,8 @@ export class MisPlatosComponent implements OnInit {
 
 
   openSnackBar() {
-    this._snackBar.open("Plato creado")
+    this._snackBar.open("Plato creado", "close")
+
     
   }
   
@@ -93,7 +94,9 @@ export class MisPlatosComponent implements OnInit {
     ).subscribe( dishResponse => {
       if(dishResponse){
         this.openSnackBar()
+        
         console.log("INSERTADO")
+        this.ngOnInit()
         
       }else{
         

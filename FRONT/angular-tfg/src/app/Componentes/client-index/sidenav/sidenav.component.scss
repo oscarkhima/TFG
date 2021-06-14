@@ -38,3 +38,47 @@ mat-sidenav{
   }
 
 }
+
+
+nav{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 75px;
+  background-color: rgb(200, 173, 250);
+
+  h3{
+    color: rgb(75, 75, 75);
+  }
+
+  button{
+    padding: 10px;
+    padding-left:20px;
+    padding-right: 20px;
+    border: none;
+    background-color: rgb(233, 231, 231);
+  }
+}
+
+.titulo{
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  height: 100%;
+  width: 85%;
+}
+
+.enlaces{
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  
+  width: 15%;
+}
+
+.cerrarSesion{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+}
