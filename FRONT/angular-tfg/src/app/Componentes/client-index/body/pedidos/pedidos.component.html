@@ -5,6 +5,16 @@
     </p></div>
 </div>
 
-<div>
-    
+<div class="pedidos">
+    <mat-card *ngFor="let item of pedidos; let i = index;">
+        <mat-card-title>
+            NUMERO DE MESA {{item.tableNumber}}
+        </mat-card-title>
+        <mat-card-content>
+            PLATOS {{item.platos}}
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button >X</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
