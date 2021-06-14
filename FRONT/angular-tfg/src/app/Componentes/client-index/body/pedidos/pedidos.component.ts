@@ -20,7 +20,15 @@ export class PedidosComponent implements OnInit {
     this.apiService.getAllOrders(this.username).subscribe(data => { this.pedidos = data})
   }
 
-  onDelete(){
+  onDelete(i: number){
+    this.pedidos.splice(i,1);
+    this.apiService.deleteOrder(this.username,i).subscribe( deleteResponse => {
+      if(deleteResponse){
+        console.log("INSERTADO")
+      }else{
+        console.log("MAL INSERTADO")
+      }
+    })
   }
 
   

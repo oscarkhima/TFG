@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     //AQUI DEBEMOS PERMITUR LAS URL
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers("/*","/*/*","/*/*/*")
+        http.csrf().disable().authorizeRequests().antMatchers("/*","/*/*","/*/*/*","/*/*/*/*")
                 .permitAll().anyRequest().authenticated();
     }
 
