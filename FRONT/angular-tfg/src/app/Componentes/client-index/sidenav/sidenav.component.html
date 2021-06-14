@@ -1,3 +1,13 @@
+
+
+<nav>
+    <button class="botonMenu" (click)="sidenav.toggle()"  aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="titulo pop-regular"> <h3 class="pop-regular">Bienvenido {{username}}</h3></div>
+    <div class="cerrarSesion" > <h3 class="pop-regular"> Cerrar sesion</h3></div>
+</nav>
+
 <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" [(opened)] = "opened" >
         <mat-selection-list #options [multiple]="false">
@@ -24,10 +34,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
 
-        <button class="botonMenu" (click)="sidenav.toggle()" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-            <mat-icon>menu</mat-icon>
-        </button>
-
+        
         <app-body [variable]="this.option"></app-body>
 
     </mat-sidenav-content>

@@ -1,3 +1,12 @@
-h1{
-    text-align: center;
+.explicacionPedidosEntrantes{
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+
+    .divIntro{
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgb(201, 201, 201);
+        border-style: dashed;
+    }
 }

@@ -1,3 +1,57 @@
-h1{
-    text-align: center;
+.mat-sidenav-content [_ngcontent-jfg-c238]  {
+    padding: 4%;
+    width: 100%;
 }
+
+
+
+.componenteConfiguracion{
+    width: 100%;
+    padding: 4px;
+}
+
+.explicacionMiConfiguracion{
+    width: 100%;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+
+    .divIntro{
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgb(201, 201, 201);
+        border-style: dashed;
+    }
+}
+
+.ajustesDeUsuarioTitulo{
+    margin: 10px;
+}
+
+.opConfiguracion{
+    
+    padding-right: 15px;
+    padding-left: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: rgb(235, 235, 235);
+    // border: 2px solid rgb(216, 216, 216);
+    
+    margin-bottom: 5px;
+    .AjustesDeUsuario{
+       
+        p{
+            margin: 5px;
+        }
+    }
+}
+
+.cerraresiondiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    }
+    

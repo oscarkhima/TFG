@@ -1,28 +1,23 @@
 import { Component, OnInit, Compiler, APP_ID } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { elementAt, map } from 'rxjs/Operators';
 import { DishInterface } from 'src/app/models/dish-interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 import { DialogMisPlatosComponent } from './dialog-mis-platos/dialog-mis-platos.component';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 export interface interfazPlato {
   
   nombrePlato: string;
-  
   numeroDeIngredientes:number;
   precio: number;
   
 }
 
-const  ELEMENT_DATA_PLATOS: interfazPlato[] = [
-  { numeroDeIngredientes: 1 , nombrePlato: 'Diario', precio: 4}
- 
-
-]
 
 
 @Component({
@@ -32,11 +27,15 @@ const  ELEMENT_DATA_PLATOS: interfazPlato[] = [
 })
 export class MisPlatosComponent implements OnInit {
 
-  constructor(private dialog: MatDialog,private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService) { }
+  constructor(private dialog: MatDialog,private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService, private _snackBar: MatSnackBar) { }
+
+ 
 
   public formArray: FormArray = new FormArray([new FormControl('')]);
 
   public username: any;
+
+  public platosParaTabla: any;
 
   public dish: DishInterface = {
     nombre: "",
@@ -45,19 +44,37 @@ export class MisPlatosComponent implements OnInit {
     precio: 0
   }
 
-  
+  durationInSeconds = 5;
+
+  public platoCreadoString: string = "Se ha creado un nuevo plato";
+   
+
+  ELEMENT_DATA_PLATOS =  [{ visible: true , nombreMenu: 'Diario', precio: 4} ]
 
   displayedColumnsPlatos: string[] = ['nombrePlato','numeroDeIngredientes', 'precio' ];
 
-  dataSourcePlatos = ELEMENT_DATA_PLATOS;
+  public dataSourcePlatos: any
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
+   
+    this.apiService.getAllDishes(this.username).subscribe(data => { this.dataSourcePlatos = data})
+    
+
   }
+
+
+  openSnackBar() {
+    this._snackBar.open("Plato creado", "close")
+
+    
+  }
+  
 
   onAdd(): void{
     this.formArray.push(new FormControl(''));
   }
+
 
   onDelete(): void{
     this.formArray.removeAt(this.formArray.value)
@@ -76,13 +93,19 @@ export class MisPlatosComponent implements OnInit {
       this.dish.precio
     ).subscribe( dishResponse => {
       if(dishResponse){
+        this.openSnackBar()
+        
         console.log("INSERTADO")
+        this.ngOnInit()
+        
       }else{
-        this.openDialog()
+        
       }
     })
+
   }
 
+  
 
   getFormGroup(i: number) {
     return this.formArray.at(i) as FormGroup;
