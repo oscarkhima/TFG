@@ -17,7 +17,7 @@
             <div class="MisCartas">
                 <mat-card class="">
                     <h3 class="tituloMenuCarta">Mis Cartas disponibles</h3>
-                    <table mat-table [dataSource]="dataSourceCarta" >
+                    <table mat-table [dataSource]="dataSourceResumenCarta" >
 
 
                         <ng-container matColumnDef="visible" >
@@ -35,6 +35,8 @@
                             <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nº De productos </th>
                             <td class="pop-regular"  mat-cell *matCellDef="let element"><h3 class="pop-regular"> {{element.numeroProductos}} </h3>  </td>
                           </ng-container>
+
+                          
                         
                         
 
