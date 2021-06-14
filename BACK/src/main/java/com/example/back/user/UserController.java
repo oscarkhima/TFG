@@ -260,4 +260,11 @@ public class UserController {
         return true;
     }
 
+    @GetMapping("/order/{userName}")
+    public ArrayList<OrderModel> getAllOrders(@PathVariable("userName") String userName){
+        ArrayList<OrderModel> pedidos = new ArrayList<OrderModel>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        return pedidos = userModel.getPedidos();
+    }
+
 }

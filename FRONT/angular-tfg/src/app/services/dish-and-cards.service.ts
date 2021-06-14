@@ -70,6 +70,11 @@ export class DishAndCardsService {
     return this.http.get<CardInterfaceResponse>(url_api);
   }
 
+  getAllCards(username: string){
+    const url_api = 'http://localhost:8585/card/' + username;
+    return this.http.get(url_api);
+  }
+
   /////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////MENUS/////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
@@ -96,6 +101,11 @@ export class DishAndCardsService {
     return this.http.get<MenuInterfaceResponse>(url_api);
   }
 
+  getAllMenus(username: string){
+    const url_api = 'http://localhost:8585/menu/' + username;
+    return this.http.get(url_api);
+  }
+
   /////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////ORDERS////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
@@ -113,6 +123,11 @@ export class DishAndCardsService {
     { headers: this.headers }
     )
     .pipe(map(data => data));
+  }
+
+  getAllOrders(username: string){
+    const url_api = 'http://localhost:8585/order/' + username;
+    return this.http.get(url_api);
   }
 
 }
