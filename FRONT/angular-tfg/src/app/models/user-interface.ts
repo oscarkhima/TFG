@@ -7,4 +7,5 @@ export interface UserInterface{
     cartas: any;
     menus: any;
     platos: any;
+    pedidos: any;
 }

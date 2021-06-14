@@ -28,7 +28,8 @@ export class IniciarSesionComponent implements OnInit {
     name: "",
     cartas: [],
     menus: [],
-    platos:[]
+    platos:[],
+    pedidos:[]
   };
 
   ngOnInit(): void {

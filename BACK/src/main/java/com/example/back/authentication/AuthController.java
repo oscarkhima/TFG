@@ -3,6 +3,7 @@ package com.example.back.authentication;
 import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
 import com.example.back.menu.MenuModel;
+import com.example.back.pedido.OrderModel;
 import com.example.back.repositories.UserRepository;
 import com.example.back.user.UserController;
 import com.example.back.user.UserModel;
@@ -40,6 +41,7 @@ public class AuthController {
         ArrayList<CardModel> cartas = authenticationRequest.getCartas();
         ArrayList<MenuModel> menus = authenticationRequest.getMenus();
         ArrayList<DishModel> platos = authenticationRequest.getPlatos();
+        ArrayList<OrderModel> pedidos = authenticationRequest.getPedidos();
         //COMPROBAMOS QUE NO ESTE VACIO O COINCIDA CON UN USER CREADO
         List<UserModel> lista = userRepository.findAll();
         for (UserModel user:lista){
@@ -61,6 +63,7 @@ public class AuthController {
             userModel.setCartas(cartas);
             userModel.setMenus(menus);
             userModel.setPlatos(platos);
+            userModel.setPedidos(pedidos);
         try {
             userRepository.insert(userModel);
         }catch (Exception e) {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/Operators';
 import { CardInterface } from '../models/cart-interface';
 import { DishInterface } from '../models/dish-interface';
+import { OrderInterface } from '../models/order-interface';
 import { CardInterfaceResponse } from '../models/response/card-interface-response';
 import { MenuInterfaceResponse } from '../models/response/menu-interface-response';
 import { AuthService } from './auth.service';
@@ -95,5 +96,23 @@ export class DishAndCardsService {
     return this.http.get<MenuInterfaceResponse>(url_api);
   }
 
+  /////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////ORDERS////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
+
+  createOrder(username: string, tableNumber: number, platos: any,totalPrice: number): Observable<any>{
+    const url_api = "http://localhost:8585/order/create/"+username;
+    return this.http.post<OrderInterface>( 
+      url_api,
+      {
+      username,
+      tableNumber,
+      platos,
+      totalPrice
+    },
+    { headers: this.headers }
+    )
+    .pipe(map(data => data));
+  }
 
 }

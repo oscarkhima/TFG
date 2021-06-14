@@ -3,6 +3,7 @@ package com.example.back.authentication;
 import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
 import com.example.back.menu.MenuModel;
+import com.example.back.pedido.OrderModel;
 
 import java.util.ArrayList;
 
@@ -16,9 +17,18 @@ public class AuthenticationRequest {
     private ArrayList<CardModel> cartas;
     private ArrayList<MenuModel> menus;
     private ArrayList<DishModel> platos;
+    private ArrayList<OrderModel> pedidos;
 
     public AuthenticationRequest(){
 
+    }
+
+    public ArrayList<OrderModel> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<OrderModel> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public ArrayList<MenuModel> getMenus() {

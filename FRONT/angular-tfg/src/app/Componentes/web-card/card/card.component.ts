@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { NodeCompatibleEventEmitter } from 'rxjs/internal/observable/fromEvent';
 import { CardInterface } from 'src/app/models/cart-interface';
 import { DishInterface } from 'src/app/models/dish-interface';
+import { OrderInterface } from 'src/app/models/order-interface';
 import { CardInterfaceResponse } from 'src/app/models/response/card-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 
@@ -20,6 +21,7 @@ export class CardComponent implements OnInit {
 
   private username: string = "";
   private cardname: string = "";
+  private mesa: string = "";
 
   public name: string = "";
 
@@ -27,15 +29,24 @@ export class CardComponent implements OnInit {
 
   @Input() suma: number = 0;
 
+  public platosPedido: string[] = [];
 
-  constructor(private dishAndCards: DishAndCardsService, private route: ActivatedRoute) { }
+  public pedido: OrderInterface = {
+    username: "",
+    tableNumber: 0,
+    platos: [],
+    totalPrice: 0.0
+  }
+
+
+  constructor(private apiService: DishAndCardsService,private dishAndCards: DishAndCardsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //http://localhost:4200/card?username=Ocal&cardname=el caltin
     this.route.queryParams.subscribe(params => {
       this.username = params.username
       this.cardname = params.cardname
-
+      this.mesa = params.mesa
     }
   );
     this.getCarta(this.username,this.cardname)
@@ -72,5 +83,36 @@ export class CardComponent implements OnInit {
     this.dishAndCards.getCard(username,cardname).subscribe(card => this.cardInterface = card);
   }
 
+  
+  postOrder(): void{
+    for (let i = 0; i < this.cardInterface.platos.length; i++) {
+      if(this.total[i] != 0 && this.total[i] != undefined){
+        for (let x = 0; x < this.total[i]; x++){
+          console.log(this.platosPedido.push(this.cardInterface.platos[i].nombre))
+        }
+      }
+    }
+    console.log("RESULTADO " + this.platosPedido)
+    this.pedido.platos = this.platosPedido;
+    this.pedido.totalPrice = this.suma;
+    this.pedido.tableNumber = Number(this.mesa);
+    this.pedido.username = this.username;
+    this.addOrder();
+  }
+
+  addOrder(): void{
+    this.apiService.createOrder(
+      this.username,
+      this.pedido.tableNumber,
+      this.pedido.platos,
+      this.pedido.totalPrice
+    ).subscribe( orderResponse => {
+      if(orderResponse){
+        console.log("INSERTADO")
+      }else{
+        console.log("MAL INSERTADO")
+      }
+    })
+  }
 
 }

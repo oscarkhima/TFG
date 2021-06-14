@@ -5,6 +5,7 @@ import com.example.back.card.CardModelRequest;
 import com.example.back.dish.DishModel;
 import com.example.back.menu.MenuModel;
 import com.example.back.menu.MenuModelRequest;
+import com.example.back.pedido.OrderModel;
 import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -239,6 +240,24 @@ public class UserController {
             }
         }
         return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////PEDIDOS/////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @PostMapping(path ="/order/create/{userName}")
+    public boolean createPedido (@RequestBody OrderModel order,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<OrderModel> pedidosUser = user.getPedidos();
+        pedidosUser.add(order);
+        user.setPedidos(pedidosUser);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
 }

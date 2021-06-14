@@ -37,8 +37,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <div>
-            <button mat-button>REALIZAR PEDIDO</button>
-            <p>TOTAL: {{suma}}</p>
+            <button mat-button (click)="postOrder()">REALIZAR PEDIDO</button>
+            <p>TOTAL: {{suma}}€</p>
         </div>
     </div>
 

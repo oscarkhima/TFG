@@ -172,4 +172,6 @@ export class MisCartasComponent implements OnInit {
     return this.formArray.at(i) as FormGroup;
   }
 
+  
+
 }

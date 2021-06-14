@@ -65,7 +65,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <h3>SEGUNDOS</h3>
+        <h3>POSTRES</h3>
         <table mat-table [dataSource]="menuInterface.postres" class="tabla">
             <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef>Nombre</th>
@@ -86,7 +86,7 @@
                         <button mat-icon-button color="primary" (click)="sumarPostres(i)">
                             <mat-icon>add_circle_outline</mat-icon>
                         </button>
-                        <p>{{this.terceros[i]}}</p>
+                        <p>{{this.postres[i]}}</p>
                         <button mat-icon-button color="warn" (click)="restarPostres(i)">
                             <mat-icon>remove_circle_outline</mat-icon>
                         </button>
@@ -98,7 +98,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <div>
-            <button mat-button>REALIZAR PEDIDO</button>
+            <button mat-button (click)="postOrder()">REALIZAR PEDIDO</button>
             <p>TOTAL: {{total}}</p>
         </div>
     </div>

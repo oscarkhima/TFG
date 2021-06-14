@@ -25,7 +25,8 @@ export class RegistroComponent implements OnInit {
     name: "",
     cartas: [],
     menus: [],
-    platos: []
+    platos: [],
+    pedidos:[]
   };
 
   ngOnInit(): void {
@@ -44,7 +45,8 @@ export class RegistroComponent implements OnInit {
       this.user.name,
       this.user.cartas,
       this.user.menus,
-      this.user.platos
+      this.user.platos,
+      this.user.pedidos
     ).subscribe( userResponse => {
       this.authService.setUser(userResponse.userName);
       if(userResponse.succes){

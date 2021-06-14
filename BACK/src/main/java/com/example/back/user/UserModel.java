@@ -5,6 +5,7 @@ package com.example.back.user;
 import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
 import com.example.back.menu.MenuModel;
+import com.example.back.pedido.OrderModel;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -39,17 +40,28 @@ public class UserModel {
 
     private ArrayList<DishModel> platos;
 
+    private ArrayList<OrderModel> pedidos;
+
 
     public UserModel() {
         this.id = ID_GENERATOR.getAndIncrement();
     }
 
-    public UserModel(Long id, String username, String password, String name, String email, ArrayList<CardModel> cartas,ArrayList<MenuModel> menus, ArrayList<DishModel> platos) {
+    public UserModel(Long id, String username, String password, String name, String email, ArrayList<CardModel> cartas,ArrayList<MenuModel> menus, ArrayList<DishModel> platos, ArrayList<OrderModel> pedidos) {
         this.id = ID_GENERATOR.getAndIncrement();
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
+        this.pedidos = pedidos;
+    }
+
+    public ArrayList<OrderModel> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<OrderModel> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public ArrayList<MenuModel> getMenus() {
