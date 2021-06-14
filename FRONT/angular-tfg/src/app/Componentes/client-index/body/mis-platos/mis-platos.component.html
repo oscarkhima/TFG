@@ -69,6 +69,15 @@
                                         <mat-label class="pop-semibold">Descripcion</mat-label>
                                         <textarea type="text" name="descripcion" [(ngModel)]="dish.descripcion" matInput placeholder="Escribe la descripcion" required></textarea>
                                     </mat-form-field>
+
+                                    <p class="precioDecimal">El precio si es decimal debe de esar escrito con punto</p>
+                                    
+                                    <mat-form-field>
+                                      
+                                        <!-- <mat-label class="pop-semibold">Precio</mat-label> -->
+                                        <input matInput type="number"  name="precio" [(ngModel)]="dish.precio" class="example-right-align"  required>
+                                        <span matSuffix>€&nbsp;</span>
+                                    </mat-form-field>
     
                                 </div>
                                   
@@ -84,11 +93,7 @@
                                     <button (click)="onDelete()" type="delete" mat-flat-button color="warn">Eliminar Ingrediente</button>
                                 </div>
                                 
-                                    <mat-form-field>
-                                        <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
-                                        <input matInput type="number"  name="precio" [(ngModel)]="dish.precio" class="example-right-align" placeholder="0" required>
-                                        <span matSuffix>€&nbsp;</span>
-                                    </mat-form-field>
+                                    
 
                                 </div>
                              
