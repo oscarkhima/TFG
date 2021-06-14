@@ -10,6 +10,7 @@ import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.parameters.P;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -265,6 +266,20 @@ public class UserController {
         ArrayList<OrderModel> pedidos = new ArrayList<OrderModel>();
         UserModel userModel = userRepository.findByUsername(userName);
         return pedidos = userModel.getPedidos();
+    }
+
+    @DeleteMapping(path ="/order/delete/{userName}/{index}")
+    public boolean deleteOrder (@PathVariable("index") int index,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<OrderModel> pedidosUser = user.getPedidos();
+        pedidosUser.remove(index);
+        user.setPedidos(pedidosUser);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
 }

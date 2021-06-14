@@ -130,4 +130,9 @@ export class DishAndCardsService {
     return this.http.get(url_api);
   }
 
+  deleteOrder(username: string,index: number): Observable<any>{
+    const url_api = "http://localhost:8585/order/delete/"+username+"/"+index;
+    return this.http.delete(url_api);
+  }
+
 }
