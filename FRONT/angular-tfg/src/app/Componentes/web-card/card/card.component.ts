@@ -33,7 +33,6 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     //http://localhost:4200/card?username=Ocal&cardname=el caltin
     this.route.queryParams.subscribe(params => {
-      console.log(params); 
       this.username = params.username
       this.cardname = params.cardname
 
@@ -59,11 +58,13 @@ export class CardComponent implements OnInit {
     }
   }
   restar(index: number){
-    if(this.total[index] < 1){
-      this.total[index] = 0
-    }else{
-      this.total[index] = this.total[index]-1;
-      this.suma = this.suma - this.cardInterface.platos[index].precio;
+    if(this.total[index] != undefined){
+      if(this.total[index] < 1){
+        this.total[index] = 0
+      }else{
+        this.total[index] = this.total[index]-1;
+        this.suma = this.suma - this.cardInterface.platos[index].precio;
+      }
     }
   }
 

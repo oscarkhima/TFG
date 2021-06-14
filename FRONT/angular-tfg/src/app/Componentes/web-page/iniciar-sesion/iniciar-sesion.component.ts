@@ -27,6 +27,7 @@ export class IniciarSesionComponent implements OnInit {
     email: "",
     name: "",
     cartas: [],
+    menus: [],
     platos:[]
   };
 

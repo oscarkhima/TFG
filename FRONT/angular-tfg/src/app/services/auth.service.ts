@@ -16,7 +16,7 @@ export class AuthService {
     "Content-Type":"application/json"
   })
 
-  registerUser(username: string,password: string,email: string, name: string, cartas: any, platos: any): Observable<any>{
+  registerUser(username: string,password: string,email: string, name: string, cartas: any,menus: any, platos: any): Observable<any>{
     const url_api = "http://localhost:8585/user/singIn";
     return this.http.post<UserInterface>( 
       url_api,
@@ -26,6 +26,7 @@ export class AuthService {
       email,
       name,
       cartas,
+      menus,
       platos
     },
     { headers: this.headers }

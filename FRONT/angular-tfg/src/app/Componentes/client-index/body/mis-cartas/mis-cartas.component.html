@@ -96,22 +96,83 @@
                     <button mat-flat-button color="primary" (click)="onAdd()" type="add" >Añadir Plato</button>
                     <button (click)="onDelete()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
                 </p>
-                <p>
-                    <mat-radio-group class="botones">
-                        <mat-radio-button  (click)="this.disabled = false; onTurn()" [value]="false"  class="pop-semibold"> MENÚ </mat-radio-button>
-                        <mat-radio-button (click)="this.disabled = true; onTurn()"  [value]="true" class="pop-semibold"> CARTA </mat-radio-button>
-                    </mat-radio-group>
-                </p>
+                <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formCard.valid"
+                    (click)="addCard()">Crear Carta</button>
+            </form>
+            </mat-card>
+        </div>
+
+
+
+        <div class="creacionCarta">
+            <mat-card>
+            <h3>Crea tu menu aqui</h3>
+            <form class="crearCarta" #formMenu="ngForm">
                 <p>
                     <mat-form-field>
+                        <mat-label class="pop-semibold">Nombre</mat-label>
+                        <input type="text" name="nombre" [(ngModel)]="menu.nombre" matInput placeholder="Escribe el nombre"
+                            required>
+                    </mat-form-field>
+                </p>
+                <br>
+                <h3>PRIMEROS</h3>
+                <br>
+                <p>
+                    <mat-form-field *ngFor="let control of formArrayPrimeros.controls; index as i">
+                        <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                        <mat-select [(ngModel)]="menu.primeros[i]" [formGroup]="getFormGroup(i)"
+                            [ngModelOptions]="{standalone: true}" required>
+                            <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+                <p class="botones">
+                    <button mat-flat-button color="primary" (click)="onAddPrimeros()" type="add" >Añadir Plato</button>
+                    <button (click)="onDeletePrimeros()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
+                </p>
+                <br>
+                <h3>SEGUNDOS</h3>
+                <br>
+                <p>
+                    <mat-form-field *ngFor="let control of formArraySegundos.controls; index as i">
+                        <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                        <mat-select [(ngModel)]="menu.segundos[i]" [formGroup]="getFormGroup(i)"
+                            [ngModelOptions]="{standalone: true}" required>
+                            <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+                <p class="botones">
+                    <button mat-flat-button color="primary" (click)="onAddSegundos()" type="add" >Añadir Plato</button>
+                    <button (click)="onDeleteSegundos()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
+                </p>
+                <br>
+                <h3>POSTRES</h3>
+                <br>
+                <p>
+                    <mat-form-field *ngFor="let control of formArrayPostres.controls; index as i">
+                        <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                        <mat-select [(ngModel)]="menu.postres[i]" [formGroup]="getFormGroup(i)"
+                            [ngModelOptions]="{standalone: true}" required>
+                            <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+                <p class="botones">
+                    <button mat-flat-button color="primary" (click)="onAddPostres()" type="add" >Añadir Plato</button>
+                    <button (click)="onDeletePostres()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
+                </p>
+                <p>
+                    <mat-form-field required>
                         <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
-                        <input [disabled]="this.disabled" matInput type="number" name="precio" [(ngModel)]="card.precio" class="example-right-align"
+                        <input matInput type="number" name="precio" [(ngModel)]="menu.precio" class="example-right-align"
                             placeholder="0" required>
                         <span matSuffix>€&nbsp;</span>
                     </mat-form-field>
                 </p>
-                <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formCard.valid"
-                    (click)="addDish()">Crear Carta</button>
+                <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formMenu.valid"
+                    (click)="addMenu()">Crear Menu</button>
             </form>
             </mat-card>
         </div>

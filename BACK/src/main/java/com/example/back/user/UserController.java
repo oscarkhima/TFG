@@ -3,6 +3,8 @@ package com.example.back.user;
 import com.example.back.card.CardModel;
 import com.example.back.card.CardModelRequest;
 import com.example.back.dish.DishModel;
+import com.example.back.menu.MenuModel;
+import com.example.back.menu.MenuModelRequest;
 import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -98,19 +100,6 @@ public class UserController {
         return platos = userModel.getPlatos();
     }
 
-    @GetMapping("/card/{userName}/{cardName}")
-    public CardModel getCard(@PathVariable("userName") String userName,@PathVariable("cardName") String cardName){
-        ArrayList<CardModel> cartas = new ArrayList<>();
-        UserModel userModel = userRepository.findByUsername(userName);
-        cartas = userModel.getCartas();
-        for(CardModel carta : cartas){
-            if (carta.getNombre().equals(cardName)){
-                return carta;
-            }
-        }
-        return null;
-    }
-
 
     @PostMapping(path ="/dish/create/{userName}")
     public boolean createDish (@RequestBody DishModel dishModel,@PathVariable("userName") String userName){
@@ -148,10 +137,8 @@ public class UserController {
         CardModel cart = new CardModel();
         ArrayList<CardModel> cartas = user.getCartas();
         ArrayList<DishModel> platos = new ArrayList<>();
-        cart.setMenu(cardModelRequest.isMenu());
         cart.setActivated(cardModelRequest.isActivated());
         cart.setNombre(cardModelRequest.getNombre());
-        cart.setPrecio(cardModelRequest.getPrecio());
         for(String nombrePlatos: cardModelRequest.getPlatos()){
             for (DishModel plato: user.getPlatos()){
                 if (plato.getNombre().equals(nombrePlatos)){
@@ -168,6 +155,90 @@ public class UserController {
             return false;
         }
         return true;
+    }
+
+    @GetMapping("/card/{userName}/{cardName}")
+    public CardModel getCard(@PathVariable("userName") String userName,@PathVariable("cardName") String cardName){
+        ArrayList<CardModel> cartas = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        cartas = userModel.getCartas();
+        for(CardModel carta : cartas){
+            if (carta.getNombre().equals(cardName)){
+                return carta;
+            }
+        }
+        return null;
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////MENUS///////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @GetMapping("/menu/{userName}")
+    public ArrayList<MenuModel> getAllMenus(@PathVariable("userName") String userName){
+        ArrayList<MenuModel> cartas = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        return cartas = userModel.getMenus();
+    }
+
+    @PostMapping(path ="/menu/create/{userName}")
+    public boolean createMenu (@RequestBody MenuModelRequest menuModelRequest, @PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        MenuModel menu = new MenuModel();
+        ArrayList<MenuModel> menus = user.getMenus();
+        ArrayList<DishModel> primeros = new ArrayList<>();
+        ArrayList<DishModel> segundos = new ArrayList<>();
+        ArrayList<DishModel> postres = new ArrayList<>();
+        Double precio = 0.0;
+        menu.setActivated(menuModelRequest.isActivated());
+        menu.setNombre(menuModelRequest.getNombre());
+        for(String nombrePlatos: menuModelRequest.getPrimeros()){
+            for (DishModel plato: user.getPlatos()){
+                if (plato.getNombre().equals(nombrePlatos)){
+                    primeros.add(plato);
+                }
+            }
+        }
+        for(String nombrePlatos: menuModelRequest.getSegundos()){
+            for (DishModel plato: user.getPlatos()){
+                if (plato.getNombre().equals(nombrePlatos)){
+                    segundos.add(plato);
+                }
+            }
+        }
+        for(String nombrePlatos: menuModelRequest.getPostres()){
+            for (DishModel plato: user.getPlatos()){
+                if (plato.getNombre().equals(nombrePlatos)){
+                    postres.add(plato);
+                }
+            }
+        }
+        menu.setPrimeros(primeros);
+        menu.setSegundos(segundos);
+        menu.setPostres(postres);
+        menu.setPrecio(menuModelRequest.getPrecio());
+        menus.add(menu);
+        user.setMenus(menus);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    @GetMapping("/menu/{userName}/{menuName}")
+    public MenuModel getMenu(@PathVariable("userName") String userName,@PathVariable("menuName") String menuName){
+        ArrayList<MenuModel> menus = new ArrayList<>();
+        UserModel userModel = userRepository.findByUsername(userName);
+        menus = userModel.getMenus();
+        for(MenuModel menu : menus){
+            if (menu.getNombre().equals(menuName)){
+                return menu;
+            }
+        }
+        return null;
     }
 
 }

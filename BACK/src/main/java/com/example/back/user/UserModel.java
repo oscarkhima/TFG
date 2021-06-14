@@ -4,6 +4,7 @@ package com.example.back.user;
 //import jdk.jfr.StackTrace;
 import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
+import com.example.back.menu.MenuModel;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.awt.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
@@ -33,6 +35,8 @@ public class UserModel {
 
     private ArrayList<CardModel> cartas;
 
+    private ArrayList<MenuModel> menus;
+
     private ArrayList<DishModel> platos;
 
 
@@ -40,12 +44,20 @@ public class UserModel {
         this.id = ID_GENERATOR.getAndIncrement();
     }
 
-    public UserModel(Long id, String username, String password, String name, String email, ArrayList<CardModel> cartas, ArrayList<DishModel> platos) {
+    public UserModel(Long id, String username, String password, String name, String email, ArrayList<CardModel> cartas,ArrayList<MenuModel> menus, ArrayList<DishModel> platos) {
         this.id = ID_GENERATOR.getAndIncrement();
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
+    }
+
+    public ArrayList<MenuModel> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(ArrayList<MenuModel> menus) {
+        this.menus = menus;
     }
 
     public ArrayList<CardModel> getCartas() {

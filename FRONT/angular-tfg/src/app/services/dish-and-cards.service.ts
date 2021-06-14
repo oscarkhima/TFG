@@ -5,6 +5,7 @@ import { map } from 'rxjs/Operators';
 import { CardInterface } from '../models/cart-interface';
 import { DishInterface } from '../models/dish-interface';
 import { CardInterfaceResponse } from '../models/response/card-interface-response';
+import { MenuInterfaceResponse } from '../models/response/menu-interface-response';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -49,14 +50,38 @@ export class DishAndCardsService {
   ///////////////////////////////CARDS/////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
 
-  createCards(username: string,nombre: string,platos: string[],menu: boolean, precio: number): Observable<any>{
+  createCards(username: string,nombre: string,platos: string[]): Observable<any>{
     const url_api = "http://localhost:8585/card/create/"+username;
     return this.http.post<DishInterface>( 
       url_api,
       {
       nombre,
       platos,
-      menu,
+    },
+    { headers: this.headers }
+    )
+    .pipe(map(data => data));
+  }
+
+  //ESCRIBIR IP PARA PRUEBAS EN LA PRESENTACION
+  getCard(username: string, cardname: string): Observable<CardInterfaceResponse>{
+    const url_api = 'http://localhost:8585/card/' + username + "/" + cardname;
+    return this.http.get<CardInterfaceResponse>(url_api);
+  }
+
+  /////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////MENUS/////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
+
+  createMenu(username: string,nombre: string,primeros: string[],segundos: string[],postres: string[],precio: number): Observable<any>{
+    const url_api = "http://localhost:8585/menu/create/"+username;
+    return this.http.post<DishInterface>( 
+      url_api,
+      {
+      nombre,
+      primeros,
+      segundos,
+      postres,
       precio
     },
     { headers: this.headers }
@@ -64,9 +89,10 @@ export class DishAndCardsService {
     .pipe(map(data => data));
   }
 
-  getCard(username: string, cardname: string): Observable<CardInterfaceResponse>{
-    const url_api = 'http://localhost:8585/card/' + username + "/" + cardname;
-    return this.http.get<CardInterfaceResponse>(url_api);
+  //ESCRIBIR IP PARA PRUEBAS EN LA PRESENTACION
+  getMenu(username: string, menuname: string): Observable<MenuInterfaceResponse>{
+    const url_api = 'http://localhost:8585/menu/' + username + "/" + menuname;
+    return this.http.get<MenuInterfaceResponse>(url_api);
   }
 
 

@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CardInterface } from 'src/app/models/cart-interface';
 import { DishInterface } from 'src/app/models/dish-interface';
+import { MenuInterface } from 'src/app/models/menu-interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
@@ -50,6 +51,9 @@ export class MisCartasComponent implements OnInit {
   constructor(private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService) { }
 
   public formArray: FormArray = new FormArray([new FormControl('')]);
+  public formArrayPrimeros: FormArray = new FormArray([new FormControl('')]);
+  public formArraySegundos: FormArray = new FormArray([new FormControl('')]);
+  public formArrayPostres: FormArray = new FormArray([new FormControl('')]);
 
   public platos: string[] = ["uno","dos","tres"];
 
@@ -65,9 +69,16 @@ export class MisCartasComponent implements OnInit {
   public card: CardInterface = {
     nombre: "",
     platos: [],
-    menu: false,
     activated: false,
-    precio: 0
+  }
+
+  public menu: MenuInterface = {
+    nombre: "",
+    primeros: [],
+    segundos: [],
+    postres: [],
+    precio: 0,
+    activated: false,
   }
 
 
@@ -98,25 +109,57 @@ export class MisCartasComponent implements OnInit {
   onAdd(): void{
     this.formArray.push(new FormControl(''));
   }
+  onAddPrimeros(): void{
+    this.formArrayPrimeros.push(new FormControl(''));
+  }
+  onAddSegundos(): void{
+    this.formArraySegundos.push(new FormControl(''));
+  }
+  onAddPostres(): void{
+    this.formArrayPostres.push(new FormControl(''));
+  }
 
   onDelete(): void{
     this.formArray.removeAt(this.formArray.value)
   }
-
-  onTurn(): void{
-    this.card.precio = 0;
+  onDeletePrimeros(): void{
+    this.formArrayPrimeros.removeAt(this.formArray.value)
+  }
+  onDeleteSegundos(): void{
+    this.formArraySegundos.removeAt(this.formArray.value)
+  }
+  onDeletePostres(): void{
+    this.formArrayPostres.removeAt(this.formArray.value)
   }
 
-  //SUSTITUIR POT ADD CARD
-  addDish(): void{
+  onTurn(): void{
+    this.menu.precio = 0;
+  }
+
+  addCard(): void{
     this.apiService.createCards(
       this.username,
       this.card.nombre,
       this.card.platos,
-      this.card.menu = this.disabled,
-      this.card.precio
     ).subscribe( cardResponse => {
       if(cardResponse){
+        console.log("INSERTADO")
+      }else{
+        console.log("MAL INSERTADO")
+      }
+    })
+  }
+
+  addMenu(): void{
+    this.apiService.createMenu(
+      this.username,
+      this.menu.nombre,
+      this.menu.primeros,
+      this.menu.segundos,
+      this.menu.postres,
+      this.menu.precio
+    ).subscribe( menuResponse => {
+      if(menuResponse){
         console.log("INSERTADO")
       }else{
         console.log("MAL INSERTADO")

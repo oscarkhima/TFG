@@ -24,6 +24,7 @@ export class RegistroComponent implements OnInit {
     email: "",
     name: "",
     cartas: [],
+    menus: [],
     platos: []
   };
 
@@ -42,6 +43,7 @@ export class RegistroComponent implements OnInit {
       this.user.email,
       this.user.name,
       this.user.cartas,
+      this.user.menus,
       this.user.platos
     ).subscribe( userResponse => {
       this.authService.setUser(userResponse.userName);

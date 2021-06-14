@@ -5,5 +5,6 @@ export interface UserInterface{
     email: string;
     name: string;
     cartas: any;
+    menus: any;
     platos: any;
 }

@@ -2,6 +2,7 @@ package com.example.back.authentication;
 
 import com.example.back.card.CardModel;
 import com.example.back.dish.DishModel;
+import com.example.back.menu.MenuModel;
 
 import java.util.ArrayList;
 
@@ -13,10 +14,19 @@ public class AuthenticationRequest {
     private String email;
     private String name;
     private ArrayList<CardModel> cartas;
+    private ArrayList<MenuModel> menus;
     private ArrayList<DishModel> platos;
 
     public AuthenticationRequest(){
 
+    }
+
+    public ArrayList<MenuModel> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(ArrayList<MenuModel> menus) {
+        this.menus = menus;
     }
 
     public ArrayList<CardModel> getCartas() {

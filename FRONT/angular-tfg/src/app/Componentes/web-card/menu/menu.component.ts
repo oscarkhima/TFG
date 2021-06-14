@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CardInterfaceResponse } from 'src/app/models/response/card-interface-response';
+import { MenuInterfaceResponse } from 'src/app/models/response/menu-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 
 @Component({
@@ -10,32 +11,36 @@ import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 })
 export class MenuComponent implements OnInit {
 
-  public cardInterface: CardInterfaceResponse = <CardInterfaceResponse>{};
+  public menuInterface: MenuInterfaceResponse = <MenuInterfaceResponse>{};
 
   public displayedColumns: string[] = ['nombre', 'descripcion', 'ingredientes','añadir'];
 
   private username: string = "";
-  private cardname: string = "";
+  private menuname: string = "";
 
   public name: string = "";
 
-  public total: number[] = [];
+  public primeros: number[] = [];
+  public totalPrimeros: number = 0;
+  public segundos: number[] = [];
+  public totalSegundos: number = 0;
+  public terceros: number[] = [];
+  public totalTerceros: number = 0;
 
-  @Input() suma: number = 0;
+  @Input() total: number = 0;
 
 
   constructor(private dishAndCards: DishAndCardsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //http://localhost:4200/card?username=Ocal&cardname=el caltin
+    //http://localhost:4200/card?username=ocal&cardname=ejemplin&menuname=Menu 1
     this.route.queryParams.subscribe(params => {
-      console.log(params); 
       this.username = params.username
-      this.cardname = params.cardname
+      this.menuname = params.menuname
 
     }
   );
-    this.getCarta(this.username,this.cardname)
+    this.getMenu(this.username,this.menuname)
 
   }
 
@@ -44,27 +49,79 @@ export class MenuComponent implements OnInit {
   }
 
 
-  sumar(index: number){
-    if(this.total[index] === undefined){
-      this.total[index] = 0
-      this.total[index] = this.total[index]+1;
-      this.suma = this.suma + this.cardInterface.platos[index].precio;
+  sumarPrimeros(index: number){
+    if(this.primeros[index] === undefined){
+      this.primeros[index] = 0
+      this.primeros[index] = this.primeros[index]+1;
+      this.total = this.total + 1;
+      this.totalPrimeros = this.totalPrimeros + 1;
     }else{
-      this.total[index] = this.total[index]+1;
-      this.suma = this.suma + this.cardInterface.platos[index].precio;
+      this.primeros[index] = this.primeros[index]+1;
+      this.total = this.total + 1;
+      this.totalPrimeros = this.totalPrimeros + 1;
+    }
+    console.log(this.totalPrimeros)
+  }
+  restarPrimeros(index: number){
+    if(this.primeros[index] != undefined){
+      if(this.primeros[index] < 1){
+        this.primeros[index] = 0
+      }else{
+        this.primeros[index] = this.primeros[index]-1;
+        this.total = this.total - 1;
+        this.totalPrimeros = this.totalPrimeros - 1;
+      }
+    }
+    console.log(this.totalPrimeros)
+  }
+  sumarSegundos(index: number){
+    if(this.segundos[index] === undefined){
+      this.segundos[index] = 0
+      this.segundos[index] = this.segundos[index]+1;
+      this.total = this.total + 1;
+      this.totalSegundos = this.totalSegundos + 1;
+    }else{
+      this.segundos[index] = this.segundos[index]+1;
+      this.total = this.total + 1;
     }
   }
-  restar(index: number){
-    if(this.total[index] < 1){
-      this.total[index] = 0
+  restarSegundos(index: number){
+    if(this.segundos[index] != undefined){
+      if(this.segundos[index] < 1){
+        this.segundos[index] = 0
+      }else{
+        this.segundos[index] = this.segundos[index]-1;
+        this.total = this.total - 1;
+        this.totalSegundos = this.totalSegundos - 1;
+      }
+    }
+  }
+  sumarPostres(index: number){
+    if(this.terceros[index] === undefined){
+      this.terceros[index] = 0
+      this.terceros[index] = this.terceros[index]+1;
+      this.total = this.total + 1;
+      this.totalTerceros = this.totalTerceros + 1;
     }else{
-      this.total[index] = this.total[index]-1;
-      this.suma = this.suma - this.cardInterface.platos[index].precio;
+      this.terceros[index] = this.terceros[index]+1;
+      this.total = this.total + 1;
+      this.totalTerceros = this.totalTerceros + 1;
+    }
+  }
+  restarPostres(index: number){
+    if(this.segundos[index] != undefined){
+      if(this.terceros[index] < 1){
+        this.terceros[index] = 0
+      }else{
+        this.terceros[index] = this.terceros[index]-1;
+        this.total = this.total - 1;
+        this.totalTerceros = this.totalTerceros - 1;
+      }
     }
   }
 
-  getCarta(username: string, cardname: string){
-    this.dishAndCards.getCard(username,cardname).subscribe(card => this.cardInterface = card);
+  getMenu(username: string, cardname: string){
+    this.dishAndCards.getMenu(username,cardname).subscribe(card => this.menuInterface = card);
   }
 
 

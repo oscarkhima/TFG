@@ -1,7 +1,8 @@
-<div class="container"  *ngIf="cardInterface != undefined">
-    <h1>{{cardInterface.nombre}}</h1>
+<div class="container"  *ngIf="menuInterface != undefined">
+    <h1>{{menuInterface.nombre}}</h1>
     <div>
-        <table mat-table [dataSource]="cardInterface.platos" class="tabla">
+        <h3>PRIMEROS</h3>
+        <table mat-table [dataSource]="menuInterface.primeros" class="tabla">
             <ng-container matColumnDef="nombre">
                 <th mat-header-cell *matHeaderCellDef>Nombre</th>
                 <td mat-cell *matCellDef="let plato">{{plato.nombre}}</td>
@@ -18,11 +19,75 @@
                 <th mat-header-cell *matHeaderCellDef>Añadir</th>
                 <td mat-cell *matCellDef="let plato; let i = index">
                     <div class="contador">
-                        <button mat-icon-button color="primary" (click)="sumar(i)">
+                        <button mat-icon-button color="primary" (click)="sumarPrimeros(i)">
                             <mat-icon>add_circle_outline</mat-icon>
                         </button>
-                        <p>{{this.total[i]}}</p>
-                        <button mat-icon-button color="warn" (click)="restar(i)">
+                        <p>{{this.primeros[i]}}</p>
+                        <button mat-icon-button color="warn" (click)="restarPrimeros(i)">
+                            <mat-icon>remove_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <h3>SEGUNDOS</h3>
+        <table mat-table [dataSource]="menuInterface.segundos" class="tabla">
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let plato">{{plato.nombre}}</td>
+            </ng-container>
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                <td mat-cell *matCellDef="let plato">{{plato.descripcion}}</td>
+            </ng-container>
+            <ng-container matColumnDef="ingredientes">
+                <th mat-header-cell *matHeaderCellDef>Ingredientes</th>
+                <td mat-cell *matCellDef="let plato">{{plato.ingredientes}}</td>
+            </ng-container>
+            <ng-container matColumnDef="añadir">
+                <th mat-header-cell *matHeaderCellDef>Añadir</th>
+                <td mat-cell *matCellDef="let plato; let i = index">
+                    <div class="contador">
+                        <button mat-icon-button color="primary" (click)="sumarSegundos(i)">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                        <p>{{this.segundos[i]}}</p>
+                        <button mat-icon-button color="warn" (click)="restarSegundos(i)">
+                            <mat-icon>remove_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <h3>SEGUNDOS</h3>
+        <table mat-table [dataSource]="menuInterface.postres" class="tabla">
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let plato">{{plato.nombre}}</td>
+            </ng-container>
+            <ng-container matColumnDef="descripcion">
+                <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                <td mat-cell *matCellDef="let plato">{{plato.descripcion}}</td>
+            </ng-container>
+            <ng-container matColumnDef="ingredientes">
+                <th mat-header-cell *matHeaderCellDef>Ingredientes</th>
+                <td mat-cell *matCellDef="let plato">{{plato.ingredientes}}</td>
+            </ng-container>
+            <ng-container matColumnDef="añadir">
+                <th mat-header-cell *matHeaderCellDef>Añadir</th>
+                <td mat-cell *matCellDef="let plato; let i = index">
+                    <div class="contador">
+                        <button mat-icon-button color="primary" (click)="sumarPostres(i)">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                        <p>{{this.terceros[i]}}</p>
+                        <button mat-icon-button color="warn" (click)="restarPostres(i)">
                             <mat-icon>remove_circle_outline</mat-icon>
                         </button>
                     </div>
@@ -34,7 +99,7 @@
         </table>
         <div>
             <button mat-button>REALIZAR PEDIDO</button>
-            <p>TOTAL: {{suma}}</p>
+            <p>TOTAL: {{total}}</p>
         </div>
     </div>
 
