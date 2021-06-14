@@ -82,10 +82,10 @@ export class MisCartasComponent implements OnInit {
   }
 
 
-  
+   
 
-  displayedColumnsCarta: string[] = ['visible','nombreCarta', 'numeroProductos' ];
-  displayedColumnsMenu: string[] = ['visible','nombreMenu', 'precio' ];
+  displayedColumnsCarta: string[] = ['visible','nombreCarta', 'numeroProductos'];
+  displayedColumnsMenu: string[] = ['visible','nombreMenu', 'primeros', 'segundos','postres' , 'precio'];
 
 
   dataSourceMenu = ELEMENT_DATA_MENU;
@@ -93,20 +93,15 @@ export class MisCartasComponent implements OnInit {
   dataSourceCarta = ELEMENT_DATA_CARTA;
 
   public dataSourceResumenCarta: any
+  public dataSourceResumenMenu: any
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
     this.platos = this.getDishNames();
 
-    this.apiService.getAllDishes(this.username).subscribe(data => { this.dataSourceResumenCarta = data}, 
-    
-    )
-  
-    
-    
-    
-    
-    
+     this.apiService.getAllCards(this.username).subscribe(data => { this.dataSourceResumenCarta = data})  
+
+     this.apiService.getAllMenus(this.username).subscribe(data => { this.dataSourceResumenMenu = data})  
   }
 
   
@@ -155,6 +150,7 @@ export class MisCartasComponent implements OnInit {
       this.card.platos,
     ).subscribe( cardResponse => {
       if(cardResponse){
+        this.ngOnInit()
         console.log("INSERTADO")
       }else{
         console.log("MAL INSERTADO")
@@ -172,6 +168,7 @@ export class MisCartasComponent implements OnInit {
       this.menu.precio
     ).subscribe( menuResponse => {
       if(menuResponse){
+        this.ngOnInit()
         console.log("INSERTADO")
       }else{
         console.log("MAL INSERTADO")

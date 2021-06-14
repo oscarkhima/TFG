@@ -49,8 +49,6 @@ export class MisPlatosComponent implements OnInit {
   public platoCreadoString: string = "Se ha creado un nuevo plato";
    
 
-  ELEMENT_DATA_PLATOS =  [{ visible: true , nombreMenu: 'Diario', precio: 4} ]
-
   displayedColumnsPlatos: string[] = ['nombrePlato','numeroDeIngredientes', 'precio' ];
 
   public dataSourcePlatos: any
