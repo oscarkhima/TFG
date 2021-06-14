@@ -89,12 +89,24 @@ export class MisCartasComponent implements OnInit {
 
 
   dataSourceMenu = ELEMENT_DATA_MENU;
-
+  
   dataSourceCarta = ELEMENT_DATA_CARTA;
+
+  public dataSourceResumenCarta: any
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
     this.platos = this.getDishNames();
+
+    this.apiService.getAllDishes(this.username).subscribe(data => { this.dataSourceResumenCarta = data}, 
+    
+    )
+  
+    
+    
+    
+    
+    
   }
 
   
@@ -136,7 +148,7 @@ export class MisCartasComponent implements OnInit {
     this.menu.precio = 0;
   }
 
-  addCard(): void{
+  addCard(): void{ 
     this.apiService.createCards(
       this.username,
       this.card.nombre,
