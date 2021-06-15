@@ -19,6 +19,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.onCheckUser();
     this.username = this.authService.getCurrentUser();
+    this.option = "5"
   }
 
   chooseOption(option: any){
@@ -31,7 +32,10 @@ export class SidenavComponent implements OnInit {
       this.router.navigate([''])
     }
   }
-
+  logOut(){
+    this.authService.logOutUser()
+    this.router.navigate([''])
+  }
   
   
 }

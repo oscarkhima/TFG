@@ -1,4 +1,4 @@
-<div class="container"  *ngIf="cardInterface != undefined">
+<div class="container pedidoCard"  *ngIf="cardInterface != undefined" >
     <h1>{{cardInterface.nombre}}</h1>
     <div>
         <table mat-table [dataSource]="cardInterface.platos" class="tabla">

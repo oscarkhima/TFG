@@ -1,3 +1,6 @@
+<section>
+
+
 
  <div class="explicacionPedidosEntrantes">
     <div class="divIntro"><p>
@@ -9,13 +12,19 @@
 <div class="pedidos">
     <mat-card *ngFor="let item of pedidos; let i = index;">
         <mat-card-title>
-            NUMERO DE MESA {{item.tableNumber}}
+            <h4>Numero de mesa {{item.tableNumber}}</h4>
+            
         </mat-card-title>
         <mat-card-content>
-            PLATOS {{item.platos}}
+            <h4>Platos :</h4>
+            <h5>{{item.platos}}</h5>
+            
+            
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button (click)="onDelete(i)">X</button>
+            <button  mat-flat-button color="warn" (click)="onDelete(i)">finalizado</button>
         </mat-card-actions>
     </mat-card>
 </div>
+
+</section>
