@@ -3,9 +3,11 @@ h1{
 }
 .tabla{
     width: 100%;
-} 
-
-
-
-
-
+}
+.botones{
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}

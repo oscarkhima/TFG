@@ -1,6 +1,7 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { QrDataInterface } from 'src/app/models/qr-data-interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
@@ -14,9 +15,7 @@ import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 })
 export class GenerarQrComponent implements OnInit {
 
-  constructor(private dataApi: DishAndCardsService,private authService: AuthService) {
-   
-   }
+  constructor(private dataApi: DishAndCardsService,private authService: AuthService,private routing:AppRoutingModule) { }
 
   public qrData: QrDataInterface= <QrDataInterface>{};
 
@@ -29,7 +28,7 @@ export class GenerarQrComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'http://localhost:4200/';
+  value = 'http://'+this.routing.host+':4200/';
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
@@ -38,7 +37,7 @@ export class GenerarQrComponent implements OnInit {
   generarCodigo(){
 
     this.dataApi.getQrData(this.username).subscribe(data => this.qrData = data)
-    this.value = 'http://192.168.1.40:4200/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
+    this.value = 'http://'+this.routing.host+':4200/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
     console.log(this.value)
 
     

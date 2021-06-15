@@ -4,6 +4,7 @@ import {Observable} from "rxjs/internal/Observable";
 import {map} from "rxjs/Operators";
 import { UserInterface } from '../models/user-interface';
 import { authResponse } from '../models/response/auth-response';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @Injectable({
@@ -11,13 +12,13 @@ import { authResponse } from '../models/response/auth-response';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private routing: AppRoutingModule) { }
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type":"application/json"
   })
 
   registerUser(username: string,password: string,email: string, name: string, cartas: any,menus: any, platos: any, pedidos:any): Observable<any>{
-    const url_api = "http://localhost:8585/user/singIn";
+    const url_api = "http://"+this.routing.host+":8585/user/singIn";
     return this.http.post<UserInterface>( 
       url_api,
       {
@@ -36,7 +37,7 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string): Observable<any> {
-    const url_api = "http://localhost:8585/user/logIn";
+    const url_api = "http://"+this.routing.host+":8585/user/logIn";
     return this.http.post<UserInterface>(url_api,{
       email, 
       password, 

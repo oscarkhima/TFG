@@ -36,9 +36,10 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <div>
-            <button mat-flat-button (click)="postOrder()">REALIZAR PEDIDO</button>
-            <p>TOTAL: {{suma}}€</p>
+        <div class="botones">
+            <button mat-flat-button color="primary" (click)="postOrder()"><h3>REALIZAR PEDIDO</h3></button>
+            <br>
+            <h3>TOTAL: {{suma}}€</h3>
         </div>
     </div>
 
