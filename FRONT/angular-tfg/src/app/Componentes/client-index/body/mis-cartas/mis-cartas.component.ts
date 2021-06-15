@@ -23,17 +23,6 @@ export interface interfazCarta {
   
 }
 
-const  ELEMENT_DATA_MENU: interfazMenu[] = [
-  { visible: true , nombreMenu: 'Diario', precio: 4},
-  { visible: true , nombreMenu: 'Findes de semana', precio: 9}
-
-]
-
-const  ELEMENT_DATA_CARTA: interfazCarta[] = [
-  { visible: true , nombreCarta: 'Carta 3', numeroProductos: 20},
-  { visible: true , nombreCarta: 'Carta 4', numeroProductos: 16}
-
-]
 
 
 
@@ -66,6 +55,8 @@ export class MisCartasComponent implements OnInit {
 
   public numeroDePlatos: number = this.platos.length
 
+  public activado: string = ""
+
   public card: CardInterface = {
     nombre: "",
     platos: [],
@@ -88,9 +79,6 @@ export class MisCartasComponent implements OnInit {
   displayedColumnsMenu: string[] = ['visible','nombreMenu', 'primeros', 'segundos','postres' , 'precio'];
 
 
-  dataSourceMenu = ELEMENT_DATA_MENU;
-  
-  dataSourceCarta = ELEMENT_DATA_CARTA;
 
   public dataSourceResumenCarta: any
   public dataSourceResumenMenu: any
@@ -172,6 +160,62 @@ export class MisCartasComponent implements OnInit {
         console.log("INSERTADO")
       }else{
         console.log("MAL INSERTADO")
+      }
+    })
+  }
+
+  updateMenus(element: any){
+
+    let nombre: string ="";
+
+    if(element.activated){
+      element.activated = false;
+    }else{
+      element.activated = true;
+    }
+    
+    for(let i = 0;i < this.dataSourceResumenMenu.length;i++){
+      if(this.dataSourceResumenMenu[i].nombre !=  element.nombre){
+        this.dataSourceResumenMenu[i].activated = false;
+      }
+    }
+
+    
+
+    this.apiService.updateMenus(this.username,element.nombre, element.primeros,element.segundos, element.postres, element.precio,element.activated).subscribe( cardUpdate => {
+      if(cardUpdate){
+        this.ngOnInit()
+        console.log("ACTUALIZADO")
+      }else{
+        console.log("MAL ACTUALIZADO")
+      }
+    })
+  }
+
+  updateCards(element: any){
+
+    let nombre: string ="";
+
+    if(element.activated){
+      element.activated = false;
+    }else{
+      element.activated = true;
+    }
+    
+    for(let i = 0;i < this.dataSourceResumenCarta.length;i++){
+      if(this.dataSourceResumenCarta[i].nombre !=  element.nombre){
+        this.dataSourceResumenCarta[i].activated = false;
+      }
+    }
+
+    
+
+    this.apiService.updateCards(this.username,element.nombre, element.activated, element.platos).subscribe( cardUpdate => {
+      if(cardUpdate){
+        this.ngOnInit()
+        console.log("ACTUALIZADO")
+      }else{
+        console.log("MAL ACTUALIZADO")
       }
     })
   }

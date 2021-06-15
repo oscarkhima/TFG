@@ -126,6 +126,26 @@ public class UserController {
     //////////////////////////////////////////////CARDS///////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @PostMapping(path ="/card/update/{userName}")
+    public boolean updateCard (@RequestBody CardModel cardModel, @PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<CardModel> cartas = user.getCartas();
+        for (int i = 0;i<cartas.size();i++) {
+            if (cartas.get(i).getNombre().equals(cardModel.getNombre())){
+                cartas.set(i,cardModel);
+            }else{
+                cartas.get(i).setActivated(false);
+            }
+        }
+        user.setCartas(cartas);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
     @GetMapping("/card/{userName}")
     public ArrayList<CardModel> getAllCards(@PathVariable("userName") String userName){
         ArrayList<CardModel> cartas = new ArrayList<>();
@@ -182,6 +202,26 @@ public class UserController {
         ArrayList<MenuModel> cartas = new ArrayList<>();
         UserModel userModel = userRepository.findByUsername(userName);
         return cartas = userModel.getMenus();
+    }
+
+    @PostMapping(path ="/menu/update/{userName}")
+    public boolean updateMenu (@RequestBody MenuModel menuModel, @PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<MenuModel> menus = user.getMenus();
+        for (int i = 0;i<menus.size();i++) {
+            if (menus.get(i).getNombre().equals(menuModel.getNombre())){
+                menus.set(i,menuModel);
+            }else{
+                menus.get(i).setActivated(false);
+            }
+        }
+        user.setMenus(menus);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @PostMapping(path ="/menu/create/{userName}")

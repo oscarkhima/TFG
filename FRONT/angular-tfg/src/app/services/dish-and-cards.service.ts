@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/Operators';
 import { CardInterface } from '../models/cart-interface';
 import { DishInterface } from '../models/dish-interface';
+import { MenuInterface } from '../models/menu-interface';
 import { OrderInterface } from '../models/order-interface';
 import { CardInterfaceResponse } from '../models/response/card-interface-response';
 import { MenuInterfaceResponse } from '../models/response/menu-interface-response';
@@ -64,6 +65,19 @@ export class DishAndCardsService {
     .pipe(map(data => data));
   }
 
+  updateCards(username: string,nombre: string,activated: boolean, platos:any){
+    const url_api = "http://localhost:8585/card/update/"+username;
+    return this.http.post<CardInterface>( 
+      url_api,
+      {
+        nombre,
+        activated,
+        platos
+    }
+    )
+    .pipe(map(data => data));
+  }
+
   //ESCRIBIR IP PARA PRUEBAS EN LA PRESENTACION
   getCard(username: string, cardname: string): Observable<CardInterfaceResponse>{
     const url_api = 'http://localhost:8585/card/' + username + "/" + cardname;
@@ -78,6 +92,18 @@ export class DishAndCardsService {
   /////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////MENUS/////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
+
+  updateMenus(username: string,nombre: string,primeros: string[],segundos: string[],postres: string[],precio: number,activated: boolean): Observable<any>{
+    const url_api = "http://localhost:8585/menu/update/"+username;
+    return this.http.post<MenuInterface>( 
+      url_api,
+      {
+      nombre,primeros,segundos,postres,precio,activated
+    },
+    { headers: this.headers }
+    )
+    .pipe(map(data => data));
+  }
 
   createMenu(username: string,nombre: string,primeros: string[],segundos: string[],postres: string[],precio: number): Observable<any>{
     const url_api = "http://localhost:8585/menu/create/"+username;

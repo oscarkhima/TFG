@@ -66,6 +66,7 @@ import { MenuComponent } from './Componentes/web-card/menu/menu.component';
 import { CardComponent } from './Componentes/web-card/card/card.component';
 import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-card-nav.component';
 import { InicioClientComponent } from './Componentes/client-index/body/inicio-client/inicio-client.component';
+import { GenerarQrComponent } from './Componentes/client-index/body/mis-cartas/generar-qr/generar-qr.component';
 
 
 
@@ -110,7 +111,8 @@ import { InicioClientComponent } from './Componentes/client-index/body/inicio-cl
     MenuComponent,
     CardComponent,
     WebCardNavComponent,
-    InicioClientComponent
+    InicioClientComponent,
+    GenerarQrComponent
   ],
   imports: [
     MatTableModule,
