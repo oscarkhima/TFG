@@ -65,6 +65,7 @@ import { WebCardComponent } from './Componentes/web-card/web-card.component';
 import { MenuComponent } from './Componentes/web-card/menu/menu.component';
 import { CardComponent } from './Componentes/web-card/card/card.component';
 import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-card-nav.component';
+import { InicioClientComponent } from './Componentes/client-index/body/inicio-client/inicio-client.component';
 
 
 
@@ -108,7 +109,8 @@ import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-car
     WebCardComponent,
     MenuComponent,
     CardComponent,
-    WebCardNavComponent
+    WebCardNavComponent,
+    InicioClientComponent
   ],
   imports: [
     MatTableModule,
