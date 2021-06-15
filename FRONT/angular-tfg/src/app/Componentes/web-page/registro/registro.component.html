@@ -8,7 +8,7 @@
         </div>
         <form fxLayoutAlign="stretch" fxLayout="column" #formRegister="ngForm" (ngSubmit)="onRegister()">
             <mat-form-field >
-              <input type="text"  matInput placeholder="Nombre de usuario" [(ngModel)]="user.username" name="username" required>
+              <input type="text"  matInput placeholder="Nombre de usuario (Sin espacios)" [(ngModel)]="user.username" pattern="^\S*" name="username" required>
             </mat-form-field>
           
             <mat-form-field >

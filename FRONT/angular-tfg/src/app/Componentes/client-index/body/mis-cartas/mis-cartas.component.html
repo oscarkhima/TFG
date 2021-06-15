@@ -101,8 +101,8 @@
                 <form class="crearCarta" #formCard="ngForm">
                     <p>
                         <mat-form-field>
-                            <mat-label class="pop-semibold">Nombre</mat-label>
-                            <input type="text" name="nombre" [(ngModel)]="card.nombre" matInput placeholder="Escribe el nombre"
+                            <mat-label class="pop-semibold">Nombre (Sin Espacios)</mat-label>
+                            <input type="text" name="nombre" [(ngModel)]="card.nombre" pattern= "^\S*" matInput placeholder="Escribe el nombre"
                                 required>
                         </mat-form-field>
                     </p>
@@ -138,8 +138,8 @@
                 <form class="crearCarta" #formMenu="ngForm">
                     <p>
                         <mat-form-field>
-                            <mat-label class="pop-semibold">Nombre</mat-label>
-                            <input type="text" name="nombre" [(ngModel)]="menu.nombre" matInput placeholder="Escribe el nombre"
+                            <mat-label class="pop-semibold">Nombre (Sin espacios)</mat-label>
+                            <input type="text" name="nombre" pattern= "^\S*" [(ngModel)]="menu.nombre" matInput placeholder="Escribe el nombre"
                                 required>
                         </mat-form-field>
                     </p>

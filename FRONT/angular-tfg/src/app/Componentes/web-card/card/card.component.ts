@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NodeCompatibleEventEmitter } from 'rxjs/internal/observable/fromEvent';
@@ -7,6 +8,8 @@ import { DishInterface } from 'src/app/models/dish-interface';
 import { OrderInterface } from 'src/app/models/order-interface';
 import { CardInterfaceResponse } from 'src/app/models/response/card-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
+import { DialogOrderFalseComponent } from '../dialog-order-false/dialog-order-false.component';
+import { DialogOrderComponent } from '../dialog-order/dialog-order.component';
 
 @Component({
   selector: 'app-card',
@@ -27,7 +30,7 @@ export class CardComponent implements OnInit {
 
   public total: number[] = [];
 
-  @Input() suma: number = 0;
+  public suma: number = 0;
 
   public platosPedido: string[] = [];
 
@@ -39,7 +42,7 @@ export class CardComponent implements OnInit {
   }
 
 
-  constructor(private apiService: DishAndCardsService,private dishAndCards: DishAndCardsService, private route: ActivatedRoute) { }
+  constructor(private dialog: MatDialog,private apiService: DishAndCardsService,private dishAndCards: DishAndCardsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     //http://localhost:4200/card?username=Ocal&cardname=el caltin
@@ -107,10 +110,10 @@ export class CardComponent implements OnInit {
       this.pedido.platos,
       this.pedido.totalPrice
     ).subscribe( orderResponse => {
-      if(orderResponse){
-        console.log("INSERTADO")
-      }else{
-        console.log("MAL INSERTADO")
+      if (orderResponse) {
+        this.dialog.open(DialogOrderComponent);
+      } else {
+        this.dialog.open(DialogOrderFalseComponent);
       }
     })
   }
