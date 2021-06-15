@@ -22,9 +22,6 @@ export class ConfiguracionComponent implements OnInit {
     this.router.navigate([''])
   }
 
-  name = 'Angular ' + VERSION.major;
-  elementType = NgxQrcodeElementTypes.URL;
-  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'http://192.168.1.143:4200/';
+
 
 }
