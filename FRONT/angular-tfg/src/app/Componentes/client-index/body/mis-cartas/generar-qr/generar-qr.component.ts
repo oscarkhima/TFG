@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 
+
 @Component({
   selector: 'app-generar-qr',
   templateUrl: './generar-qr.component.html',
@@ -13,7 +14,9 @@ import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 })
 export class GenerarQrComponent implements OnInit {
 
-  constructor(private dataApi: DishAndCardsService,private authService: AuthService) { }
+  constructor(private dataApi: DishAndCardsService,private authService: AuthService) {
+   
+   }
 
   public qrData: QrDataInterface= <QrDataInterface>{};
 
@@ -35,9 +38,12 @@ export class GenerarQrComponent implements OnInit {
   generarCodigo(){
 
     this.dataApi.getQrData(this.username).subscribe(data => this.qrData = data)
-    this.value = 'http://localhost:4200/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
+    this.value = 'http://192.168.1.40:4200/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
     console.log(this.value)
-  
+
+    
   }
+
+
 
 }

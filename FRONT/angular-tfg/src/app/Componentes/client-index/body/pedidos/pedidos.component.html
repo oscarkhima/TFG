@@ -4,7 +4,7 @@
 
  <div class="explicacionPedidosEntrantes">
     <div class="divIntro"><p>
-        Desde aqui podrás ver los pedidos que hace cada cliente en tiempo real, una vez finalizado, descartarás el pedido
+        Desde aqui podrás ver los pedidos que hace cada cliente en tiempo real. Cada pedido entrante contine el numero de mesa y los platos a pedir  una vez finalizado, descartarás el pedido
     </p></div>
     <button mat-icon-button (click)="startUpdate()"><mat-icon>play_circle</mat-icon> PULSA AQUI PARA EMPEZAR A ACTUALIZAR LOS PEDIDOS</button>
     <br>
@@ -14,7 +14,7 @@
 <div class="pedidos">
     <mat-card *ngFor="let item of pedidos; let i = index;">
         <mat-card-title>
-            <h4>Numero de mesa {{item.tableNumber}}</h4>
+            <h4>Numero de mesa : {{item.tableNumber}}</h4>
             
         </mat-card-title>
         <mat-card-content>

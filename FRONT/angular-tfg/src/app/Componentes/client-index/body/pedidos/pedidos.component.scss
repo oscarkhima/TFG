@@ -12,12 +12,21 @@
 }
 
 .pedidos{
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap:wrap ;
+    max-width: fit-content;
+    overflow-wrap: break-word;
 
 }
 mat-card-content{
-    width: 100%;
+    max-width: fit-content;
+    
+
+    h5{
+        max-width: fit-content;
+    }
 }
 mat-card{
     margin: 10px;
@@ -26,10 +35,18 @@ mat-card{
     padding-left: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
+    
+    
+    
 
     button{
         width: 100%;
     }
+}
+
+section{
+    width: 100%;
+    padding: 1px;
 }
 
 

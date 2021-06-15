@@ -7,7 +7,7 @@ import { MenuInterface } from 'src/app/models/menu-interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 export interface interfazMenu {
   visible: boolean;
@@ -37,7 +37,7 @@ export interface interfazCarta {
 
 export class MisCartasComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService) { }
+  constructor(private fb: FormBuilder,private apiService: DishAndCardsService, private authService: AuthService, private _snackBar: MatSnackBar) { }
 
   public formArray: FormArray = new FormArray([new FormControl('')]);
   public formArrayPrimeros: FormArray = new FormArray([new FormControl('')]);
@@ -50,6 +50,7 @@ export class MisCartasComponent implements OnInit {
 
   public nombresPlatos: Observable<Object> | undefined;
 
+public durationInSeconds: number = 3
   
   public username: any;
 
@@ -140,6 +141,7 @@ export class MisCartasComponent implements OnInit {
       if(cardResponse){
         this.ngOnInit()
         console.log("INSERTADO")
+        this.openSnackBar()
       }else{
         console.log("MAL INSERTADO")
       }
@@ -158,6 +160,7 @@ export class MisCartasComponent implements OnInit {
       if(menuResponse){
         this.ngOnInit()
         console.log("INSERTADO")
+        this.openSnackBar()
       }else{
         console.log("MAL INSERTADO")
       }
@@ -224,7 +227,13 @@ export class MisCartasComponent implements OnInit {
   getFormGroup(i: number) {
     return this.formArray.at(i) as FormGroup;
   }
+  openSnackBar() {
+    this._snackBar.open("Menu/Carta Creada ", "close", {
+      duration: this.durationInSeconds * 1000,
+    })
 
+    
+  }
   
 
 }

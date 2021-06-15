@@ -44,7 +44,7 @@ export class MisPlatosComponent implements OnInit {
     precio: 0
   }
 
-  durationInSeconds = 5;
+  public durationInSeconds: number = 3
 
   public platoCreadoString: string = "Se ha creado un nuevo plato";
    
@@ -63,7 +63,9 @@ export class MisPlatosComponent implements OnInit {
 
 
   openSnackBar() {
-    this._snackBar.open("Plato creado", "close")
+    this._snackBar.open("Plato creado", "close",{
+      duration: this.durationInSeconds * 1000,
+    })
 
     
   }
