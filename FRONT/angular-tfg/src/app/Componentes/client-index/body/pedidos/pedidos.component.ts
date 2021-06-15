@@ -13,6 +13,8 @@ export class PedidosComponent implements OnInit {
   public pedidos: any;
   public username: any;
 
+  public bucle: boolean = false;
+
   constructor(private apiService: DishAndCardsService,private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -31,5 +33,15 @@ export class PedidosComponent implements OnInit {
     })
   }
 
+  startUpdate(){
+    this.ngOnInit
+  }
+
+  stopUpdate(){
+    
+  }
+
   
+
+
 }

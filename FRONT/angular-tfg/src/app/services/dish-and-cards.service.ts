@@ -6,6 +6,7 @@ import { CardInterface } from '../models/cart-interface';
 import { DishInterface } from '../models/dish-interface';
 import { MenuInterface } from '../models/menu-interface';
 import { OrderInterface } from '../models/order-interface';
+import { QrDataInterface } from '../models/qr-data-interface';
 import { CardInterfaceResponse } from '../models/response/card-interface-response';
 import { MenuInterfaceResponse } from '../models/response/menu-interface-response';
 import { AuthService } from './auth.service';
@@ -20,6 +21,12 @@ export class DishAndCardsService {
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type":"application/json"
   })
+
+  getQrData(username: string){
+    const url_api = 'http://localhost:8585/getQr/' + username;
+    return this.http.get<QrDataInterface>(url_api);
+  }
+
 
   
   getAllDishNames(username: string){

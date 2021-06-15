@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {map} from "rxjs/Operators";
 import { DishInterface } from '../models/dish-interface';
+import { QrDataInterface } from '../models/qr-data-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class DataApiService {
     const url_api = 'http://localhost:8585/user/all';
     return this.http.get(url_api);
   }
+
 
 
 }
