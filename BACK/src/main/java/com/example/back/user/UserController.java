@@ -6,6 +6,7 @@ import com.example.back.dish.DishModel;
 import com.example.back.menu.MenuModel;
 import com.example.back.menu.MenuModelRequest;
 import com.example.back.pedido.OrderModel;
+import com.example.back.qrData.QrData;
 import com.example.back.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -161,6 +162,12 @@ public class UserController {
         ArrayList<DishModel> platos = new ArrayList<>();
         cart.setActivated(cardModelRequest.isActivated());
         cart.setNombre(cardModelRequest.getNombre());
+        for (CardModel cardModel:
+                cartas) {
+            if (cardModelRequest.getNombre().equals(cardModel.getNombre())){
+                return false;
+            }
+        }
         for(String nombrePlatos: cardModelRequest.getPlatos()){
             for (DishModel plato: user.getPlatos()){
                 if (plato.getNombre().equals(nombrePlatos)){
@@ -235,6 +242,12 @@ public class UserController {
         Double precio = 0.0;
         menu.setActivated(menuModelRequest.isActivated());
         menu.setNombre(menuModelRequest.getNombre());
+        for (MenuModel menuModel:
+             menus) {
+            if (menuModelRequest.getNombre().equals(menuModel.getNombre())){
+                return false;
+            }
+        }
         for(String nombrePlatos: menuModelRequest.getPrimeros()){
             for (DishModel plato: user.getPlatos()){
                 if (plato.getNombre().equals(nombrePlatos)){
@@ -320,6 +333,32 @@ public class UserController {
             return false;
         }
         return true;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////CODIGOS/////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @GetMapping("/getQr/{userName}")
+    public QrData getQrData(@PathVariable("userName") String userName){
+        QrData qrData = new QrData();
+        UserModel userModel = userRepository.findByUsername(userName);
+        ArrayList<CardModel> cartas = userModel.getCartas();
+        ArrayList<MenuModel> menus = userModel.getMenus();
+        for (CardModel carta:
+             cartas) {
+            if (carta.isActivated()){
+                qrData.setNombreCarta(carta.getNombre());
+            }
+        }
+        for (MenuModel menuModel:
+                menus) {
+            if (menuModel.isActivated()){
+                qrData.setNombreMenu(menuModel.getNombre());
+            }
+        }
+        qrData.setNombreUsuario(userName);
+        return qrData;
     }
 
 }
