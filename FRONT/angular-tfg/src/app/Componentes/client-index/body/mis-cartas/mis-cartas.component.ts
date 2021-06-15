@@ -208,7 +208,7 @@ export class MisCartasComponent implements OnInit {
       }
     }
 
-    
+     
 
     this.apiService.updateCards(this.username,element.nombre, element.activated, element.platos).subscribe( cardUpdate => {
       if(cardUpdate){

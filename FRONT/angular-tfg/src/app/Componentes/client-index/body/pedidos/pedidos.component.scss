@@ -13,8 +13,26 @@
 
 .pedidos{
     display: flex;
+    flex-direction: column;
+
+}
+mat-card-content{
+    width: 100%;
+}
+mat-card{
+    margin: 10px;
+    max-width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    button{
+        width: 100%;
+    }
 }
 
-mat-card{
-    width: 25%;
-}
+
+
+
+

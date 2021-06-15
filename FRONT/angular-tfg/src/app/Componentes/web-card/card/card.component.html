@@ -1,4 +1,4 @@
-<div class="container"  *ngIf="cardInterface != undefined">
+<div class="container pedidoCard"  *ngIf="cardInterface != undefined" >
     <h1>{{cardInterface.nombre}}</h1>
     <div>
         <table mat-table [dataSource]="cardInterface.platos" class="tabla">
@@ -37,7 +37,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
         <div>
-            <button mat-button (click)="postOrder()">REALIZAR PEDIDO</button>
+            <button mat-flat-button (click)="postOrder()">REALIZAR PEDIDO</button>
             <p>TOTAL: {{suma}}€</p>
         </div>
     </div>
