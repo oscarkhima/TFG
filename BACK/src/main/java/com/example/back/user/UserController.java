@@ -351,11 +351,17 @@ public class UserController {
                 qrData.setNombreCarta(carta.getNombre());
             }
         }
+        if(qrData.getNombreCarta().isBlank()){
+            qrData.setNombreCarta("");
+        }
         for (MenuModel menuModel:
                 menus) {
             if (menuModel.isActivated()){
                 qrData.setNombreMenu(menuModel.getNombre());
             }
+        }
+        if(qrData.getNombreMenu().isBlank()){
+            qrData.setNombreMenu("");
         }
         qrData.setNombreUsuario(userName);
         return qrData;

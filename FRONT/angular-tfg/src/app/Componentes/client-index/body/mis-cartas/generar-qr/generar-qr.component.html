@@ -7,6 +7,6 @@
     cssClass="boxshadow"></ngx-qrcode>
     <h4>ESCRIBE EL NUMERO DE LA MESA</h4>
     <textarea  [(ngModel)]="numeroMesa"></textarea>
-    <button mat-button (click)="generarCodigo()">GENERAR CODIGO</button>
+    <button mat-button (click)="generarCodigo()" pattern= "^\S*" >GENERAR CODIGO</button>
 </div>
 

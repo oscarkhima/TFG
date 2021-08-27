@@ -34,7 +34,7 @@ export class PedidosComponent implements OnInit {
   }
 
   startUpdate(){
-    this.ngOnInit
+    this.ngOnInit();
   }
 
   stopUpdate(){
