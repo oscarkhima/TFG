@@ -127,6 +127,7 @@ public class UserController {
     @DeleteMapping(path ="/dish/delete/{userName}/{dishName}")
     public boolean deleteDish (@PathVariable("dishName") String dishName,@PathVariable("userName") String userName){
         UserModel user = userRepository.findByUsername(userName);
+        //ELIMINAR DE LOS PLATOS
         ArrayList<DishModel> platosUser = user.getPlatos();
         for(DishModel plato : platosUser){
             if (plato.getNombre().equals(dishName)){
@@ -134,7 +135,49 @@ public class UserController {
                 break;
             }
         }
-
+        //ELIMINAR DE LOS MENUS
+        ArrayList<MenuModel> menus = user.getMenus();
+        for (MenuModel menu : menus){
+            //PRIMEROS
+            for (DishModel primero : menu.getPrimeros()){
+                if (primero.getNombre().equals(dishName)){
+                    ArrayList<DishModel> primeros = menu.getPrimeros();
+                    primeros.remove(menu.getPrimeros().indexOf(primero));
+                    menu.setPrimeros(primeros);
+                    break;
+                }
+            }
+            //SEGUNDOS
+            for (DishModel segundo : menu.getSegundos()){
+                if (segundo.getNombre().equals(dishName)){
+                    ArrayList<DishModel> segundos = menu.getSegundos();
+                    segundos.remove(menu.getSegundos().indexOf(segundo));
+                    menu.setSegundos(segundos);
+                    break;
+                }
+            }
+            //TERCEROS
+            for (DishModel postre : menu.getPostres()){
+                if (postre.getNombre().equals(dishName)){
+                    ArrayList<DishModel> postres = menu.getPostres();
+                    postres.remove(menu.getPostres().indexOf(postre));
+                    menu.setPostres(postres);
+                    break;
+                }
+            }
+        }
+        //ELIMINAR DE LAS CARTAS
+        ArrayList<CardModel> cartasUser = user.getCartas();
+        for(CardModel carta : cartasUser){
+            for(DishModel plato : carta.getPlatos()){
+                if (plato.getNombre().equals(dishName)){
+                    ArrayList<DishModel> platos = carta.getPlatos();
+                    platos.remove(carta.getPlatos().indexOf(plato));
+                    carta.setPlatos(platos);
+                    break;
+                }
+            }
+        }
         user.setPlatos(platosUser);
         try {
             userRepository.save(user);
