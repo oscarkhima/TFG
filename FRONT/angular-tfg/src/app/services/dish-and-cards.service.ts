@@ -24,25 +24,25 @@ export class DishAndCardsService {
   })
 
   getQrData(username: string){
-    const url_api = 'http://'+this.routing.host+':8585/getQr/' + username;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/getQr/' + username;
     return this.http.get<QrDataInterface>(url_api);
   }
 
 
   
   getAllDishNames(username: string){
-    const url_api = 'http://'+this.routing.host+':8585/dishNames/' + username;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/dishNames/' + username;
     return this.http.get(url_api);
   }
 
   getAllDishes(username: string){
-    const url_api = 'http://'+this.routing.host+':8585/dish/' + username;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/dish/' + username;
     return this.http.get(url_api);
   }
 
 
   createDish(username: string,nombre: string,descripcion: string,ingredientes: any, precio: number): Observable<any>{
-    const url_api = "http://"+this.routing.host+":8585/dish/create/"+username;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/dish/create/"+username;
     return this.http.post<DishInterface>( 
       url_api,
       {
@@ -56,12 +56,17 @@ export class DishAndCardsService {
     .pipe(map(data => data));
   }
 
+  deleteDish(username: string,dishName: string): Observable<any>{
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/dish/delete/"+username+"/"+dishName;
+    return this.http.delete(url_api);
+  }
+
   /////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////CARDS/////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
 
   createCards(username: string,nombre: string,platos: string[]): Observable<any>{
-    const url_api = "http://"+this.routing.host+":8585/card/create/"+username;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/card/create/"+username;
     return this.http.post<DishInterface>( 
       url_api,
       {
@@ -74,7 +79,7 @@ export class DishAndCardsService {
   }
 
   updateCards(username: string,nombre: string,activated: boolean, platos:any){
-    const url_api = "http://"+this.routing.host+":8585/card/update/"+username;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/card/update/"+username;
     return this.http.post<CardInterface>( 
       url_api,
       {
@@ -88,12 +93,12 @@ export class DishAndCardsService {
 
   //ESCRIBIR IP PARA PRUEBAS EN LA PRESENTACION
   getCard(username: string, cardname: string): Observable<CardInterfaceResponse>{
-    const url_api = 'http://'+this.routing.host+':8585/card/' + username + "/" + cardname;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/card/' + username + "/" + cardname;
     return this.http.get<CardInterfaceResponse>(url_api);
   }
 
   getAllCards(username: string){
-    const url_api = 'http://'+this.routing.host+':8585/card/' + username;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/card/' + username;
     return this.http.get(url_api);
   }
 
@@ -102,7 +107,7 @@ export class DishAndCardsService {
   /////////////////////////////////////////////////////////////////////////////////
 
   updateMenus(username: string,nombre: string,primeros: string[],segundos: string[],postres: string[],precio: number,activated: boolean): Observable<any>{
-    const url_api = "http://"+this.routing.host+":8585/menu/update/"+username;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/menu/update/"+username;
     return this.http.post<MenuInterface>( 
       url_api,
       {
@@ -114,7 +119,7 @@ export class DishAndCardsService {
   }
 
   createMenu(username: string,nombre: string,primeros: string[],segundos: string[],postres: string[],precio: number): Observable<any>{
-    const url_api = "http://"+this.routing.host+":8585/menu/create/"+username;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/menu/create/"+username;
     return this.http.post<DishInterface>( 
       url_api,
       {
@@ -131,12 +136,12 @@ export class DishAndCardsService {
 
   //ESCRIBIR IP PARA PRUEBAS EN LA PRESENTACION
   getMenu(username: string, menuname: string): Observable<MenuInterfaceResponse>{
-    const url_api = 'http://'+this.routing.host+':8585/menu/' + username + "/" + menuname;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/menu/' + username + "/" + menuname;
     return this.http.get<MenuInterfaceResponse>(url_api);
   }
 
   getAllMenus(username: string){
-    const url_api = 'http://'+this.routing.host+':8585/menu/' + username;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/menu/' + username;
     return this.http.get(url_api);
   }
 
@@ -145,7 +150,7 @@ export class DishAndCardsService {
   /////////////////////////////////////////////////////////////////////////////////
 
   createOrder(username: string, tableNumber: number, platos: any,totalPrice: number): Observable<any>{
-    const url_api = "http://"+this.routing.host+":8585/order/create/"+username;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/order/create/"+username;
     return this.http.post<OrderInterface>( 
       url_api,
       {
@@ -160,12 +165,12 @@ export class DishAndCardsService {
   }
 
   getAllOrders(username: string){
-    const url_api = 'http://'+this.routing.host+':8585/order/' + username;
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/order/' + username;
     return this.http.get(url_api);
   }
 
   deleteOrder(username: string,index: number): Observable<any>{
-    const url_api = "http://"+this.routing.host+":8585/order/delete/"+username+"/"+index;
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/order/delete/"+username+"/"+index;
     return this.http.delete(url_api);
   }
 

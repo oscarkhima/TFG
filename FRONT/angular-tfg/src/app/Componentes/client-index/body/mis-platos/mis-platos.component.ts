@@ -49,7 +49,7 @@ export class MisPlatosComponent implements OnInit {
   public platoCreadoString: string = "Se ha creado un nuevo plato";
    
 
-  displayedColumnsPlatos: string[] = ['nombrePlato','numeroDeIngredientes', 'precio' ];
+  displayedColumnsPlatos: string[] = ['nombrePlato','numeroDeIngredientes', 'precio' ,'delete'];
 
   public dataSourcePlatos: any
 
@@ -75,10 +75,24 @@ export class MisPlatosComponent implements OnInit {
     this.formArray.push(new FormControl(''));
   }
 
+  onDelete(i: string){
+    console.log(i)
+    console.log(this.dataSourcePlatos)
+    //SE PODRIA ELIMINAR EN LA BBDD Y SOBREESCRIBIR DATASOURCEPLATOS
+    this.apiService.deleteDish(this.username,i).subscribe( deleteResponse => {
+      if(deleteResponse){
+        console.log("BORRADO")
+        this.apiService.getAllDishes(this.username).subscribe(data => { this.dataSourcePlatos = data})
+      }else{
+        console.log("MAL BORRADO")
+      }
+    })
+  }
 
-  onDelete(): void{
+  onDeleteIngredient(): void{
     this.formArray.removeAt(this.formArray.value)
   }
+  
 
   openDialog(){
     this.dialog.open(DialogMisPlatosComponent);

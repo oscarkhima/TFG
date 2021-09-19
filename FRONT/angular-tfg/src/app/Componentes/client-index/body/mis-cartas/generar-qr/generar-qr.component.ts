@@ -28,7 +28,7 @@ export class GenerarQrComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'http://'+this.routing.host+':4200/';
+  value = 'http://'+this.routing.host+ this.routing.frontPort+'/';
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
@@ -37,7 +37,7 @@ export class GenerarQrComponent implements OnInit {
   generarCodigo(){
 
     this.dataApi.getQrData(this.username).subscribe(data => this.qrData = data)
-    this.value = 'http://'+this.routing.host+':4200/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
+    this.value = 'http://'+this.routing.host+ this.routing.frontPort +'/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
     console.log(this.value)
 
     

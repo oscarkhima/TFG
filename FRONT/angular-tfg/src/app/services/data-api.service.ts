@@ -17,7 +17,7 @@ export class DataApiService {
   })
 
   getAllUsers(){
-    const url_api = 'http://'+this.routing.host+':8585/user/all';
+    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/user/all';
     return this.http.get(url_api);
   }
 

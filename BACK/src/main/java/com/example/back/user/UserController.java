@@ -15,6 +15,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -115,6 +116,26 @@ public class UserController {
         }
         platos.add(dishModel);
         user.setPlatos(platos);
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    @DeleteMapping(path ="/dish/delete/{userName}/{dishName}")
+    public boolean deleteDish (@PathVariable("dishName") String dishName,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        ArrayList<DishModel> platosUser = user.getPlatos();
+        for(DishModel plato : platosUser){
+            if (plato.getNombre().equals(dishName)){
+                platosUser.remove(platosUser.indexOf(plato));
+                break;
+            }
+        }
+
+        user.setPlatos(platosUser);
         try {
             userRepository.save(user);
         }catch (Exception e){
