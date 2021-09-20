@@ -263,6 +263,51 @@ public class UserController {
         return null;
     }
 
+    @DeleteMapping(path ="/card/delete/{userName}/{cardName}")
+    public boolean deleteCard (@PathVariable("cardName") String cardName,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        //ELIMINAR DE LAS CARTAS
+        ArrayList<CardModel> cartasUser = user.getCartas();
+        for(CardModel carta : cartasUser){
+            if (carta.getNombre().equals(cardName)){
+                cartasUser.remove(cartasUser.indexOf(carta));
+                user.setCartas(cartasUser);
+                break;
+            }
+        }
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
+    @DeleteMapping(path ="/card/delete/{userName}/{cardName}/{dishName}")
+    public boolean deleteDishFromCard (@PathVariable("dishName") String dishName,@PathVariable("cardName") String cardName,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        //ELIMINAR DE LAS CARTAS
+        ArrayList<CardModel> cartasUser = user.getCartas();
+        for(CardModel carta : cartasUser){
+            if (carta.getNombre().equals(cardName)){
+                for(DishModel plato : carta.getPlatos()){
+                    if (plato.getNombre().equals(dishName)){
+                        ArrayList<DishModel> platos = carta.getPlatos();
+                        platos.remove(carta.getPlatos().indexOf(plato));
+                        carta.setPlatos(platos);
+                        break;
+                    }
+                }
+            }
+        }
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////MENUS///////////////////////////////////////////////
@@ -358,6 +403,26 @@ public class UserController {
             }
         }
         return null;
+    }
+
+    @DeleteMapping(path ="/menu/delete/{userName}/{menuname}")
+    public boolean deleteMenu (@PathVariable("menuname") String menuName,@PathVariable("userName") String userName){
+        UserModel user = userRepository.findByUsername(userName);
+        //ELIMINAR DE LAS CARTAS
+        ArrayList<MenuModel> userMenus = user.getMenus();
+        for(MenuModel menu : userMenus){
+            if (menu.getNombre().equals(menuName)){
+                userMenus.remove(userMenus.indexOf(menu));
+                user.setMenus(userMenus);
+                break;
+            }
+        }
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////

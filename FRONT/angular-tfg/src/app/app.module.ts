@@ -69,7 +69,7 @@ import { InicioClientComponent } from './Componentes/client-index/body/inicio-cl
 import { GenerarQrComponent } from './Componentes/client-index/body/mis-cartas/generar-qr/generar-qr.component';
 import { DialogOrderComponent } from './Componentes/web-card/dialog-order/dialog-order.component';
 import { DialogOrderFalseComponent } from './Componentes/web-card/dialog-order-false/dialog-order-false.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -119,6 +119,7 @@ import { DialogOrderFalseComponent } from './Componentes/web-card/dialog-order-f
     InicioClientComponent
   ],
   imports: [
+    MatExpansionModule,
     MatTableModule,
     MatTabsModule,
     MatRadioModule,

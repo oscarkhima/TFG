@@ -91,10 +91,24 @@ export class DishAndCardsService {
     .pipe(map(data => data));
   }
 
-  //ESCRIBIR IP PARA PRUEBAS EN LA PRESENTACION
   getCard(username: string, cardname: string): Observable<CardInterfaceResponse>{
     const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/card/' + username + "/" + cardname;
     return this.http.get<CardInterfaceResponse>(url_api);
+  }
+
+  deleteMenu(username:string,menuname:string){
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/menu/delete/"+username+"/"+menuname;
+    return this.http.delete(url_api);
+  }
+
+  deleteCard(username:string,cardname:string){
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/card/delete/"+username+"/"+cardname;
+    return this.http.delete(url_api);
+  }
+
+  deleteFromCard(username:string,cardname:string,dishname:string){
+    const url_api = "http://"+this.routing.host+ this.routing.backPort +"/card/delete/"+username+"/"+cardname+"/"+dishname;
+    return this.http.delete(url_api);
   }
 
   getAllCards(username: string){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CardInterface } from 'src/app/models/cart-interface';
@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatAccordion} from '@angular/material/expansion';
 
 export interface interfazMenu {
   visible: boolean;
@@ -50,13 +51,16 @@ export class MisCartasComponent implements OnInit {
 
   public nombresPlatos: Observable<Object> | undefined;
 
-public durationInSeconds: number = 3
+  public durationInSeconds: number = 3
   
   public username: any;
 
   public numeroDePlatos: number = this.platos.length
 
   public activado: string = ""
+
+  public cartaMostrada: string = ""
+  public menuMostrado: string = ""
 
   public card: CardInterface = {
     nombre: "",
@@ -73,16 +77,22 @@ public durationInSeconds: number = 3
     activated: false,
   }
 
-
-   
-
-  displayedColumnsCarta: string[] = ['visible','nombreCarta', 'numeroProductos'];
-  displayedColumnsMenu: string[] = ['visible','nombreMenu', 'primeros', 'segundos','postres' , 'precio'];
+  public panelOpenState = false;
 
 
+  displayedColumnsCarta: string[] = ['visible','nombreCarta', 'numeroProductos','delete'];
+  displayedColumnsCartaUnica: string[] = ['nombrePlato','ingredientesPlato', 'precioPlato','delete'];
+  displayedColumnsMenu: string[] = ['visible','nombreMenu', 'primeros', 'segundos','postres' , 'precio','delete'];
+  displayedColumnsMenuPrimeros: string[] = ['nombrePlato','ingredientesPlato','delete'];
+  displayedColumnsMenuSegundos: string[] = ['nombrePlato','ingredientesPlato','delete'];
+  displayedColumnsMenuPostres: string[] = ['nombrePlato','ingredientesPlato','delete'];
 
   public dataSourceResumenCarta: any
+  public dataSourceCarta: any
   public dataSourceResumenMenu: any
+  public dataSourceMenuPrimeros: any
+  public dataSourceMenuSegundos: any
+  public dataSourceMenuPostres: any
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
@@ -141,7 +151,7 @@ public durationInSeconds: number = 3
       if(cardResponse){
         this.ngOnInit()
         console.log("INSERTADO")
-        this.openSnackBar()
+        this.openSnackBar("Carta creada correctamente")
       }else{
         console.log("MAL INSERTADO")
       }
@@ -160,7 +170,7 @@ public durationInSeconds: number = 3
       if(menuResponse){
         this.ngOnInit()
         console.log("INSERTADO")
-        this.openSnackBar()
+        this.openSnackBar("Menú creado correctamente")
       }else{
         console.log("MAL INSERTADO")
       }
@@ -191,6 +201,57 @@ public durationInSeconds: number = 3
         console.log("ACTUALIZADO")
       }else{
         console.log("MAL ACTUALIZADO")
+      }
+    })
+  }
+
+  showCard(element:any){
+    this.panelOpenState = true;
+    this.cartaMostrada = element.nombre;
+    this.apiService.getCard(this.username,element.nombre).subscribe(data => { this.dataSourceCarta = data.platos})  
+  }
+
+  showMenu(element:any){
+    this.panelOpenState = true;
+    this.cartaMostrada = element.nombre;
+    this.apiService.getMenu(this.username,element.nombre).subscribe(data => { this.dataSourceMenuPrimeros = data.primeros}) 
+    this.apiService.getMenu(this.username,element.nombre).subscribe(data => { this.dataSourceMenuSegundos = data.segundos}) 
+    this.apiService.getMenu(this.username,element.nombre).subscribe(data => { this.dataSourceMenuPostres = data.postres}) 
+    
+  }
+
+  onDeleteCard(nombre:string){
+    this.apiService.deleteCard(this.username,nombre).subscribe( deleteResponse => {
+      if(deleteResponse){
+        this.openSnackBar("Carta borrada correctamente")
+        this.apiService.getAllCards(this.username).subscribe(data => { this.dataSourceResumenCarta = data})  
+        this.dataSourceCarta = null
+      }else{
+        this.openSnackBar("Carta no borrada")
+      }
+    })
+  }
+
+  onDeleteMenu(nombre:string){
+    
+    this.apiService.deleteMenu(this.username,nombre).subscribe( deleteResponse => {
+      if(deleteResponse){
+        this.openSnackBar("Menú borrada correctamente")
+        this.apiService.getAllMenus(this.username).subscribe(data => { this.dataSourceResumenMenu = data})  
+        this.dataSourceCarta = null
+      }else{
+        this.openSnackBar("Menú no borrada")
+      }
+    })
+  }
+
+  onDeleteFromCard(nombre:string){
+    this.apiService.deleteFromCard(this.username,this.cartaMostrada,nombre).subscribe( deleteResponse => {
+      if(deleteResponse){
+        this.openSnackBar("Plato borrado correctamente")
+        this.apiService.getCard(this.username,this.cartaMostrada).subscribe(data => { this.dataSourceCarta = data.platos}) 
+      }else{
+        this.openSnackBar("Plato no borrado")
       }
     })
   }
@@ -227,8 +288,8 @@ public durationInSeconds: number = 3
   getFormGroup(i: number) {
     return this.formArray.at(i) as FormGroup;
   }
-  openSnackBar() {
-    this._snackBar.open("Menu/Carta Creada ", "close", {
+  openSnackBar(value:string) {
+    this._snackBar.open(value, "close", {
       duration: this.durationInSeconds * 1000,
     })
 

@@ -62,12 +62,10 @@ export class MisPlatosComponent implements OnInit {
   }
 
 
-  openSnackBar() {
-    this._snackBar.open("Plato creado", "close",{
+  openSnackBar(value:string) {
+    this._snackBar.open(value, "close",{
       duration: this.durationInSeconds * 1000,
     })
-
-    
   }
   
 
@@ -81,7 +79,7 @@ export class MisPlatosComponent implements OnInit {
     //SE PODRIA ELIMINAR EN LA BBDD Y SOBREESCRIBIR DATASOURCEPLATOS
     this.apiService.deleteDish(this.username,i).subscribe( deleteResponse => {
       if(deleteResponse){
-        console.log("BORRADO")
+        this.openSnackBar("Plato borrado correctamente")
         this.apiService.getAllDishes(this.username).subscribe(data => { this.dataSourcePlatos = data})
       }else{
         console.log("MAL BORRADO")
@@ -107,13 +105,11 @@ export class MisPlatosComponent implements OnInit {
       this.dish.precio
     ).subscribe( dishResponse => {
       if(dishResponse){
-        this.openSnackBar()
-        
-        console.log("INSERTADO")
+        this.openSnackBar("Plato creado correctamente")
         this.ngOnInit()
         
       }else{
-        
+        this.openSnackBar("Plato no creado, revisa que el nombre no esté repetido")
       }
     })
 

@@ -11,8 +11,16 @@
     }
 }
 
+.card{
+    margin-top: 3%;
+}
+
 input{
     width: 100%;
+}
+
+.seccion{
+    height: 1000px;
 }
 
 .misCartasMenusPrincipalDiv{
@@ -79,8 +87,13 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
     margin-bottom: 15px;
 }
 
+
+
 mat-table{
     border-radius: 5px;
+}
+table{
+    width: 100%;
 }
 .espaciosTabla{
     margin-left: 20px;

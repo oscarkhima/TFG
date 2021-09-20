@@ -1,220 +1,416 @@
-
-
-
 <section>
 
     <div class="explicacionMisCartas">
-        <div class="divIntro"><p>
-            En esta seccion econtrarás mis cartas, donde podrás añadir todos los productos que quieras a tu carta. Puedes crear todo tipo de cartas, por ejemplo : Una carta para noches y dias. 
-        </p></div>
+        <div class="divIntro">
+            <p>
+                En esta seccion econtrarás mis cartas, donde podrás añadir todos los productos que quieras a tu carta.
+                Puedes crear todo tipo de cartas, por ejemplo : Una carta para noches y dias.
+            </p>
+        </div>
     </div>
-    
+
 
     <mat-tab-group>
 
         <!-----------------Resumen Mis Cartas------------------->
         <mat-tab label="Mis Cartas">
             <div class="MisCartas">
-                <mat-card class="">
+                <mat-card class="card">
                     <h3 class="tituloMenuCarta">Mis Cartas disponibles</h3>
-                    <table mat-table [dataSource]="dataSourceResumenCarta" >
+                    <p>Haz click en la carta para ver los detalles</p>
+                    <table mat-table [dataSource]="dataSourceResumenCarta">
 
 
-                        <ng-container matColumnDef="visible" >
-                            <th class="pop-bold espaciosTabla"  mat-header-cell *matHeaderCellDef> Activo </th>
-                            <td mat-cell *matCellDef="let element; let i = index;"><button mat-button   [disabled]="this.dataSourceResumenCarta.activated" (click)="updateCards(element)" class="example-margin" ><h3 class="pop-regular">{{element.activated}}</h3></button> </td>
-                            
-                          </ng-container>
+                        <ng-container matColumnDef="visible">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Activo </th>
+                            <td mat-cell *matCellDef="let element; let i = index;"><button mat-button
+                                    [disabled]="this.dataSourceResumenCarta.activated" (click)="updateCards(element)"
+                                    class="example-margin">
+                                    <h3 class="pop-regular">{{element.activated}}</h3>
+                                </button> </td>
+
+                        </ng-container>
 
                         <ng-container matColumnDef="nombreCarta">
-                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre de la carta </th>
-                            <td class="pop-regular" mat-cell *matCellDef="let element"><h3 class="pop-regular"> {{element.nombre}} </h3></td>
-                          </ng-container>
-                     
-                          <ng-container matColumnDef="numeroProductos">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre de la carta
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element"><button mat-button
+                                    (click)="showCard(element)">
+                                    <h3 class="pop-regular">{{element.nombre}}</h3>
+                                </button></td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="numeroProductos">
                             <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nº De productos </th>
-                            <td class="pop-regular"  mat-cell *matCellDef="let element"><h3 class="pop-regular"> {{element.platos.length}} </h3>  </td>
-                          </ng-container>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular"> {{element.platos.length}} </h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Eliminar </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-fab color="warn" (click)="onDeleteCard(element.nombre)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
                         <tr mat-header-row *matHeaderRowDef="displayedColumnsCarta"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumnsCarta;"></tr>
                     </table>
                 </mat-card>
             </div>
 
+            <!-----------------Resumen  Carta------------------->
+        <div *ngIf="this.panelOpenState">
+            <div class="MisCartas">
+                <mat-card class="card">
+                    <h3 class="tituloMenuCarta">Platos</h3>
+                    <table mat-table [dataSource]="dataSourceCarta">
+                        <ng-container matColumnDef="nombrePlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del plato
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.nombre}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="ingredientesPlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Ingredientes
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.ingredientes}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="precioPlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Precio del plato
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.precio}} €</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Eliminar </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-fab color="warn" (click)="onDeleteFromCard(element.nombre)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumnsCartaUnica"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumnsCartaUnica;"></tr>
+                    </table>
+                </mat-card>
+            </div>
+        </div>
         </mat-tab>
 
         <!------------------Resumen Mis Menus ------------------>
         <mat-tab label="Mis Menus">
 
             <div class="MisMenus">
-                <mat-card class="">
+                <mat-card class="card">
                     <h3 class="tituloMenuCarta">Mis Menús disponibles</h3>
-                    
-                    <table class="mat-table-class" mat-table [dataSource]="dataSourceResumenMenu" >
+                    <p>Haz click en el menú para ver los detalles</p>
+
+                    <table class="mat-table-class" mat-table [dataSource]="dataSourceResumenMenu">
 
 
                         <ng-container matColumnDef="visible">
                             <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Activo</th>
-                            <td mat-cell *matCellDef="let element; let i = index;"><button mat-button   [disabled]="this.dataSourceResumenMenu.activated" (click)="updateMenus(element)" class="example-margin" ><h3 class="pop-regular">{{element.activated}}</h3></button> </td>
-                          </ng-container>
+                            <td mat-cell *matCellDef="let element; let i = index;"><button mat-button
+                                    [disabled]="this.dataSourceResumenMenu.activated" (click)="updateMenus(element)"
+                                    class="example-margin">
+                                    <h3 class="pop-regular">{{element.activated}}</h3>
+                                </button> </td>
+                        </ng-container>
 
                         <ng-container matColumnDef="nombreMenu">
-                            <th  class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del Menu </th>
-                            <td mat-cell *matCellDef="let element"><h3 class="pop-regular"> {{element.nombre}}</h3> </td>
-                          </ng-container>
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del Menu </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element"><button mat-button
+                                    (click)="showMenu(element)">
+                                    <h3 class="pop-regular">{{element.nombre}}</h3>
+                                </button></td>
+                        </ng-container>
 
-                          <ng-container matColumnDef="primeros">
-                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Cantidad Primeros platos </th>
-                            <td mat-cell *matCellDef="let element"><h3 class="pop-regular">{{element.primeros.length}} </h3> </td>
-                          </ng-container>
+                        <ng-container matColumnDef="primeros">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Cantidad Primeros
+                                platos </th>
+                            <td mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.primeros.length}} </h3>
+                            </td>
+                        </ng-container>
 
-                          <ng-container matColumnDef="segundos">
-                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Cantidad Segundos platos </th>
-                            <td mat-cell *matCellDef="let element"><h3 class="pop-regular">{{element.segundos.length}} </h3> </td>
-                          </ng-container>
+                        <ng-container matColumnDef="segundos">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Cantidad Segundos
+                                platos </th>
+                            <td mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.segundos.length}} </h3>
+                            </td>
+                        </ng-container>
 
-                          <ng-container matColumnDef="postres">
+                        <ng-container matColumnDef="postres">
                             <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Cantidad Postres </th>
-                            <td mat-cell *matCellDef="let element"><h3 class="pop-regular">{{element.postres.length}} </h3> </td>
-                          </ng-container>
-                     
-                          <ng-container matColumnDef="precio">
+                            <td mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.postres.length}} </h3>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="precio">
                             <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Precio </th>
-                            <td mat-cell *matCellDef="let element"><h3 class="pop-regular">{{element.precio}} € </h3> </td>
-                          </ng-container>
-                         
+                            <td mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.precio}} € </h3>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="delete">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Eliminar </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-fab color="warn" (click)="onDeleteMenu(element.nombre)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
 
                         <tr mat-header-row *matHeaderRowDef="displayedColumnsMenu"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumnsMenu;"></tr>
                     </table>
                 </mat-card>
             </div>
+            <div *ngIf="this.panelOpenState">
+            <div class="MisMenus" >
+                <mat-card class="card">
+                    <h3 class="tituloMenuCarta">Primeros</h3>
+                    <table mat-table [dataSource]="dataSourceMenuPrimeros">
+                        <ng-container matColumnDef="nombrePlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del
+                                plato
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.nombre}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="ingredientesPlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Ingredientes
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.ingredientes}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Eliminar </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-fab color="warn" (click)="onDeleteFromCard(element.nombre)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumnsMenuPrimeros"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumnsMenuPrimeros;"></tr>
+                    </table>
 
 
+                </mat-card>
+            </div>
+
+            <div class="MisMenus">
+                <mat-card class="card">
+                    <h3 class="tituloMenuCarta">Segundos</h3>
+                    <table mat-table [dataSource]="dataSourceMenuSegundos">
+                        <ng-container matColumnDef="nombrePlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del
+                                plato
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.nombre}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="ingredientesPlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Ingredientes
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.ingredientes}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Eliminar </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-fab color="warn" (click)="onDeleteFromCard(element.nombre)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumnsMenuSegundos"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumnsMenuSegundos;"></tr>
+                    </table>
+
+
+                </mat-card>
+            </div>
+
+            <div class="MisMenus">
+                <mat-card class="card">
+                    <h3 class="tituloMenuCarta">Postres</h3>
+                    <table mat-table [dataSource]="dataSourceMenuPostres">
+                        <ng-container matColumnDef="nombrePlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Nombre del
+                                plato
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.nombre}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="ingredientesPlato">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Ingredientes
+                            </th>
+                            <td class="pop-regular" mat-cell *matCellDef="let element">
+                                <h3 class="pop-regular">{{element.ingredientes}}</h3>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                            <th class="pop-bold espaciosTabla" mat-header-cell *matHeaderCellDef> Eliminar </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-fab color="warn" (click)="onDeleteFromCard(element.nombre)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedColumnsMenuPostres"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumnsMenuPostres;"></tr>
+                    </table>
+
+                </mat-card>
+            </div>
+            </div>
         </mat-tab>
         <!------------------ Crear Carta ------------------>
 
-        <mat-tab label="Crear Carta"> 
+        <mat-tab label="Crear Carta">
             <div class="creacionCarta">
                 <mat-card>
-                <h3>Crea tu carta aqui</h3>
-                <form class="crearCarta" #formCard="ngForm">
-                    <p>
-                        <mat-form-field>
-                            <mat-label class="pop-semibold">Nombre (Sin Espacios)</mat-label>
-                            <input type="text" name="nombre" [(ngModel)]="card.nombre" pattern= "^\S*" matInput placeholder="Escribe el nombre"
-                                required>
-                        </mat-form-field>
-                    </p>
-                    <p>
-                        <mat-form-field *ngFor="let control of formArray.controls; index as i">
-                            <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
-                            <mat-select [(ngModel)]="card.platos[i]" [formGroup]="getFormGroup(i)"
-                                [ngModelOptions]="{standalone: true}" required>
-                                <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                    <p class="botones">
-                        <button mat-flat-button color="primary" (click)="onAdd()" type="add" >Añadir Plato</button>
-                        <button (click)="onDelete()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
-                    </p>
-                    <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formCard.valid"
-                        (click)="addCard()">Crear Carta</button>
-                </form>
+                    <h3>Crea tu carta aqui</h3>
+                    <form class="crearCarta" #formCard="ngForm">
+                        <p>
+                            <mat-form-field>
+                                <mat-label class="pop-semibold">Nombre (Sin Espacios)</mat-label>
+                                <input type="text" name="nombre" [(ngModel)]="card.nombre" pattern="^\S*" matInput
+                                    placeholder="Escribe el nombre" required>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field *ngFor="let control of formArray.controls; index as i">
+                                <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                                <mat-select [(ngModel)]="card.platos[i]" [formGroup]="getFormGroup(i)"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p class="botones">
+                            <button mat-flat-button color="primary" (click)="onAdd()" type="add">Añadir Plato</button>
+                            <button (click)="onDelete()" type="delete" mat-flat-button color="warn">Eliminar
+                                plato</button>
+                        </p>
+                        <button mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu"
+                            [disabled]="!formCard.valid" (click)="addCard()">Crear Carta</button>
+                    </form>
                 </mat-card>
             </div>
 
 
         </mat-tab>
 
-         <!------------------ Crear Menu ------------------>
+        <!------------------ Crear Menu ------------------>
 
-        <mat-tab label="Crear Menu"> 
-        
+        <mat-tab label="Crear Menu">
+
             <div class="creacionCarta">
                 <mat-card>
-                <h3>Crea tu menu aqui</h3>
-                <form class="crearCarta" #formMenu="ngForm">
-                    <p>
-                        <mat-form-field>
-                            <mat-label class="pop-semibold">Nombre (Sin espacios)</mat-label>
-                            <input type="text" name="nombre" pattern= "^\S*" [(ngModel)]="menu.nombre" matInput placeholder="Escribe el nombre"
-                                required>
-                        </mat-form-field>
-                    </p>
-                    <br>
-                    <h3>PRIMEROS</h3>
-                    <br>
-                    <p>
-                        <mat-form-field *ngFor="let control of formArrayPrimeros.controls; index as i">
-                            <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
-                            <mat-select [(ngModel)]="menu.primeros[i]" [formGroup]="getFormGroup(i)"
-                                [ngModelOptions]="{standalone: true}" required>
-                                <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                    <p class="botones">
-                        <button mat-flat-button color="primary" (click)="onAddPrimeros()" type="add" >Añadir Plato</button>
-                        <button (click)="onDeletePrimeros()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
-                    </p>
-                    <br>
-                    <h3>SEGUNDOS</h3>
-                    <br>
-                    <p>
-                        <mat-form-field *ngFor="let control of formArraySegundos.controls; index as i">
-                            <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
-                            <mat-select [(ngModel)]="menu.segundos[i]" [formGroup]="getFormGroup(i)"
-                                [ngModelOptions]="{standalone: true}" required>
-                                <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                    <p class="botones">
-                        <button mat-flat-button color="primary" (click)="onAddSegundos()" type="add" >Añadir Plato</button>
-                        <button (click)="onDeleteSegundos()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
-                    </p>
-                    <br>
-                    <h3>POSTRES</h3>
-                    <br>
-                    <p>
-                        <mat-form-field *ngFor="let control of formArrayPostres.controls; index as i">
-                            <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
-                            <mat-select [(ngModel)]="menu.postres[i]" [formGroup]="getFormGroup(i)"
-                                [ngModelOptions]="{standalone: true}" required>
-                                <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </p>
-                    <p class="botones">
-                        <button mat-flat-button color="primary" (click)="onAddPostres()" type="add" >Añadir Plato</button>
-                        <button (click)="onDeletePostres()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
-                    </p>
-                    <p>
-                        <mat-form-field required>
-                            <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
-                            <input matInput type="number" name="precio" [(ngModel)]="menu.precio" class="example-right-align"
-                                placeholder="0" required>
-                            <span matSuffix>€&nbsp;</span>
-                        </mat-form-field>
-                    </p>
-                    <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formMenu.valid"
-                        (click)="addMenu()">Crear Menu</button>
-                </form>
+                    <h3>Crea tu menu aqui</h3>
+                    <form class="crearCarta" #formMenu="ngForm">
+                        <p>
+                            <mat-form-field>
+                                <mat-label class="pop-semibold">Nombre (Sin espacios)</mat-label>
+                                <input type="text" name="nombre" pattern="^\S*" [(ngModel)]="menu.nombre" matInput
+                                    placeholder="Escribe el nombre" required>
+                            </mat-form-field>
+                        </p>
+                        <br>
+                        <h3>PRIMEROS</h3>
+                        <br>
+                        <p>
+                            <mat-form-field *ngFor="let control of formArrayPrimeros.controls; index as i">
+                                <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                                <mat-select [(ngModel)]="menu.primeros[i]" [formGroup]="getFormGroup(i)"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p class="botones">
+                            <button mat-flat-button color="primary" (click)="onAddPrimeros()" type="add">Añadir
+                                Plato</button>
+                            <button (click)="onDeletePrimeros()" type="delete" mat-flat-button color="warn">Eliminar
+                                plato</button>
+                        </p>
+                        <br>
+                        <h3>SEGUNDOS</h3>
+                        <br>
+                        <p>
+                            <mat-form-field *ngFor="let control of formArraySegundos.controls; index as i">
+                                <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                                <mat-select [(ngModel)]="menu.segundos[i]" [formGroup]="getFormGroup(i)"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p class="botones">
+                            <button mat-flat-button color="primary" (click)="onAddSegundos()" type="add">Añadir
+                                Plato</button>
+                            <button (click)="onDeleteSegundos()" type="delete" mat-flat-button color="warn">Eliminar
+                                plato</button>
+                        </p>
+                        <br>
+                        <h3>POSTRES</h3>
+                        <br>
+                        <p>
+                            <mat-form-field *ngFor="let control of formArrayPostres.controls; index as i">
+                                <mat-label class="pop-semibold">Elije el plato que deseas añadir</mat-label>
+                                <mat-select [(ngModel)]="menu.postres[i]" [formGroup]="getFormGroup(i)"
+                                    [ngModelOptions]="{standalone: true}" required>
+                                    <mat-option [value]="i" *ngFor="let i of platos">{{i}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </p>
+                        <p class="botones">
+                            <button mat-flat-button color="primary" (click)="onAddPostres()" type="add">Añadir
+                                Plato</button>
+                            <button (click)="onDeletePostres()" type="delete" mat-flat-button color="warn">Eliminar
+                                plato</button>
+                        </p>
+                        <p>
+                            <mat-form-field required>
+                                <mat-label class="pop-semibold">Precio (Separar con punto)</mat-label>
+                                <input matInput type="number" name="precio" [(ngModel)]="menu.precio"
+                                    class="example-right-align" placeholder="0" required>
+                                <span matSuffix>€&nbsp;</span>
+                            </mat-form-field>
+                        </p>
+                        <button mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu"
+                            [disabled]="!formMenu.valid" (click)="addMenu()">Crear Menu</button>
+                    </form>
                 </mat-card>
             </div>
-        
+
         </mat-tab>
 
-         <!------------------ Crear QR ------------------>
+        <!------------------ Crear QR ------------------>
 
-         <mat-tab label="Generar Qr">
+        <mat-tab label="Generar Qr">
             <app-generar-qr></app-generar-qr>
-         </mat-tab>
+        </mat-tab>
 
 
-      </mat-tab-group>
+    </mat-tab-group>
 
 
 </section>
