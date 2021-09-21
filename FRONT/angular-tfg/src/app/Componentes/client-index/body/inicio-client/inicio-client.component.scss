@@ -1,14 +1,5 @@
-.explicacionMisPlatos{
-    padding: 10px;
-    background-color: whitesmoke;
-    border-radius: 5px;
-
-    .divIntro{
-        padding: 15px;
-        border-radius: 5px;
-        border: 1px solid rgb(201, 201, 201);
-        border-style: dashed;
-    }
+section{
+    margin-bottom: 10%;
 }
 .bienvenido{
     padding: 15px;
@@ -18,16 +9,33 @@
 
     .divIntro{
         h2{
-            color: white;
+            color: rgb(43, 43, 43);
             padding: 8px;
             padding-left: 0px;
         }
         p{
-            color: whitesmoke;
+            color: rgb(0, 0, 0);
         }
         padding: 20px;
         border-radius: 5px;
         border: 1px solid rgb(231, 231, 231);
         border-style: dashed;
     }
+}
+.explicacionMisPlatos{
+    display: flex;
+}
+
+.card{
+    margin-right: 1%;
+    width: 32%;
+    margin-bottom: 2%;
+}
+img{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40%;
 }

@@ -15,23 +15,33 @@
             
 
 
-            <mat-list-option class="pop-regular" [value]="2" (click)="chooseOption(options)">
+            <mat-list-option class="pop-regular" [value]="1" (click)="chooseOption(options)">
                 Mis platos
                 <mat-icon matListIcon>restaurant</mat-icon>
             </mat-list-option>
             <mat-divider></mat-divider>
 
-            <mat-list-option class="pop-regular" [value]="1" (click)="chooseOption(options)">
+            <mat-list-option class="pop-regular" [value]="2" (click)="chooseOption(options)">
                 Mis cartas
                 <mat-icon matListIcon>menu_book</mat-icon>
             </mat-list-option>
             <mat-divider></mat-divider>
             <mat-list-option class="pop-regular" [value]="3" (click)="chooseOption(options)">
+                Generar QR
+                <mat-icon matListIcon>qr_code_scanner</mat-icon>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+            <mat-list-option class="pop-regular" [value]="4" (click)="chooseOption(options)">
                 Pedidos
                 <mat-icon matListIcon>receipt_long</mat-icon>
             </mat-list-option>
             <mat-divider></mat-divider>
-            <mat-list-option class="pop-regular" [value]="4" (click)="chooseOption(options)">
+            <mat-list-option class="pop-regular" [value]="5" (click)="chooseOption(options)">
+                Estadisticas
+                <mat-icon matListIcon>query_stats</mat-icon>
+            </mat-list-option>
+            <mat-divider></mat-divider>
+            <mat-list-option class="pop-regular" [value]="6" (click)="chooseOption(options)">
                 Configuracion
                 <mat-icon matListIcon>settings</mat-icon>
             </mat-list-option>

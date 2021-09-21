@@ -66,10 +66,11 @@ import { MenuComponent } from './Componentes/web-card/menu/menu.component';
 import { CardComponent } from './Componentes/web-card/card/card.component';
 import { WebCardNavComponent } from './Componentes/web-card/web-card-nav/web-card-nav.component';
 import { InicioClientComponent } from './Componentes/client-index/body/inicio-client/inicio-client.component';
-import { GenerarQrComponent } from './Componentes/client-index/body/mis-cartas/generar-qr/generar-qr.component';
+import { GenerarQrComponent } from './Componentes/client-index/body/generar-qr/generar-qr.component';
 import { DialogOrderComponent } from './Componentes/web-card/dialog-order/dialog-order.component';
 import { DialogOrderFalseComponent } from './Componentes/web-card/dialog-order-false/dialog-order-false.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -119,6 +120,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     InicioClientComponent
   ],
   imports: [
+    MatGridListModule,
     MatExpansionModule,
     MatTableModule,
     MatTabsModule,
