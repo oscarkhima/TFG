@@ -64,7 +64,6 @@ export class AuthService {
     let user_string = localStorage.getItem("currentUser");
     if(!(user_string === null || user_string === undefined)){
       let user: string = JSON.parse(user_string);
-      console.log(user)
       return user;
       
     } else{

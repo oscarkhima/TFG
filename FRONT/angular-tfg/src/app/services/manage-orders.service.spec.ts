@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SocketWebService } from './socket-web.service';
+import { ManageOrdersService } from './manage-orders.service';
 
-describe('SocketWebService', () => {
-  let service: SocketWebService;
+describe('ManageOrdersService', () => {
+  let service: ManageOrdersService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SocketWebService);
+    service = TestBed.inject(ManageOrdersService);
   });
 
   it('should be created', () => {

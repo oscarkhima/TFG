@@ -1,11 +1,10 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { DishInterface } from 'src/app/models/dish-interface';
 import { OrderInterface } from 'src/app/models/order-interface';
-import { CardInterfaceResponse } from 'src/app/models/response/card-interface-response';
 import { MenuInterfaceResponse } from 'src/app/models/response/menu-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
+import { ManageOrdersService } from 'src/app/services/manage-orders.service';
 import { DialogOrderFalseComponent } from '../dialog-order-false/dialog-order-false.component';
 import { DialogOrderComponent } from '../dialog-order/dialog-order.component';
 
@@ -45,7 +44,13 @@ export class MenuComponent implements OnInit {
   }
 
 
-  constructor(private dialog: MatDialog,private dishAndCards: DishAndCardsService, private route: ActivatedRoute, private apiService: DishAndCardsService) { }
+  constructor(
+    private dialog: MatDialog,
+    private dishAndCards: DishAndCardsService, 
+    private route: ActivatedRoute, 
+    private apiService: DishAndCardsService,
+    private manageOrderService: ManageOrdersService 
+    ) { }
 
   ngOnInit(): void {
     //http://localhost:4200/card?username=Moreiro&cardname=Macarrones&menuname=Menu del dia&mesa=3
@@ -161,7 +166,6 @@ export class MenuComponent implements OnInit {
         }
       }
     }
-    console.log("RESULTADO " + this.platosPedido)
     this.pedido.platos = this.platosPedido;
     this.pedido.totalPrice = this.menuInterface.precio * this.totalPrimeros;
     this.pedido.tableNumber = Number(this.mesa);
@@ -171,7 +175,7 @@ export class MenuComponent implements OnInit {
 
   addOrder(): void {
     this.apiService.createOrder(
-      this.username,
+      this.pedido.username,
       this.pedido.tableNumber,
       this.pedido.platos,
       this.pedido.totalPrice

@@ -1,15 +1,15 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { NodeCompatibleEventEmitter } from 'rxjs/internal/observable/fromEvent';
-import { CardInterface } from 'src/app/models/cart-interface';
-import { DishInterface } from 'src/app/models/dish-interface';
+import { Store } from '@ngrx/store';
 import { OrderInterface } from 'src/app/models/order-interface';
 import { CardInterfaceResponse } from 'src/app/models/response/card-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
+import { ManageOrdersService } from 'src/app/services/manage-orders.service';
 import { DialogOrderFalseComponent } from '../dialog-order-false/dialog-order-false.component';
 import { DialogOrderComponent } from '../dialog-order/dialog-order.component';
+
+
 
 @Component({
   selector: 'app-card',
@@ -42,7 +42,13 @@ export class CardComponent implements OnInit {
   }
 
 
-  constructor(private dialog: MatDialog,private apiService: DishAndCardsService,private dishAndCards: DishAndCardsService, private route: ActivatedRoute) { }
+  constructor(
+    private dialog: MatDialog,
+    private apiService: DishAndCardsService,
+    private dishAndCards: DishAndCardsService, 
+    private route: ActivatedRoute,
+    private manageOrderService: ManageOrdersService 
+    ) { }
 
   ngOnInit(): void {
     //http://localhost:4200/card?username=Ocal&cardname=el caltin
@@ -95,7 +101,6 @@ export class CardComponent implements OnInit {
         }
       }
     }
-    console.log("RESULTADO " + this.platosPedido)
     this.pedido.platos = this.platosPedido;
     this.pedido.totalPrice = this.suma;
     this.pedido.tableNumber = Number(this.mesa);
@@ -112,10 +117,13 @@ export class CardComponent implements OnInit {
     ).subscribe( orderResponse => {
       if (orderResponse) {
         this.dialog.open(DialogOrderComponent);
+        this.manageOrderService.addOrder(this.pedido);
       } else {
         this.dialog.open(DialogOrderFalseComponent);
       }
     })
+    //METODO PARA QUE SE ACTUALICE EL COMPONENTE PEDIDOS
+    
   }
 
 }
