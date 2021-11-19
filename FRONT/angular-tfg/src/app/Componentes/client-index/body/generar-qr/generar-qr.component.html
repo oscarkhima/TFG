@@ -1,12 +1,16 @@
 <div class="qr-container">
-    <p>generar-qr works!</p>
-    <ngx-qrcode id="qrCode"
-    [elementType]="elementType"
-    [errorCorrectionLevel]="correctionLevel"
-    [value]="value"
-    cssClass="boxshadow"></ngx-qrcode>
+    <div download>
+            <qr-code #parent [size]="200" [value]="value" errorCorrectionLevel="M"></qr-code>
+    </div>
     <h4>ESCRIBE EL NUMERO DE LA MESA</h4>
-    <textarea  [(ngModel)]="numeroMesa"></textarea>
-    <button mat-button (click)="generarCodigo()" pattern= "^\S*" >GENERAR CODIGO</button>
+    <br>
+    <mat-form-field>
+        <textarea id="textArea" matInput>{{this.numeroMesa}}</textarea>
+    </mat-form-field>
+    <br>
+    <button mat-button (click)="generarCodigo()" >GENERAR CODIGO</button>
+    <button mat-button (click)="saveAsImage()">DESCARGAR QR</button>
+
 </div>
+
 

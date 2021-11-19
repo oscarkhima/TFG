@@ -14,6 +14,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { QRCodeModule } from 'angular2-qrcode';
 
 
 import { AppComponent } from './app.component';
@@ -120,6 +121,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     InicioClientComponent
   ],
   imports: [
+    QRCodeModule,
     MatGridListModule,
     MatExpansionModule,
     MatTableModule,

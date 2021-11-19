@@ -1,8 +1,16 @@
-
+*{
+    text-align: center;
+    margin: 1%;
+}
 .qr-container{
+    margin: 4%;
     width: 100%;
     align-items: center;
 }
-ngx-qrcode{
-    display: flex;
+.textArea{
+    text-align: center;
+}
+.numeroMesa{
+    width: auto;
+    height: auto;
 }
