@@ -14,6 +14,10 @@
         <mat-selection-list #options [multiple]="false">
             
 
+            <mat-list-option class="pop-regular" [value]="0" (click)="chooseOption(options)">
+               Inicio
+                <mat-icon matListIcon>home</mat-icon>
+            </mat-list-option>
 
             <mat-list-option class="pop-regular" [value]="2" (click)="chooseOption(options)">
                 Mis platos
@@ -35,6 +39,8 @@
                 Configuracion
                 <mat-icon matListIcon>settings</mat-icon>
             </mat-list-option>
+
+          
 
 
           </mat-selection-list>

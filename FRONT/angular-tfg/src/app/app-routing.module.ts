@@ -26,5 +26,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { 
-  public host = "192.168.1.42";
+  public host = "192.168.1.40";
 }

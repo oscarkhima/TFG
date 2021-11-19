@@ -9,6 +9,8 @@ export class InicioClientComponent implements OnInit {
 
   constructor() { }
 
+
+  
   ngOnInit(): void {
   }
 
