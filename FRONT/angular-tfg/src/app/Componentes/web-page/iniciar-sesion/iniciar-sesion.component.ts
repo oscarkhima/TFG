@@ -45,8 +45,8 @@ export class IniciarSesionComponent implements OnInit {
       this.user.username,
       this.user.password
     ).subscribe( userResponse => {
-      this.authService.setUser(userResponse.userName);
       if(userResponse.succes){
+        this.authService.setUser(userResponse.userName);
         this.authService.setToken(userResponse.email);
         this.authService.setUser(userResponse.userName);
         this.router.navigate(['/profile'])

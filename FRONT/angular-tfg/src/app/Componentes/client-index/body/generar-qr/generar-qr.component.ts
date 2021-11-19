@@ -14,7 +14,8 @@ import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
 })
 export class GenerarQrComponent implements OnInit {
 
-  constructor(private dataApi: DishAndCardsService,private authService: AuthService,private routing:AppRoutingModule) { }
+  constructor(private dataApi: DishAndCardsService,private authService: AuthService,private routing:AppRoutingModule) { 
+  }
 
   public qrData: QrDataInterface= <QrDataInterface>{};
 
@@ -33,11 +34,11 @@ export class GenerarQrComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
-    this.dataApi.getQrData(this.username).subscribe(data => this.qrData = data)
+    
   }
 
   generarCodigo(){
-    
+    this.dataApi.getQrData(this.username).subscribe(data => this.qrData = data);
     this.value = 'http://'+this.routing.host+ this.routing.frontPort +'/card?username=' + this.username + "&cardname=" + this.qrData.nombreCarta + "&menuname=" + this.qrData.nombreMenu + "&mesa=" + this.numeroMesa;
     console.log(this.value)
   }

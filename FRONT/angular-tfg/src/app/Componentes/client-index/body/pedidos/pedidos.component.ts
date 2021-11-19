@@ -15,7 +15,7 @@ export class PedidosComponent implements OnInit {
 
   public bucle: boolean = false;
 
-  constructor(private apiService: DishAndCardsService,private authService: AuthService) { }
+  constructor(private apiService: DishAndCardsService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.username = this.authService.getCurrentUser();
@@ -34,7 +34,6 @@ export class PedidosComponent implements OnInit {
   }
 
   startUpdate(){
-    this.ngOnInit();
   }
 
   stopUpdate(){

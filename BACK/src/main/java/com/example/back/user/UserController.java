@@ -436,6 +436,7 @@ public class UserController {
         pedidosUser.add(order);
         user.setPedidos(pedidosUser);
         try {
+            //
             userRepository.save(user);
         }catch (Exception e){
             return false;
@@ -480,8 +481,8 @@ public class UserController {
                 qrData.setNombreCarta(carta.getNombre());
             }
         }
-        if(qrData.getNombreCarta().isBlank()){
-            qrData.setNombreCarta("");
+        if(qrData.getNombreCarta().isBlank() || qrData.getNombreMenu().isEmpty()){
+            qrData.setNombreCarta(" ");
         }
         for (MenuModel menuModel:
                 menus) {
@@ -489,8 +490,8 @@ public class UserController {
                 qrData.setNombreMenu(menuModel.getNombre());
             }
         }
-        if(qrData.getNombreMenu().isBlank()){
-            qrData.setNombreMenu("");
+        if(qrData.getNombreMenu().isBlank() || qrData.getNombreMenu().isEmpty()){
+            qrData.setNombreMenu(" ");
         }
         qrData.setNombreUsuario(userName);
         return qrData;

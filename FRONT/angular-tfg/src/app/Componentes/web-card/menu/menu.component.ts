@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { OrderInterface } from 'src/app/models/order-interface';
 import { MenuInterfaceResponse } from 'src/app/models/response/menu-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
-import { ManageOrdersService } from 'src/app/services/manage-orders.service';
 import { DialogOrderFalseComponent } from '../dialog-order-false/dialog-order-false.component';
 import { DialogOrderComponent } from '../dialog-order/dialog-order.component';
 
@@ -49,7 +48,6 @@ export class MenuComponent implements OnInit {
     private dishAndCards: DishAndCardsService, 
     private route: ActivatedRoute, 
     private apiService: DishAndCardsService,
-    private manageOrderService: ManageOrdersService 
     ) { }
 
   ngOnInit(): void {

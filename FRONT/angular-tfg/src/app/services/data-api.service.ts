@@ -16,10 +16,7 @@ export class DataApiService {
     "Content-Type":"application/json"
   })
 
-  getAllUsers(){
-    const url_api = 'http://'+this.routing.host+ this.routing.backPort +'/user/all';
-    return this.http.get(url_api);
-  }
+
 
 
 

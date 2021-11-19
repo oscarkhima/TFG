@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { OrderInterface } from 'src/app/models/order-interface';
 import { CardInterfaceResponse } from 'src/app/models/response/card-interface-response';
 import { DishAndCardsService } from 'src/app/services/dish-and-cards.service';
-import { ManageOrdersService } from 'src/app/services/manage-orders.service';
 import { DialogOrderFalseComponent } from '../dialog-order-false/dialog-order-false.component';
 import { DialogOrderComponent } from '../dialog-order/dialog-order.component';
 
@@ -47,7 +46,6 @@ export class CardComponent implements OnInit {
     private apiService: DishAndCardsService,
     private dishAndCards: DishAndCardsService, 
     private route: ActivatedRoute,
-    private manageOrderService: ManageOrdersService 
     ) { }
 
   ngOnInit(): void {
@@ -117,7 +115,6 @@ export class CardComponent implements OnInit {
     ).subscribe( orderResponse => {
       if (orderResponse) {
         this.dialog.open(DialogOrderComponent);
-        this.manageOrderService.addOrder(this.pedido);
       } else {
         this.dialog.open(DialogOrderFalseComponent);
       }
