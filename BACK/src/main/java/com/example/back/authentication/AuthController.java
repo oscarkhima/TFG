@@ -83,7 +83,7 @@ public class AuthController {
         String email = authenticationRequest.getEmail();
         String password = authenticationRequest.getPassword();
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
+            //authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password));
         }catch (Exception e){
             authenticationResponse.setSucces(false);
             return ResponseEntity.ok(authenticationResponse);

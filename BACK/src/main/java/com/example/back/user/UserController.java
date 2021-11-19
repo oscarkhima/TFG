@@ -481,7 +481,7 @@ public class UserController {
                 qrData.setNombreCarta(carta.getNombre());
             }
         }
-        if(qrData.getNombreCarta().isBlank() || qrData.getNombreMenu().isEmpty()){
+        if(qrData.getNombreCarta().isBlank() || qrData.getNombreCarta() == null){
             qrData.setNombreCarta(" ");
         }
         for (MenuModel menuModel:
@@ -490,7 +490,7 @@ public class UserController {
                 qrData.setNombreMenu(menuModel.getNombre());
             }
         }
-        if(qrData.getNombreMenu().isBlank() || qrData.getNombreMenu().isEmpty()){
+        if(qrData.getNombreMenu().isBlank() || qrData.getNombreCarta() == null){
             qrData.setNombreMenu(" ");
         }
         qrData.setNombreUsuario(userName);
