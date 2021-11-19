@@ -1,0 +1,11 @@
+<div class="qr-container">
+    <ngx-qrcode id="qrCode"
+    [elementType]="elementType"
+    [errorCorrectionLevel]="correctionLevel"
+    [value]="value"
+    cssClass="boxshadow"></ngx-qrcode>
+    <h4>ESCRIBE EL NUMERO DE LA MESA</h4>
+    <textarea  [(ngModel)]="numeroMesa"></textarea>
+    <button mat-button (click)="generarCodigo()" pattern= "^\S*" >GENERAR CODIGO</button>
+</div>
+

@@ -56,6 +56,8 @@ import { SidenavComponent } from './Componentes/client-index/sidenav/sidenav.com
 import { MisCartasComponent } from './Componentes/client-index/body/mis-cartas/mis-cartas.component';
 import { MisPlatosComponent } from './Componentes/client-index/body/mis-platos/mis-platos.component';
 import { PedidosComponent } from './Componentes/client-index/body/pedidos/pedidos.component';
+import { HomeComponent } from './Componentes/client-index/body/home/home.component';
+
 import { ConfiguracionComponent } from './Componentes/client-index/body/configuracion/configuracion.component';
 import { SeccionSeisComponent } from './Componentes/web-page/seccion-seis/seccion-seis.component';
 import { ProductoComponent } from './Componentes/web-page/producto/producto.component';
@@ -118,7 +120,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     GenerarQrComponent,
     DialogOrderComponent,
     DialogOrderFalseComponent,
-    InicioClientComponent
+    InicioClientComponent,
+    HomeComponent
   ],
   imports: [
     QRCodeModule,

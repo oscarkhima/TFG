@@ -291,8 +291,8 @@
                         <p>
                             <mat-form-field>
                                 <mat-label class="pop-semibold">Nombre (Sin Espacios)</mat-label>
-                                <input type="text" name="nombre" [(ngModel)]="card.nombre" pattern="^\S*" matInput
-                                    placeholder="Escribe el nombre" required>
+                                <input type="text" name="nombre" [(ngModel)]="card.nombre" pattern= "^\S*" matInput placeholder="Escribe el nombre"
+                                    required>
                             </mat-form-field>
                         </p>
                         <p>
@@ -305,12 +305,11 @@
                             </mat-form-field>
                         </p>
                         <p class="botones">
-                            <button mat-flat-button color="primary" (click)="onAdd()" type="add">Añadir Plato</button>
-                            <button (click)="onDelete()" type="delete" mat-flat-button color="warn">Eliminar
-                                plato</button>
+                            <button mat-flat-button color="primary" (click)="onAdd()" type="add" >Añadir Plato</button>
+                            <button (click)="onDelete()" type="delete" mat-flat-button color="warn">Eliminar plato</button>
                         </p>
-                        <button mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu"
-                            [disabled]="!formCard.valid" (click)="addCard()">Crear Carta</button>
+                        <button  mat-raised-button color="primary" type="submit" class="pop-semibold crearCartaMenu" [disabled]="!formCard.valid"
+                            (click)="addCard()">Crear Carta</button>
                     </form>
                 </mat-card>
             </div>

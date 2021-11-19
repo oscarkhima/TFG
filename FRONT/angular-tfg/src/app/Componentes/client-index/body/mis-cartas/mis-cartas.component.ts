@@ -49,6 +49,8 @@ export class MisCartasComponent implements OnInit {
 
   disabled = false;
 
+  
+
   public nombresPlatos: Observable<Object> | undefined;
 
   public durationInSeconds: number = 3
