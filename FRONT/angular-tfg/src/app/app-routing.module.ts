@@ -26,7 +26,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { 
-  public host = "192.168.1.143";
+  public host = "192.168.1.130";
   public frontPort = ":4200";
   public backPort = ":8591";
 }
