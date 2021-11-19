@@ -48,7 +48,7 @@ export class MisCartasComponent implements OnInit {
 
   disabled = false;
 
-  
+  //cambio prueba
 
   public nombresPlatos: Observable<Object> | undefined;
 
